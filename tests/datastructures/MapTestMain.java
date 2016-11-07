@@ -1,4 +1,4 @@
-package tests.oop;
+package tests.datastructures;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * Created by mman on 04.11.16.
  */
-public class MainTest {
+public class MapTestMain {
     public static void main(String[] args) {
         Map<String, String> strings = new HashMap<>();
         strings.put("FB", "Value1"); // Keys have same hashcode but are not equal, so the bucket becomes a linked list.

@@ -1,4 +1,4 @@
-package tests.oop
+package tests.datastructures
 
 import sources.oop.Employee
 import sources.oop.Engineer
