@@ -1,7 +1,7 @@
 package tests.datastructures
 
-import sources.oop.Employee
-import sources.oop.Engineer
+import sources.oop.employees.Employee
+import sources.oop.employees.Engineer
 
 /**
  * Created by mman on 04.11.16.

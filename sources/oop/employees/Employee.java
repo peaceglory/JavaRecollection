@@ -1,4 +1,4 @@
-package sources.oop;
+package sources.oop.employees;
 
 /**
  * Created by mman on 04.11.16.

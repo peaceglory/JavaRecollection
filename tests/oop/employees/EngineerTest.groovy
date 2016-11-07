@@ -1,8 +1,8 @@
-package tests.oop
+package tests.oop.employees
 
-import sources.oop.Employee
-import sources.oop.Engineer
-import sources.oop.Worker
+import sources.oop.employees.Employee
+import sources.oop.employees.Engineer
+import sources.oop.employees.Worker
 
 /**
  * Created by mman on 04.11.16.
