@@ -1,6 +1,6 @@
-package tests.datastructures
+package tests.algorithms
 
-import sources.datastructures.DirectoryTraverse
+import sources.algorithms.DirectoryTraverse
 
 /**
  * Created by mman on 24.10.16.

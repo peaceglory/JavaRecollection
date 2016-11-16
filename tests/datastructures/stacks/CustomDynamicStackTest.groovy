@@ -1,6 +1,6 @@
-package tests.datastructures
+package tests.datastructures.stacks
 
-import sources.datastructures.CustomDynamicStack
+import sources.datastructures.stacks.CustomDynamicStack
 
 /**
  * Created by mman on 24.10.16.

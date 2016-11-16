@@ -1,4 +1,4 @@
-package sources.datastructures;
+package sources.datastructures.lists;
 
 /**
  * Created by mman on 20.10.16.

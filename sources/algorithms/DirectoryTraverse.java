@@ -1,4 +1,4 @@
-package sources.datastructures;
+package sources.algorithms;
 
 import java.io.File;
 import java.util.LinkedList;
