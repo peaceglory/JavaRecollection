@@ -10,6 +10,9 @@ public class MyTree<T> {
     private Node<T> root = null;
 
     public MyTree(T rootValue) {
+	if (rootValue == null) {
+	    throw new IllegalArgumentException("Value cannot be null!");	
+	}
         root = new Node<T>(rootValue);
     }
 
