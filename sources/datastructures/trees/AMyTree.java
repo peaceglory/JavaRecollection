@@ -84,11 +84,11 @@ public abstract class AMyTree<T> implements IMyTree<T> {
     }
 
     protected static class Node<T> {
-        protected T value = null;
-        protected Node<T> parent = null;
-        protected List<Node<T>> children = new ArrayList<>();
+        private T value = null;
+        private Node<T> parent = null;
+        private List<Node<T>> children = new ArrayList<>();
 
-        protected Node(T value) {
+        private Node(T value) {
             this.value = value;
         }
 
@@ -103,11 +103,11 @@ public abstract class AMyTree<T> implements IMyTree<T> {
             children.add(child);
         }
 
-        protected boolean hasParent() {
+        private boolean hasParent() {
             return parent != null;
         }
 
-        protected int size() {
+        private int size() {
             if (this.children.isEmpty()) {
                 return 1;
             }
