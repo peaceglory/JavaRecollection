@@ -20,4 +20,6 @@ public interface IMyTree<T> {
     void insert(IMyTree<T> node);
 
     boolean delete(T nodeValue);
+
+    int size();
 }

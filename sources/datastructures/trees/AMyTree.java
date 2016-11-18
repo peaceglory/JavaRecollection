@@ -4,6 +4,7 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 
 /**
  * Created by mman on 18.11.16.
@@ -58,6 +59,14 @@ public abstract class AMyTree<T> implements IMyTree<T> {
         throw new NotImplementedException();
     }
 
+    @Override
+    public int size() {
+        if (root == null) {
+            return 0;
+        }
+        return root.size();
+    }
+
     public ITreeTraversor getBFSIterativeTraversor() {
         return new BFSIterativeTraversor();
     }
@@ -97,6 +106,17 @@ public abstract class AMyTree<T> implements IMyTree<T> {
         protected boolean hasParent() {
             return parent != null;
         }
+
+        protected int size() {
+            if (this.children.isEmpty()) {
+                return 1;
+            }
+            int sum = 1;
+            for (Node<T> n : children) {
+                sum += n.size();
+            }
+            return sum;
+        }
     }
 
     private class BFSIterativeTraversor implements ITreeTraversor {
@@ -127,7 +147,22 @@ public abstract class AMyTree<T> implements IMyTree<T> {
 
         @Override
         public void traverse() {
-
+            traverse(root);
         }
+
+        private void traverse(Node node) {
+            print(node);
+            if (node.children.isEmpty()) {
+                return;
+            }
+            ListIterator<Node<T>> iter = node.children.listIterator();
+            while (iter.hasNext()) {
+                traverse(iter.next());
+            }
+        }
+    }
+
+    private static void print(Node node) {
+        System.out.println(node.value);
     }
 }
