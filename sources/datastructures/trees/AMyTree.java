@@ -45,7 +45,7 @@ public abstract class AMyTree<T> implements IMyTree<T> {
 
     @Override
     public void traverse(ITreeTraversor traversor) {
-        traversor.traverse(this);
+        traversor.traverse();
     }
 
     @Override
@@ -56,6 +56,22 @@ public abstract class AMyTree<T> implements IMyTree<T> {
     @Override
     public boolean delete(T nodeValue) {
         throw new NotImplementedException();
+    }
+
+    public ITreeTraversor getBFSIterativeTraversor() {
+        return new BFSIterativeTraversor();
+    }
+
+    public ITreeTraversor getBFSRecursiveTraversor() {
+        return new BFSRecursiveTraversor();
+    }
+
+    public ITreeTraversor getDFSIterativeTraversor() {
+        return new DFSIterativeTraversor();
+    }
+
+    public ITreeTraversor getDFSRecursiveTraversor() {
+        return new DFSRecursiveTraversor();
     }
 
     protected static class Node<T> {
@@ -80,6 +96,38 @@ public abstract class AMyTree<T> implements IMyTree<T> {
 
         protected boolean hasParent() {
             return parent != null;
+        }
+    }
+
+    private class BFSIterativeTraversor implements ITreeTraversor {
+
+        @Override
+        public void traverse() {
+
+        }
+    }
+
+    private class BFSRecursiveTraversor implements ITreeTraversor {
+
+        @Override
+        public void traverse() {
+
+        }
+    }
+
+    private class DFSIterativeTraversor implements ITreeTraversor {
+
+        @Override
+        public void traverse() {
+
+        }
+    }
+
+    private class DFSRecursiveTraversor implements ITreeTraversor {
+
+        @Override
+        public void traverse() {
+
         }
     }
 }

@@ -5,5 +5,5 @@ package sources.datastructures.trees;
  */
 public interface ITreeTraversor {
 
-    void traverse(IMyTree root);
+    void traverse();
 }
