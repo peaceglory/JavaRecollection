@@ -1,31 +1,18 @@
 package sources.datastructures.trees;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by mman on 16.11.16.
  */
-public class MyTree<T> {
-    private Node<T> root = null;
+public class MyTree<T> extends AMyTree<T> {
 
     public MyTree(T rootValue) {
-	if (rootValue == null) {
-	    throw new IllegalArgumentException("Value cannot be null!");	
-	}
-        root = new Node<T>(rootValue);
+        super(rootValue);
     }
 
-    public MyTree(T rootValue, T... childrenValue) {
-
-    }
-
-    private static class Node<T> {
-        private T value = null;
-        private List<Node<T>> children = new ArrayList<>();
-
-        private Node(T value) {
-            this.value = value;
+    public MyTree(T root, MyTree<T>... children) {
+        this(root);
+        for (MyTree child : children) {
+            this.root.addChild(child.root);
         }
     }
 }
