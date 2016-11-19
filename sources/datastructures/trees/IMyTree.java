@@ -22,4 +22,6 @@ public interface IMyTree<T> {
     boolean delete(T nodeValue);
 
     int size();
+
+    int leaves();
 }

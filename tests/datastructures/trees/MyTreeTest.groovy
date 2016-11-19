@@ -8,7 +8,7 @@ import sources.datastructures.trees.MyTree
  */
 class MyTreeTest extends GroovyTestCase {
 
-    void testTraverse() {
+    void testDFSRecursiveTraversor() {
         IMyTree<Integer> tree = createTree();
         tree.getDFSRecursiveTraversor().traverse();
     }
@@ -16,6 +16,11 @@ class MyTreeTest extends GroovyTestCase {
     void testSize() {
         IMyTree<Integer> tree = createTree();
         assertEquals(16, tree.size());
+    }
+
+    void testLeaves() {
+        IMyTree<Integer> tree = createTree();
+        assertEquals(7, tree.leaves());
     }
 
     private static AMyTree<Integer> createTree() {

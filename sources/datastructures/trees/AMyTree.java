@@ -67,6 +67,14 @@ public abstract class AMyTree<T> implements IMyTree<T> {
         return root.size();
     }
 
+    @Override
+    public int leaves() {
+        if (root == null) {
+            return 0;
+        }
+        return root.leaves();
+    }
+
     public ITreeTraversor getBFSIterativeTraversor() {
         return new BFSIterativeTraversor();
     }
@@ -114,6 +122,17 @@ public abstract class AMyTree<T> implements IMyTree<T> {
             int sum = 1;
             for (Node<T> n : children) {
                 sum += n.size();
+            }
+            return sum;
+        }
+
+        private int leaves() {
+            if (this.children.isEmpty()) {
+                return 1;
+            }
+            int sum = 0;
+            for (Node<T> n : children) {
+                sum += n.leaves();
             }
             return sum;
         }
