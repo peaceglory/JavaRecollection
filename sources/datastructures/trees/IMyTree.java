@@ -24,4 +24,6 @@ public interface IMyTree<T> {
     int size();
 
     int leaves();
+
+    int maximumSiblings();
 }

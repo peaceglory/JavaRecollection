@@ -75,6 +75,14 @@ public abstract class AMyTree<T> implements IMyTree<T> {
         return root.leaves();
     }
 
+    @Override
+    public int maximumSiblings() {
+        if (root == null) {
+            return 0;
+        }
+        return root.maximumSiblings();
+    }
+
     public ITreeTraversor getBFSIterativeTraversor() {
         return new BFSIterativeTraversor();
     }
@@ -135,6 +143,19 @@ public abstract class AMyTree<T> implements IMyTree<T> {
                 sum += n.leaves();
             }
             return sum;
+        }
+
+        private int maximumSiblings() {
+            if (this.children.isEmpty()) {
+                return 0;
+            }
+            int currMax = this.children.size();
+            int candidate = -1;
+            for (Node<T> n : children) {
+                candidate = n.maximumSiblings();
+                currMax = Math.max(currMax, candidate);
+            }
+            return currMax;
         }
     }
 
