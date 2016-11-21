@@ -28,6 +28,11 @@ class MyTreeTest extends GroovyTestCase {
         assertEquals(4, tree.maximumSiblings());
     }
 
+    void testTotalPathLength() {
+        IMyTree<Integer> tree = createTree2();
+        assertEquals(50, tree.totalPathLength());
+    }
+
     private static AMyTree<Integer> createTree() {
         return new MyTree<>(42,
                 new MyTree(16,

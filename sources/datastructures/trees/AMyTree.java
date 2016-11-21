@@ -83,6 +83,14 @@ public abstract class AMyTree<T> implements IMyTree<T> {
         return root.maximumSiblings();
     }
 
+    @Override
+    public int totalPathLength() {
+        if (root == null) {
+            return 0;
+        }
+        return root.totalPathLenght();
+    }
+
     public ITreeTraversor getBFSIterativeTraversor() {
         return new BFSIterativeTraversor();
     }
@@ -123,8 +131,12 @@ public abstract class AMyTree<T> implements IMyTree<T> {
             return parent != null;
         }
 
+        private boolean isLeaf() {
+            return children.isEmpty();
+        }
+
         private int size() {
-            if (this.children.isEmpty()) {
+            if (isLeaf()) {
                 return 1;
             }
             int sum = 1;
@@ -135,7 +147,7 @@ public abstract class AMyTree<T> implements IMyTree<T> {
         }
 
         private int leaves() {
-            if (this.children.isEmpty()) {
+            if (isLeaf()) {
                 return 1;
             }
             int sum = 0;
@@ -146,7 +158,7 @@ public abstract class AMyTree<T> implements IMyTree<T> {
         }
 
         private int maximumSiblings() {
-            if (this.children.isEmpty()) {
+            if (isLeaf()) {
                 return 0;
             }
             int currMax = this.children.size();
@@ -156,6 +168,23 @@ public abstract class AMyTree<T> implements IMyTree<T> {
                 currMax = Math.max(currMax, candidate);
             }
             return currMax;
+        }
+
+        public int totalPathLenght() {
+            if (isLeaf()) {
+                int ancestors = 1;
+                Node<T> currNode = this;
+                while (currNode.hasParent()) {
+                    currNode = currNode.parent;
+                    ancestors++;
+                }
+                return ancestors;
+            }
+            int totalPathLength = 0;
+            for (Node<T> n : children) {
+                totalPathLength += n.totalPathLenght();
+            }
+            return totalPathLength;
         }
     }
 
