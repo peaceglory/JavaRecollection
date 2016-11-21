@@ -8,9 +8,22 @@ import sources.datastructures.trees.MyTree
  */
 class MyTreeTest extends GroovyTestCase {
 
+    void testBFSIterativeTraversor() {
+        IMyTree<String> stringTree = createStringTree();
+        stringTree.getBFSIterativeTraversor().traverse();
+    }
+
+    void testDFSIterativeTraversor() {
+        IMyTree<String> stringTree = createStringTree();
+        stringTree.getDFSIterativeTraversor().traverse();
+    }
+
     void testDFSRecursiveTraversor() {
         IMyTree<Integer> tree = createTree();
         tree.getDFSRecursiveTraversor().traverse();
+
+        IMyTree<String> stringTree = createStringTree();
+        stringTree.getDFSRecursiveTraversor().traverse();
     }
 
     void testSize() {
@@ -36,21 +49,35 @@ class MyTreeTest extends GroovyTestCase {
     void testMinimum() {
         IMyTree<Integer> tree = createTree2();
         assertEquals(4, tree.minimum());
+
+        IMyTree<String> tree2 = createStringTree();
+        assertEquals("A", tree2.minimum());
     }
 
     void testMaximum() {
         IMyTree<Integer> tree = createTree2();
         assertEquals(144, tree.maximum());
+
+        IMyTree<String> tree2 = createStringTree();
+        assertEquals("Z", tree2.maximum());
     }
 
     void testSearch() {
         IMyTree<Integer> tree = createTree2();
-        IMyTree<Integer> subtree = tree.search(51);
+        AMyTree<Integer> subtree = tree.search(51);
         assert subtree != null;
         subtree.getDFSRecursiveTraversor().traverse();
 
         subtree = tree.search(55);
         assert subtree == null;
+
+        IMyTree<String> tree2 = createStringTree();
+        AMyTree<String> subtree2 = tree2.search("C");
+        assert subtree2 != null;
+        subtree2.getDFSRecursiveTraversor().traverse();
+
+        subtree2 = tree2.search("Y");
+        assert subtree2 == null;
     }
 
     private static AMyTree<Integer> createTree() {
@@ -109,6 +136,41 @@ class MyTreeTest extends GroovyTestCase {
                                         )
                                 )
                         )
+                )
+        );
+    }
+
+    private static AMyTree<String> createStringTree() {
+        return new MyTree<>("R",
+                new MyTree("A",
+                    new MyTree("C",
+                        new MyTree("K"),
+                        new MyTree("X"),
+                        new MyTree("E"),
+                        new MyTree("Q",
+                            new MyTree("D")
+                        )
+                    ),
+                    new MyTree("Z")
+                ),
+                new MyTree("F",
+                    new MyTree("W",
+                        new MyTree("B",
+                            new MyTree("G")
+                        ),
+                    ),
+                    new MyTree("N")
+                ),
+                new MyTree("H",
+                    new MyTree("L",
+                        new MyTree("J",
+                            new MyTree("O"),
+                            new MyTree("S"),
+                            new MyTree("P",
+                                new MyTree("I")
+                            )
+                        )
+                    )
                 )
         );
     }

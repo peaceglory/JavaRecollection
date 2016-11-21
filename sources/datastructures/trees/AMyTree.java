@@ -1,8 +1,6 @@
 package sources.datastructures.trees;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 
 /**
  * Created by mman on 18.11.16.
@@ -73,10 +71,6 @@ public abstract class AMyTree<T extends Comparable> implements IMyTree<T> {
 
     public ITreeTraversor getBFSIterativeTraversor() {
         return new BFSIterativeTraversor();
-    }
-
-    public ITreeTraversor getBFSRecursiveTraversor() {
-        return new BFSRecursiveTraversor();
     }
 
     public ITreeTraversor getDFSIterativeTraversor() {
@@ -216,15 +210,22 @@ public abstract class AMyTree<T extends Comparable> implements IMyTree<T> {
 
         @Override
         public void traverse() {
-
+            traverse(root);
         }
-    }
 
-    private class BFSRecursiveTraversor implements ITreeTraversor {
-
-        @Override
-        public void traverse() {
-
+        private void traverse(Node<T> node) {
+            Queue<Node<T>> queue = new LinkedList<>();
+            queue.add(node);
+            Node<T> head = null;
+            while (!queue.isEmpty()) {
+                head = queue.poll();
+                print(head);
+                if (!head.isLeaf()) {
+                    for (Node<T> n : head.children) {
+                        queue.add(n);
+                    }
+                }
+            }
         }
     }
 
@@ -232,7 +233,22 @@ public abstract class AMyTree<T extends Comparable> implements IMyTree<T> {
 
         @Override
         public void traverse() {
+            traverse(root);
+        }
 
+        private void traverse(Node<T> node) {
+            Stack<Node<T>> stack = new Stack<>();
+            stack.push(node);
+            Node<T> top = null;
+            while (!stack.isEmpty()) {
+                top = stack.pop();
+                print(top);
+                if (!top.isLeaf()) {
+                    for (Node<T> n : top.children) {
+                        stack.push(n);
+                    }
+                }
+            }
         }
     }
 
