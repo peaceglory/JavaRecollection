@@ -5,13 +5,9 @@ package sources.datastructures.trees;
  */
 public interface IMyTree<T> {
 
-    IMyTree<T> minimum();
+    T minimum();
 
-    IMyTree<T> maximum();
-
-    IMyTree<T> predecessor(T value);
-
-    IMyTree<T> successor(T value);
+    T maximum();
 
     IMyTree<T> search(T value);
 

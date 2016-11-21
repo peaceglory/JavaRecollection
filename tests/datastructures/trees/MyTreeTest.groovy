@@ -33,6 +33,26 @@ class MyTreeTest extends GroovyTestCase {
         assertEquals(50, tree.totalPathLength());
     }
 
+    void testMinimum() {
+        IMyTree<Integer> tree = createTree2();
+        assertEquals(4, tree.minimum());
+    }
+
+    void testMaximum() {
+        IMyTree<Integer> tree = createTree2();
+        assertEquals(144, tree.maximum());
+    }
+
+    void testSearch() {
+        IMyTree<Integer> tree = createTree2();
+        IMyTree<Integer> subtree = tree.search(51);
+        assert subtree != null;
+        subtree.getDFSRecursiveTraversor().traverse();
+
+        subtree = tree.search(55);
+        assert subtree == null;
+    }
+
     private static AMyTree<Integer> createTree() {
         return new MyTree<>(42,
                 new MyTree(16,

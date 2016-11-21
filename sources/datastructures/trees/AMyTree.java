@@ -1,7 +1,5 @@
 package sources.datastructures.trees;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
@@ -9,7 +7,7 @@ import java.util.ListIterator;
 /**
  * Created by mman on 18.11.16.
  */
-public abstract class AMyTree<T> implements IMyTree<T> {
+public abstract class AMyTree<T extends Comparable> implements IMyTree<T> {
     protected Node<T> root;
 
     public AMyTree(T rootValue) {
@@ -19,44 +17,26 @@ public abstract class AMyTree<T> implements IMyTree<T> {
         root = new Node<>(rootValue);
     }
 
-    @Override
-    public IMyTree<T> minimum() {
-        throw new NotImplementedException();
+    protected AMyTree(Node<T> root) {
+        if (root == null) {
+            throw new IllegalArgumentException("Root cannot be null!");
+        }
+        this.root = root;
     }
 
     @Override
-    public IMyTree<T> maximum() {
-        throw new NotImplementedException();
+    public T minimum() {
+        return root.minimum();
     }
 
     @Override
-    public IMyTree<T> predecessor(T value) {
-        throw new NotImplementedException();
-    }
-
-    @Override
-    public IMyTree<T> successor(T value) {
-        throw new NotImplementedException();
-    }
-
-    @Override
-    public IMyTree<T> search(T value) {
-        throw new NotImplementedException();
+    public T maximum() {
+        return root.maximum();
     }
 
     @Override
     public void traverse(ITreeTraversor traversor) {
         traversor.traverse();
-    }
-
-    @Override
-    public void insert(IMyTree<T> node) {
-        throw new NotImplementedException();
-    }
-
-    @Override
-    public boolean delete(T nodeValue) {
-        throw new NotImplementedException();
     }
 
     @Override
@@ -107,7 +87,7 @@ public abstract class AMyTree<T> implements IMyTree<T> {
         return new DFSRecursiveTraversor();
     }
 
-    protected static class Node<T> {
+    protected static class Node<T extends Comparable> {
         private T value = null;
         private Node<T> parent = null;
         private List<Node<T>> children = new ArrayList<>();
@@ -170,7 +150,7 @@ public abstract class AMyTree<T> implements IMyTree<T> {
             return currMax;
         }
 
-        public int totalPathLenght() {
+        private int totalPathLenght() {
             if (isLeaf()) {
                 int ancestors = 1;
                 Node<T> currNode = this;
@@ -185,6 +165,50 @@ public abstract class AMyTree<T> implements IMyTree<T> {
                 totalPathLength += n.totalPathLenght();
             }
             return totalPathLength;
+        }
+
+        private T minimum() {
+            if (isLeaf()) {
+                return value;
+            }
+            T min = value;
+            for (Node<T> n : children) {
+                T candidate = n.minimum();
+                if (min.compareTo(candidate) > 0) {
+                    min = candidate;
+                }
+            }
+            return min;
+        }
+
+        private T maximum() {
+            if (isLeaf()) {
+                return value;
+            }
+            T max = value;
+            for (Node<T> n : children) {
+                T candidate = n.maximum();
+                if (max.compareTo(candidate) < 0) {
+                    max = candidate;
+                }
+            }
+            return max;
+        }
+
+        public Node<T> search(T value) {
+            if (this.value.compareTo(value) == 0) {
+                return this;
+            }
+            Node<T> result = null;
+            if (!isLeaf()) {
+                for (Node<T> n : children) {
+                    result = n.search(value);
+                    if (result != null) {
+                        break;
+                    }
+                }
+            }
+            return result;
         }
     }
 
@@ -221,7 +245,7 @@ public abstract class AMyTree<T> implements IMyTree<T> {
 
         private void traverse(Node node) {
             print(node);
-            if (node.children.isEmpty()) {
+            if (node.isLeaf()) {
                 return;
             }
             ListIterator<Node<T>> iter = node.children.listIterator();
