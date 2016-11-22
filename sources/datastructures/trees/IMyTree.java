@@ -17,6 +17,10 @@ public interface IMyTree<T> {
 
     boolean delete(T nodeValue);
 
+    boolean isLeaf();
+
+    boolean hasParent();
+
     int size();
 
     int leaves();

@@ -42,4 +42,14 @@ public class MyTree<T extends Comparable> extends AMyTree<T> {
     public boolean delete(T nodeValue) {
         throw new NotImplementedException();
     }
+
+    @Override
+    public boolean isLeaf() {
+        return root.isLeaf();
+    }
+
+    @Override
+    public boolean hasParent() {
+        return root.hasParent();
+    }
 }

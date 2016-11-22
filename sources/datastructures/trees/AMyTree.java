@@ -101,15 +101,15 @@ public abstract class AMyTree<T extends Comparable> implements IMyTree<T> {
             children.add(child);
         }
 
-        private boolean hasParent() {
+        public boolean hasParent() {
             return parent != null;
         }
 
-        private boolean isLeaf() {
+        public boolean isLeaf() {
             return children.isEmpty();
         }
 
-        private int size() {
+        protected int size() {
             if (isLeaf()) {
                 return 1;
             }
@@ -120,7 +120,7 @@ public abstract class AMyTree<T extends Comparable> implements IMyTree<T> {
             return sum;
         }
 
-        private int leaves() {
+        protected int leaves() {
             if (isLeaf()) {
                 return 1;
             }
@@ -131,7 +131,7 @@ public abstract class AMyTree<T extends Comparable> implements IMyTree<T> {
             return sum;
         }
 
-        private int maximumSiblings() {
+        protected int maximumSiblings() {
             if (isLeaf()) {
                 return 0;
             }
@@ -144,7 +144,7 @@ public abstract class AMyTree<T extends Comparable> implements IMyTree<T> {
             return currMax;
         }
 
-        private int totalPathLenght() {
+        protected int totalPathLenght() {
             if (isLeaf()) {
                 int ancestors = 1;
                 Node<T> currNode = this;
@@ -161,7 +161,7 @@ public abstract class AMyTree<T extends Comparable> implements IMyTree<T> {
             return totalPathLength;
         }
 
-        private T minimum() {
+        protected T minimum() {
             if (isLeaf()) {
                 return value;
             }
@@ -175,7 +175,7 @@ public abstract class AMyTree<T extends Comparable> implements IMyTree<T> {
             return min;
         }
 
-        private T maximum() {
+        protected T maximum() {
             if (isLeaf()) {
                 return value;
             }
@@ -210,7 +210,7 @@ public abstract class AMyTree<T extends Comparable> implements IMyTree<T> {
 
         @Override
         public void traverse() {
-            traverse(root);
+            traverse(AMyTree.this.root);
         }
 
         private void traverse(Node<T> node) {
