@@ -1,7 +1,7 @@
 package tests.datastructures.trees
 
-import sources.datastructures.trees.IMyTree
 import sources.datastructures.trees.MyBinaryTree
+import sources.datastructures.trees.TraverseStrategy
 
 /**
  * Created by mman on 22.11.16.
@@ -9,18 +9,20 @@ import sources.datastructures.trees.MyBinaryTree
 class MyBinaryTreeTest extends GroovyTestCase {
     
     void testMinimum() {
-    
+        MyBinaryTree<Integer> root = createIntegerTree();
+        assertEquals(10, root.minimum());
     }
 
     void testMaximum() {
-
+        MyBinaryTree<Integer> root = createIntegerTree();
+        assertEquals(100, root.maximum());
     }
 
     void testSearch() {
         MyBinaryTree<Integer> root = createIntegerTree();
         MyBinaryTree<Integer> found = root.search(88);
         assert found != null;
-        found.getBFSIterativeTraversor().traverse();
+        found.traverse(TraverseStrategy.DFSRecursive);
 
         found = root.search(111);
         assert found == null;
@@ -28,7 +30,17 @@ class MyBinaryTreeTest extends GroovyTestCase {
 
     void testBFSIterativeTraversor() {
         MyBinaryTree<Integer> root = createIntegerTree();
-        root.getBFSIterativeTraversor().traverse();
+        root.traverse(TraverseStrategy.BFSIterative);
+    }
+
+    void testDFSIterativeTraversor() {
+        MyBinaryTree<Integer> root = createIntegerTree();
+        root.traverse(TraverseStrategy.DFSIterative);
+    }
+
+    void testDFSRecursiveTraversor() {
+        MyBinaryTree<Integer> root = createIntegerTree();
+        root.traverse(TraverseStrategy.DFSRecursive);
     }
 
     void testInsert() {
@@ -64,13 +76,21 @@ class MyBinaryTreeTest extends GroovyTestCase {
     }
 
     void testIsLeaf() {
-        IMyTree<Integer> root = createIntegerTree();
-        IMyTree<Integer> leaf = root.search(41);
-        assertEquals(true, leaf.isLeaf());
+        MyBinaryTree<Integer> root = createIntegerTree();
+        MyBinaryTree<Integer> node = root.search(41);
+        assertTrue(node.isLeaf());
+
+        node = root.search(88);
+        assertFalse(node.isLeaf());
     }
 
     void testHasParent() {
+        MyBinaryTree<Integer> root = createIntegerTree();
+        MyBinaryTree<Integer> node = root.search(41);
+        assertTrue(node.hasParent());
 
+        node = root.search(10);
+        assertFalse(node.hasParent());
     }
 
     private static MyBinaryTree<Integer> createIntegerTree() {

@@ -2,6 +2,7 @@ package sources.datastructures.trees;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 /**
  * Created by mman on 22.11.16.
@@ -30,25 +31,32 @@ public class MyBinaryTree<T extends Comparable> implements IMyTree<T> {
             return value;
         }
         T min = value;
-        T candidate = null;
-        if (left != null) {
-            candidate = left.minimum();
-            if (min.compareTo(candidate) > 0) {
-                min = candidate;
-            }
+        T candidate = left.minimum();
+        if (min.compareTo(candidate) > 0) {
+            min = candidate;
         }
-        if (right != null) {
-            candidate = right.minimum();
-            if (min.compareTo(candidate) > 0) {
-                min = candidate;
-            }
+        candidate = right.minimum();
+        if (min.compareTo(candidate) > 0) {
+            min = candidate;
         }
         return min;
     }
 
     @Override
     public T maximum() {
-        return null;
+        if (this.isLeaf()) {
+            return value;
+        }
+        T max = value;
+        T candidate = left.maximum();
+        if (max.compareTo(candidate) < 0) {
+            max = candidate;
+        }
+        candidate = right.maximum();
+        if (max.compareTo(candidate) < 0) {
+            max = candidate;
+        }
+        return max;
     }
 
     @Override
@@ -73,8 +81,54 @@ public class MyBinaryTree<T extends Comparable> implements IMyTree<T> {
     }
 
     @Override
-    public void traverse(ITreeTraversor traversor) {
+    public void traverse(TraverseStrategy strategy) {
+        if (TraverseStrategy.DFSIterative == strategy) {
+            traverseDSFIterative();
+        } else if (TraverseStrategy.DFSRecursive == strategy) {
+            traverseDSFRecursive();
+        } else if (TraverseStrategy.BFSIterative == strategy) {
+            traverseBSFIterative();
+        }
+    }
 
+    private void traverseDSFRecursive() {
+        print(this);
+        if (isLeaf()) {
+            return;
+        }
+        left.traverseDSFRecursive();
+        right.traverseDSFRecursive();
+    }
+
+    private void traverseBSFIterative() {
+        Queue<MyBinaryTree<T>> queue = new LinkedList<>();
+        queue.add(this);
+        MyBinaryTree<T> head = null;
+        while (!queue.isEmpty()) {
+            head = queue.poll();
+            print(head);
+            if (head.left != null) {
+                queue.add(head.left);
+            }
+            if (head.right != null) {
+                queue.add(head.right);
+            }
+        }
+    }
+
+    private void traverseDSFIterative() {
+        Stack<MyBinaryTree<T>> stack = new Stack<>();
+        stack.push(this);
+        while (!stack.isEmpty()) {
+            MyBinaryTree<T> top = stack.pop();
+            print(top);
+            if (top.left != null) {
+                stack.push(top.left);
+            }
+            if (top.right != null) {
+                stack.push(top.right);
+            }
+        }
     }
 
     @Override
@@ -115,61 +169,6 @@ public class MyBinaryTree<T extends Comparable> implements IMyTree<T> {
     @Override
     public boolean hasParent() {
         return parent != null;
-    }
-
-    public ITreeTraversor getBFSIterativeTraversor() {
-        return new BFSIterativeTraversor();
-    }
-
-    public ITreeTraversor getDFSIterativeTraversor() {
-        return new DFSIterativeTraversor();
-    }
-
-    public ITreeTraversor getDFSRecursiveTraversor() {
-        return new DFSRecursiveTraversor();
-    }
-
-    private class BFSIterativeTraversor implements ITreeTraversor {
-        @Override
-        public void traverse() {
-            traverse(MyBinaryTree.this);
-        }
-
-        private void traverse(MyBinaryTree<T> root) {
-            Queue<MyBinaryTree<T>> queue = new LinkedList<>();
-            queue.add(root);
-            MyBinaryTree<T> head = null;
-            while (!queue.isEmpty()) {
-                head = queue.poll();
-                print(head);
-                if (head.left != null) {
-                    queue.add(head.left);
-                }
-                if (head.right != null) {
-                    queue.add(head.right);
-                }
-            }
-        }
-    }
-
-    private class DFSIterativeTraversor implements ITreeTraversor {
-        @Override
-        public void traverse() {
-            traverse(MyBinaryTree.this);
-        }
-
-        private void traverse(MyBinaryTree<T> root) {
-        }
-    }
-
-    private class DFSRecursiveTraversor implements ITreeTraversor {
-        @Override
-        public void traverse() {
-            traverse(MyBinaryTree.this);
-        }
-
-        private void traverse(MyBinaryTree<T> root) {
-        }
     }
 
     public void addLeft(MyBinaryTree<T> left) {

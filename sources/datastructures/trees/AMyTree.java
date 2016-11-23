@@ -33,8 +33,55 @@ public abstract class AMyTree<T extends Comparable> implements IMyTree<T> {
     }
 
     @Override
-    public void traverse(ITreeTraversor traversor) {
-        traversor.traverse();
+    public void traverse(TraverseStrategy strategy) {
+        if (TraverseStrategy.DFSIterative == strategy) {
+            traverseDSFIterative(root);
+        } else if (TraverseStrategy.DFSRecursive == strategy) {
+            traverseDSFRecursive(root);
+        } else if (TraverseStrategy.BFSIterative == strategy) {
+            traverseBSFIterative(root);
+        }
+    }
+
+    private void traverseBSFIterative(Node<T> node) {
+        Queue<Node<T>> queue = new LinkedList<>();
+        queue.add(node);
+        Node<T> head = null;
+        while (!queue.isEmpty()) {
+            head = queue.poll();
+            print(head);
+            if (!head.isLeaf()) {
+                for (Node<T> n : head.children) {
+                    queue.add(n);
+                }
+            }
+        }
+    }
+
+    private void traverseDSFRecursive(Node<T> node) {
+        print(node);
+        if (node.isLeaf()) {
+            return;
+        }
+        ListIterator<Node<T>> iter = node.children.listIterator();
+        while (iter.hasNext()) {
+            traverseDSFRecursive(iter.next());
+        }
+    }
+
+    private void traverseDSFIterative(Node<T> node) {
+        Stack<Node<T>> stack = new Stack<>();
+        stack.push(node);
+        Node<T> top = null;
+        while (!stack.isEmpty()) {
+            top = stack.pop();
+            print(top);
+            if (!top.isLeaf()) {
+                for (Node<T> n : top.children) {
+                    stack.push(n);
+                }
+            }
+        }
     }
 
     @Override
@@ -67,18 +114,6 @@ public abstract class AMyTree<T extends Comparable> implements IMyTree<T> {
             return 0;
         }
         return root.totalPathLenght();
-    }
-
-    public ITreeTraversor getBFSIterativeTraversor() {
-        return new BFSIterativeTraversor();
-    }
-
-    public ITreeTraversor getDFSIterativeTraversor() {
-        return new DFSIterativeTraversor();
-    }
-
-    public ITreeTraversor getDFSRecursiveTraversor() {
-        return new DFSRecursiveTraversor();
     }
 
     protected static class Node<T extends Comparable> {
@@ -203,71 +238,6 @@ public abstract class AMyTree<T extends Comparable> implements IMyTree<T> {
                 }
             }
             return result;
-        }
-    }
-
-    private class BFSIterativeTraversor implements ITreeTraversor {
-
-        @Override
-        public void traverse() {
-            traverse(AMyTree.this.root);
-        }
-
-        private void traverse(Node<T> node) {
-            Queue<Node<T>> queue = new LinkedList<>();
-            queue.add(node);
-            Node<T> head = null;
-            while (!queue.isEmpty()) {
-                head = queue.poll();
-                print(head);
-                if (!head.isLeaf()) {
-                    for (Node<T> n : head.children) {
-                        queue.add(n);
-                    }
-                }
-            }
-        }
-    }
-
-    private class DFSIterativeTraversor implements ITreeTraversor {
-
-        @Override
-        public void traverse() {
-            traverse(root);
-        }
-
-        private void traverse(Node<T> node) {
-            Stack<Node<T>> stack = new Stack<>();
-            stack.push(node);
-            Node<T> top = null;
-            while (!stack.isEmpty()) {
-                top = stack.pop();
-                print(top);
-                if (!top.isLeaf()) {
-                    for (Node<T> n : top.children) {
-                        stack.push(n);
-                    }
-                }
-            }
-        }
-    }
-
-    private class DFSRecursiveTraversor implements ITreeTraversor {
-
-        @Override
-        public void traverse() {
-            traverse(root);
-        }
-
-        private void traverse(Node node) {
-            print(node);
-            if (node.isLeaf()) {
-                return;
-            }
-            ListIterator<Node<T>> iter = node.children.listIterator();
-            while (iter.hasNext()) {
-                traverse(iter.next());
-            }
         }
     }
 

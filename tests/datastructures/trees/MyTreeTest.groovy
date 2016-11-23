@@ -3,6 +3,8 @@ package tests.datastructures.trees
 import sources.datastructures.trees.AMyTree
 import sources.datastructures.trees.IMyTree
 import sources.datastructures.trees.MyTree
+import sources.datastructures.trees.TraverseStrategy
+
 /**
  * Created by mman on 18.11.16.
  */
@@ -10,20 +12,20 @@ class MyTreeTest extends GroovyTestCase {
 
     void testBFSIterativeTraversor() {
         IMyTree<String> stringTree = createStringTree();
-        stringTree.getBFSIterativeTraversor().traverse();
+        stringTree.traverse(TraverseStrategy.BFSIterative);
     }
 
     void testDFSIterativeTraversor() {
         IMyTree<String> stringTree = createStringTree();
-        stringTree.getDFSIterativeTraversor().traverse();
+        stringTree.traverse(TraverseStrategy.DFSIterative);
     }
 
     void testDFSRecursiveTraversor() {
         IMyTree<Integer> tree = createTree();
-        tree.getDFSRecursiveTraversor().traverse();
+        tree.traverse(TraverseStrategy.DFSRecursive);
 
         IMyTree<String> stringTree = createStringTree();
-        stringTree.getDFSRecursiveTraversor().traverse();
+        stringTree.traverse(TraverseStrategy.DFSRecursive);
     }
 
     void testSize() {
@@ -66,7 +68,7 @@ class MyTreeTest extends GroovyTestCase {
         IMyTree<Integer> tree = createTree2();
         AMyTree<Integer> subtree = tree.search(51);
         assert subtree != null;
-        subtree.getDFSRecursiveTraversor().traverse();
+        subtree.traverse(TraverseStrategy.DFSRecursive);
 
         subtree = tree.search(55);
         assert subtree == null;
@@ -74,7 +76,7 @@ class MyTreeTest extends GroovyTestCase {
         IMyTree<String> tree2 = createStringTree();
         AMyTree<String> subtree2 = tree2.search("C");
         assert subtree2 != null;
-        subtree2.getDFSRecursiveTraversor().traverse();
+        subtree2.traverse(TraverseStrategy.DFSRecursive);
 
         subtree2 = tree2.search("Y");
         assert subtree2 == null;

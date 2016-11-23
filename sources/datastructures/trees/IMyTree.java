@@ -11,7 +11,7 @@ public interface IMyTree<T> {
 
     IMyTree<T> search(T value);
 
-    void traverse(ITreeTraversor traversor);
+    void traverse(TraverseStrategy strategy);
 
     void insert(IMyTree<T> node);
 
