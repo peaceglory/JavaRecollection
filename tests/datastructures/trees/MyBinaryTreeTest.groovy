@@ -52,19 +52,23 @@ class MyBinaryTreeTest extends GroovyTestCase {
     }
 
     void testSize() {
-
+        MyBinaryTree<Integer> root = createIntegerTree();
+        assertEquals(19, root.size());
     }
 
     void testLeaves() {
-
+        MyBinaryTree<Integer> root = createIntegerTree();
+        assertEquals(10, root.leaves());
     }
 
     void testMaximumSiblings() {
-
+        MyBinaryTree<Integer> root = createIntegerTree();
+        assertEquals(2, root.maximumSiblings());
     }
 
     void testTotalPathLength() {
-
+        MyBinaryTree<Integer> root = createIntegerTree();
+        assertEquals(46, root.totalPathLength());
     }
 
     void testAddLeft() {
@@ -93,7 +97,7 @@ class MyBinaryTreeTest extends GroovyTestCase {
         assertFalse(node.hasParent());
     }
 
-    private static MyBinaryTree<Integer> createIntegerTree() {
+    public static MyBinaryTree<Integer> createIntegerTree() {
         return new MyBinaryTree<>(10,
             new MyBinaryTree(25,
                 new MyBinaryTree(16,

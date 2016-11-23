@@ -1,5 +1,7 @@
 package sources.datastructures.trees;
 
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
@@ -133,32 +135,55 @@ public class MyBinaryTree<T extends Comparable> implements IMyTree<T> {
 
     @Override
     public void insert(IMyTree node) {
-
+        throw new NotImplementedException();
     }
 
     @Override
     public boolean delete(T nodeValue) {
-        return false;
+        throw new NotImplementedException();
     }
 
     @Override
     public int size() {
-        return 0;
+        if (this.isLeaf()) {
+            return 1;
+        }
+        int size = 1;
+        size += left.size();
+        size += right.size();
+        return size;
     }
 
     @Override
     public int leaves() {
-        return 0;
+        if (this.isLeaf()) {
+            return 1;
+        }
+        int leaves = 0;
+        leaves += left.leaves();
+        leaves += right.leaves();
+        return leaves;
     }
 
     @Override
     public int maximumSiblings() {
-        return 0;
+        return 2; // It's a binary tree.
     }
 
     @Override
     public int totalPathLength() {
-        return 0;
+        if (this.isLeaf()) {
+            int pathLength = 1;
+            MyBinaryTree current = this;
+            while (current.hasParent()) {
+                current = current.parent;
+                pathLength++;
+            }
+            return pathLength;
+        }
+        int totalPathLength = left.totalPathLength();
+        totalPathLength += right.totalPathLength();
+        return totalPathLength;
     }
 
     @Override
