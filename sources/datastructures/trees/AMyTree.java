@@ -116,6 +116,14 @@ public abstract class AMyTree<T extends Comparable> implements IMyTree<T> {
         return root.totalPathLenght();
     }
 
+    @Override
+    public int height() {
+        if (root == null) {
+            return 0;
+        }
+        return root.height();
+    }
+
     protected static class Node<T extends Comparable> {
         private T value = null;
         private Node<T> parent = null;
@@ -238,6 +246,24 @@ public abstract class AMyTree<T extends Comparable> implements IMyTree<T> {
                 }
             }
             return result;
+        }
+
+        public int height() {
+            if (isLeaf()) {
+                int height = 1;
+                Node current = this;
+                while (current.hasParent()) {
+                    current = current.parent;
+                    height++;
+                }
+                return height;
+            }
+            int height = 1;
+            for (Node n : children) {
+                int candidate = n.height();
+                height = Math.max(height, candidate);
+            }
+            return height;
         }
     }
 

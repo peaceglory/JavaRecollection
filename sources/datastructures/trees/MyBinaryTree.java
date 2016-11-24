@@ -14,6 +14,7 @@ public class MyBinaryTree<T extends Comparable> implements IMyTree<T> {
     private MyBinaryTree<T> parent = null;
     private MyBinaryTree<T> left = null;
     private MyBinaryTree<T> right = null;
+    private int size = -1;
 
     public MyBinaryTree(T value) {
         this.value = value;
@@ -145,12 +146,17 @@ public class MyBinaryTree<T extends Comparable> implements IMyTree<T> {
 
     @Override
     public int size() {
+        if (this.size > -1) { // It's been computed already.
+            return this.size;
+        }
+        // Compute size.
         if (this.isLeaf()) {
             return 1;
         }
         int size = 1;
         size += left.size();
         size += right.size();
+        this.size = size;
         return size;
     }
 
@@ -163,6 +169,20 @@ public class MyBinaryTree<T extends Comparable> implements IMyTree<T> {
         leaves += left.leaves();
         leaves += right.leaves();
         return leaves;
+    }
+
+    @Override
+    public int height() {
+        if (this.isLeaf()) {
+            int height = 1;
+            MyBinaryTree current = this;
+            while (current.hasParent()) {
+                current = current.parent;
+                height++;
+            }
+            return height;
+        }
+        return Math.max(left.height(), right.height());
     }
 
     @Override

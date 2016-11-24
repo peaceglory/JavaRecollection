@@ -82,6 +82,11 @@ class MyTreeTest extends GroovyTestCase {
         assert subtree2 == null;
     }
 
+    void testHeight() {
+        IMyTree<Integer> tree = createTree2();
+        assert tree.height() == 6;
+    }
+
     private static AMyTree<Integer> createTree() {
         return new MyTree<>(42,
                 new MyTree(16,

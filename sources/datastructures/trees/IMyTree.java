@@ -28,4 +28,6 @@ public interface IMyTree<T> {
     int maximumSiblings();
 
     int totalPathLength();
+
+    int height();
 }

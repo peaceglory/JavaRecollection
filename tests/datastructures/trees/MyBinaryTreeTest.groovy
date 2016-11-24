@@ -97,6 +97,11 @@ class MyBinaryTreeTest extends GroovyTestCase {
         assertFalse(node.hasParent());
     }
 
+    void testHeight() {
+        MyBinaryTree<Integer> root = createIntegerTree();
+        assertEquals(6, root.height());
+    }
+
     public static MyBinaryTree<Integer> createIntegerTree() {
         return new MyBinaryTree<>(10,
             new MyBinaryTree(25,
