@@ -102,6 +102,19 @@ class MyBinaryTreeTest extends GroovyTestCase {
         assertEquals(6, root.height());
     }
 
+    void testExpressionTree() {
+        MyBinaryTree<String> expressionTree =
+                new MyBinaryTree<>("*",
+                    new MyBinaryTree<String>("+",
+                        new MyBinaryTree<String>("3"),
+                        new MyBinaryTree<String>("4")
+                    ),
+                    new MyBinaryTree<String>("5")
+                ); // (3+4) * 5
+
+        assertEquals(35, expressionTree.calculateExpression());
+    }
+
     public static MyBinaryTree<Integer> createIntegerTree() {
         return new MyBinaryTree<>(10,
             new MyBinaryTree(25,

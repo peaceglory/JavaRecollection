@@ -200,6 +200,30 @@ public class MyBinaryTree<T extends Comparable> implements IMyTree<T> {
         return totalPathLength;
     }
 
+    public double calculateExpression() {
+        if (this.value == null || !(this.value instanceof String)) {
+            throw new IllegalArgumentException("Leaf value must be not-null string representing a number!");
+        }
+        String strValue = this.value.toString();
+
+        if (this.isLeaf()) {
+            if (!isNumeric(strValue)) {
+                throw new IllegalArgumentException("Leaf value must be not-null string representing a number!");
+            }
+            return Double.parseDouble(strValue);
+        }
+
+        double leftRes = left.calculateExpression();
+        double rightRes = right.calculateExpression();
+        switch (strValue) {
+            case "+": return leftRes + rightRes;
+            case "-": return leftRes - rightRes;
+            case "*": return leftRes * rightRes;
+            default: throw new IllegalArgumentException("Node value must be +, - or *");
+        }
+    }
+
+
     @Override
     public boolean isLeaf() {
         return left == null && right == null;
@@ -226,5 +250,18 @@ public class MyBinaryTree<T extends Comparable> implements IMyTree<T> {
 
     private static void print(MyBinaryTree node) {
         System.out.println(node.value);
+    }
+
+    private static boolean isNumeric(String str) {
+        return str.matches("-?\\d+(\\.\\d+)?");
+    }
+
+    public static void main(String[] args) {
+        System.out.println(isNumeric("4"));
+        System.out.println(isNumeric("k"));
+        System.out.println(isNumeric("8.9"));
+        System.out.println(isNumeric("->"));
+        System.out.println(isNumeric("0.34"));
+        System.out.println(isNumeric("50.76534"));
     }
 }
