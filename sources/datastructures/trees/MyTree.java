@@ -34,12 +34,12 @@ public class MyTree<T extends Comparable> extends AMyTree<T> {
     }
 
     @Override
-    public void insert(IMyTree<T> node) {
+    public IMyTree<T> insert(T value) {
         throw new NotImplementedException();
     }
 
     @Override
-    public boolean delete(T nodeValue) {
+    public boolean delete(T value) {
         throw new NotImplementedException();
     }
 

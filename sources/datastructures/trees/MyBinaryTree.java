@@ -10,10 +10,10 @@ import java.util.Stack;
  * Created by mman on 22.11.16.
  */
 public class MyBinaryTree<T extends Comparable> implements IMyTree<T> {
-    private T value = null;
-    private MyBinaryTree<T> parent = null;
-    private MyBinaryTree<T> left = null;
-    private MyBinaryTree<T> right = null;
+    protected T value = null;
+    protected MyBinaryTree<T> parent = null;
+    protected MyBinaryTree<T> left = null;
+    protected MyBinaryTree<T> right = null;
     private int size = -1;
 
     public MyBinaryTree(T value) {
@@ -135,12 +135,12 @@ public class MyBinaryTree<T extends Comparable> implements IMyTree<T> {
     }
 
     @Override
-    public void insert(IMyTree node) {
+    public IMyTree insert(T value) {
         throw new NotImplementedException();
     }
 
     @Override
-    public boolean delete(T nodeValue) {
+    public boolean delete(T value) {
         throw new NotImplementedException();
     }
 

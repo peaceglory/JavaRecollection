@@ -13,9 +13,9 @@ public interface IMyTree<T> {
 
     void traverse(TraverseStrategy strategy);
 
-    void insert(IMyTree<T> node);
+    IMyTree<T> insert(T value);
 
-    boolean delete(T nodeValue);
+    boolean delete(T value);
 
     boolean isLeaf();
 
