@@ -174,15 +174,9 @@ public class MyBinaryTree<T extends Comparable> implements IMyTree<T> {
     @Override
     public int height() {
         if (this.isLeaf()) {
-            int height = 1;
-            MyBinaryTree current = this;
-            while (current.hasParent()) {
-                current = current.parent;
-                height++;
-            }
-            return height;
+            return 1;
         }
-        return Math.max(left.height(), right.height());
+        return 1 + Math.max(left.height(), right.height());
     }
 
     @Override
