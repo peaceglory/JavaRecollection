@@ -223,6 +223,16 @@ public class MyBinaryTree<T extends Comparable> implements IMyTree<T> {
         }
     }
 
+    public void swapChildren() {
+        if (this.isLeaf()) {
+            return;
+        }
+        MyBinaryTree tmp = left;
+        left = right;
+        right = tmp;
+        left.swapChildren();
+        right.swapChildren();
+    }
 
     @Override
     public boolean isLeaf() {

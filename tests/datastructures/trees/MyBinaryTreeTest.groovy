@@ -115,6 +115,12 @@ class MyBinaryTreeTest extends GroovyTestCase {
         assertEquals(35, expressionTree.calculateExpression());
     }
 
+    void testSwapChildren() {
+        MyBinaryTree<Integer> root = createIntegerTree();
+        root.swapChildren();
+        root.traverse(TraverseStrategy.BFSIterative);
+    }
+
     public static MyBinaryTree<Integer> createIntegerTree() {
         return new MyBinaryTree<>(10,
             new MyBinaryTree(25,
