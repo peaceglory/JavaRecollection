@@ -64,7 +64,7 @@ public class MyBinaryTree<T extends Comparable> implements IMyTree<T> {
 
     @Override
     public IMyTree search(T value) {
-        if  (this.value.compareTo(value) == 0) {
+        if (this.value.compareTo(value) == 0) {
             return this;
         }
         IMyTree<T> candidate = null;
@@ -158,8 +158,12 @@ public class MyBinaryTree<T extends Comparable> implements IMyTree<T> {
             return 1;
         }
         int size = 1;
-        size += left.size();
-        size += right.size();
+        if (left != null) {
+            size += left.size();
+        }
+        if (right != null) {
+            size += right.size();
+        }
         this.size = size;
         return size;
     }
@@ -220,10 +224,14 @@ public class MyBinaryTree<T extends Comparable> implements IMyTree<T> {
         double leftRes = left.calculateExpression();
         double rightRes = right.calculateExpression();
         switch (strValue) {
-            case "+": return leftRes + rightRes;
-            case "-": return leftRes - rightRes;
-            case "*": return leftRes * rightRes;
-            default: throw new IllegalArgumentException("Node value must be +, - or *");
+            case "+":
+                return leftRes + rightRes;
+            case "-":
+                return leftRes - rightRes;
+            case "*":
+                return leftRes * rightRes;
+            default:
+                throw new IllegalArgumentException("Node value must be +, - or *");
         }
     }
 
@@ -260,6 +268,16 @@ public class MyBinaryTree<T extends Comparable> implements IMyTree<T> {
             throw new IllegalArgumentException("This node already has right child");
         }
         this.right = right;
+    }
+
+    protected void increaseSize() {
+        size();
+        size++;
+    }
+
+    protected void decreaseSize() {
+        size();
+        size--;
     }
 
     private static void print(MyBinaryTree node) {

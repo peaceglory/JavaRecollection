@@ -94,6 +94,16 @@ class MyBinarySearchTreeTest extends GroovyTestCase {
         assert tree.search(333) == null;
     }
 
+    void testMinimum() {
+        MyBinarySearchTree<Integer> tree = createIntegerTree();
+        assertEquals(1, tree.minimum());
+    }
+
+    void testMaximum() {
+        MyBinarySearchTree<Integer> tree = createIntegerTree();
+        assertEquals(150, tree.maximum());
+    }
+
     public static MyBinarySearchTree createIntegerTree() {
         MyBinarySearchTree<Integer> tree = new MyBinarySearchTree<>(10);
         tree.insert(3).insert(15).insert(1).insert(6).insert(11).insert(45).insert(4).insert(8).insert(33).insert(88)
