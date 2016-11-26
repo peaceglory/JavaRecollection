@@ -49,7 +49,6 @@ public class MyBinarySearchTree<T extends Comparable> extends MyBinaryTree<T> {
             if (left == null) {
                 left = new MyBinarySearchTree<>(value);
                 left.parent = this;
-                increaseSize();
             } else {
                 left.insert(value);
             }
@@ -57,7 +56,6 @@ public class MyBinarySearchTree<T extends Comparable> extends MyBinaryTree<T> {
             if (right == null) {
                 right = new MyBinarySearchTree<>(value);
                 right.parent = this;
-                increaseSize();
             } else {
                 right.insert(value);
             }
@@ -82,7 +80,6 @@ public class MyBinarySearchTree<T extends Comparable> extends MyBinaryTree<T> {
                 node.parent.right = null;
             }
             node.parent = null;
-            decreaseSize();
         } else if ((node.left != null && node.right == null)
                 || (node.left == null && node.right != null)) { // Has one child
             MyBinaryTree theOnlyChild = (node.left != null ? node.left : node.right);
@@ -95,7 +92,6 @@ public class MyBinarySearchTree<T extends Comparable> extends MyBinaryTree<T> {
             node.parent = null;
             node.left = null;
             node.right = null;
-            decreaseSize();
         } else { // Has two children
             MyBinarySearchTree nextLarger = (MyBinarySearchTree) node.right.search(node.right.minimum());
             T tmp = (T) node.value;

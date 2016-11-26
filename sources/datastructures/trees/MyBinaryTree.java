@@ -14,7 +14,6 @@ public class MyBinaryTree<T extends Comparable> implements IMyTree<T> {
     protected MyBinaryTree<T> parent = null;
     protected MyBinaryTree<T> left = null;
     protected MyBinaryTree<T> right = null;
-    private int size = -1;
 
     public MyBinaryTree(T value) {
         this.value = value;
@@ -150,10 +149,6 @@ public class MyBinaryTree<T extends Comparable> implements IMyTree<T> {
 
     @Override
     public int size() {
-        if (this.size > -1) { // It's been computed already.
-            return this.size;
-        }
-        // Compute size.
         if (this.isLeaf()) {
             return 1;
         }
@@ -164,7 +159,6 @@ public class MyBinaryTree<T extends Comparable> implements IMyTree<T> {
         if (right != null) {
             size += right.size();
         }
-        this.size = size;
         return size;
     }
 
@@ -268,16 +262,6 @@ public class MyBinaryTree<T extends Comparable> implements IMyTree<T> {
             throw new IllegalArgumentException("This node already has right child");
         }
         this.right = right;
-    }
-
-    protected void increaseSize() {
-        size();
-        size++;
-    }
-
-    protected void decreaseSize() {
-        size();
-        size--;
     }
 
     private static void print(MyBinaryTree node) {
