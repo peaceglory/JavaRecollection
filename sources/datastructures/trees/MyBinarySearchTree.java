@@ -38,17 +38,16 @@ public class MyBinarySearchTree<T extends Comparable> extends MyBinaryTree<T> {
 
     @Override
     public IMyTree search(T value) {
-        if (this.value.compareTo(value) == 0) {
-            return this;
-        }
-        if (this.value.compareTo(value) > 0) {
-            if (left != null) {
-                return left.search(value);
+        MyBinaryTree current = this;
+        while (current != null) {
+            if (current.value.compareTo(value) == 0) {
+                return current;
             }
-            return null; // Not found.
-        }
-        if (right != null) {
-            return right.search(value);
+            if (current.value.compareTo(value) > 0) {
+                current = current.left;
+            } else {
+                current = current.right;
+            }
         }
         return null;
     }
