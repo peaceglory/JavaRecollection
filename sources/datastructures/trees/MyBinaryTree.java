@@ -144,7 +144,7 @@ public class MyBinaryTree<T extends Comparable> implements IMyTree<T> {
     }
 
     @Override
-    public boolean delete(T value) {
+    public boolean remove(T value) {
         throw new NotImplementedException();
     }
 

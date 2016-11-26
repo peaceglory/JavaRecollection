@@ -10,6 +10,33 @@ public class MyBinarySearchTree<T extends Comparable> extends MyBinaryTree<T> {
     }
 
     @Override
+    public T minimum() {
+        if (this.isLeaf()) {
+            return value;
+        }
+        T min = value;
+        T candidate = null;
+        if (left != null) {
+            candidate = left.minimum();
+            if (candidate.compareTo(min) < 0) {
+                min = candidate;
+            }
+        }
+        if (right != null) {
+            candidate = right.minimum();
+            if (candidate.compareTo(min) < 0) {
+                min = candidate;
+            }
+        }
+        return min;
+    }
+
+    @Override
+    public T maximum() {
+        return super.maximum();
+    }
+
+    @Override
     public IMyTree search(T value) {
         if (this.value.compareTo(value) == 0) {
             return this;
@@ -47,7 +74,42 @@ public class MyBinarySearchTree<T extends Comparable> extends MyBinaryTree<T> {
     }
 
     @Override
-    public boolean delete(T value) {
-        return false;
+    public boolean remove(T value) {
+        MyBinarySearchTree node = (MyBinarySearchTree) search(value);
+        if (node == null) {
+            return false;
+        }
+
+        if (node.isLeaf()) {
+            if (node.parent == null) {
+                return true; // Nothing to remove - it's a root leaf.
+            }
+            if (node.value.compareTo(node.parent.value) < 0) {
+                node.parent.left = null;
+            } else {
+                node.parent.right = null;
+            }
+            node.parent = null;
+        } else if ((node.left != null && node.right == null)
+                || (node.left == null && node.right != null)) { // Has one child
+            MyBinaryTree theOnlyChild = (node.left != null ? node.left : node.right);
+            if (node.value.compareTo(node.parent.value) < 0) {
+                node.parent.left = theOnlyChild;
+            } else {
+                node.parent.right = theOnlyChild;
+            }
+            theOnlyChild.parent = node.parent;
+            node.parent = null;
+            node.left = null;
+            node.right = null;
+        } else { // Has two children
+            MyBinarySearchTree nextLarger = (MyBinarySearchTree) node.right.search(node.right.minimum());
+            T tmp = (T) node.value;
+            node.value = nextLarger.value;
+            nextLarger.value = tmp;
+            return nextLarger.remove((T) nextLarger.value);
+        }
+
+        return true;
     }
 }

@@ -39,7 +39,7 @@ public class MyTree<T extends Comparable> extends AMyTree<T> {
     }
 
     @Override
-    public boolean delete(T value) {
+    public boolean remove(T value) {
         throw new NotImplementedException();
     }
 

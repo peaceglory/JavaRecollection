@@ -15,7 +15,7 @@ public interface IMyTree<T> {
 
     IMyTree<T> insert(T value);
 
-    boolean delete(T value);
+    boolean remove(T value);
 
     boolean isLeaf();
 

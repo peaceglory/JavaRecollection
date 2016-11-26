@@ -50,14 +50,54 @@ class MyBinarySearchTreeTest extends GroovyTestCase {
         tree.traverse(TraverseStrategy.DFSRecursive);
     }
 
-    void testDelete() {
+    void testRemove() {
+        MyBinarySearchTree<Integer> tree = createIntegerTree();
+        assert tree.remove(7);
+        tree.traverse(TraverseStrategy.DFSRecursive);
+        println "--------------------------------------"
+        assert tree.search(7) == null;
 
+        tree = createIntegerTree();
+        assert tree.remove(33);
+        tree.traverse(TraverseStrategy.DFSRecursive);
+        println "--------------------------------------"
+        assert tree.search(33) == null;
+
+        tree = createIntegerTree();
+        assert tree.remove(88);
+        tree.traverse(TraverseStrategy.DFSRecursive);
+        println "--------------------------------------"
+        assert tree.search(88) == null;
+
+        tree = createIntegerTree();
+        assert tree.remove(45);
+        tree.traverse(TraverseStrategy.DFSRecursive);
+        println "--------------------------------------"
+        assert tree.search(45) == null;
+
+        tree = createIntegerTree();
+        assert tree.remove(90);
+        tree.traverse(TraverseStrategy.DFSRecursive);
+        println "--------------------------------------"
+        assert tree.search(90) == null;
+
+        tree = createIntegerTree();
+        assert tree.remove(10);
+        tree.traverse(TraverseStrategy.DFSRecursive);
+        println "--------------------------------------"
+        assert tree.search(10) == null;
+
+        tree = createIntegerTree();
+        assert !tree.remove(333);
+        tree.traverse(TraverseStrategy.DFSRecursive);
+        println "--------------------------------------"
+        assert tree.search(333) == null;
     }
 
     public static MyBinarySearchTree createIntegerTree() {
         MyBinarySearchTree<Integer> tree = new MyBinarySearchTree<>(10);
         tree.insert(3).insert(15).insert(1).insert(6).insert(11).insert(45).insert(4).insert(8).insert(33).insert(88)
-                .insert(7).insert(9).insert(70).insert(100).insert(99).insert(150)
+                .insert(7).insert(9).insert(70).insert(100).insert(90).insert(150).insert(27).insert(99);
         return tree;
     }
 }
