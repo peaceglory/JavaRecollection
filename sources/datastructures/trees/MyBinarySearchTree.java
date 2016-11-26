@@ -11,7 +11,19 @@ public class MyBinarySearchTree<T extends Comparable> extends MyBinaryTree<T> {
 
     @Override
     public IMyTree search(T value) {
-        return super.search(value);
+        if (this.value.compareTo(value) == 0) {
+            return this;
+        }
+        if (this.value.compareTo(value) > 0) {
+            if (left != null) {
+                return left.search(value);
+            }
+            return null; // Not found.
+        }
+        if (right != null) {
+            return right.search(value);
+        }
+        return null;
     }
 
     @Override

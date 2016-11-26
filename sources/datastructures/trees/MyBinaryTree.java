@@ -99,8 +99,12 @@ public class MyBinaryTree<T extends Comparable> implements IMyTree<T> {
         if (isLeaf()) {
             return;
         }
-        left.traverseDSFRecursive();
-        right.traverseDSFRecursive();
+        if (left != null) {
+            left.traverseDSFRecursive();
+        }
+        if (right != null) {
+            right.traverseDSFRecursive();
+        }
     }
 
     private void traverseBSFIterative() {
