@@ -1,5 +1,7 @@
 package sources.datastructures.trees;
 
+import java.util.Stack;
+
 /**
  * Created by mman on 25.11.16.
  */
@@ -103,6 +105,15 @@ public class MyBinarySearchTree<T extends Comparable> extends MyBinaryTree<T> {
         return true;
     }
 
+    /**
+     * Find the k-th element in the sorted order of the tree.
+     */
+    public T find(int k) {
+        Stack<MyBinaryTree> stack = new Stack<>();
+        MyBinaryTree found = find(this, k, stack);
+        return found != null ? (T) found.value : null;
+    }
+
     @Override
     protected void traversePreOrder() {
         super.traverseDFSRecursive();
@@ -128,5 +139,18 @@ public class MyBinarySearchTree<T extends Comparable> extends MyBinaryTree<T> {
             right.traversePostOrder();
         }
         print(this);
+    }
+
+    private static MyBinaryTree find(MyBinaryTree node, int k, Stack<MyBinaryTree> stack) {
+        if (node == null) {
+            return null;
+        }
+        find(node.left, k, stack);
+        if (stack.size() < k) {
+            stack.push(node);
+        } else {
+            return stack.peek();
+        }
+        return find(node.right, k, stack);
     }
 }
