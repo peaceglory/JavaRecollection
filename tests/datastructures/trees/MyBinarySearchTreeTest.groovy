@@ -109,6 +109,21 @@ class MyBinarySearchTreeTest extends GroovyTestCase {
         assertEquals(19, tree.size());
     }
 
+    void testPreOrder() {
+        MyBinarySearchTree<Integer> tree = createIntegerTree();
+        tree.traverse(TraverseStrategy.PreOrder);
+    }
+
+    void testInOrder() {
+        MyBinarySearchTree<Integer> tree = createIntegerTree();
+        tree.traverse(TraverseStrategy.InOrder);
+    }
+
+    void testPostOrder() {
+        MyBinarySearchTree<Integer> tree = createIntegerTree();
+        tree.traverse(TraverseStrategy.PostOrder);
+    }
+
     public static MyBinarySearchTree createIntegerTree() {
         MyBinarySearchTree<Integer> tree = new MyBinarySearchTree<>(10);
         tree.insert(3).insert(15).insert(1).insert(6).insert(11).insert(45).insert(4).insert(8).insert(33).insert(88)

@@ -102,4 +102,31 @@ public class MyBinarySearchTree<T extends Comparable> extends MyBinaryTree<T> {
 
         return true;
     }
+
+    @Override
+    protected void traversePreOrder() {
+        super.traverseDFSRecursive();
+    }
+
+    @Override
+    protected void traverseInOrder() { // A.K.A sorted order
+        if (left != null) {
+            left.traverseInOrder();
+        }
+        print(this);
+        if (right != null) {
+            right.traverseInOrder();
+        }
+    }
+
+    @Override
+    protected void traversePostOrder() {
+        if (left != null) {
+            left.traversePostOrder();
+        }
+        if (right != null) {
+            right.traversePostOrder();
+        }
+        print(this);
+    }
 }

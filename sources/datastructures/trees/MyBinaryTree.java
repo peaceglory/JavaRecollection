@@ -85,28 +85,43 @@ public class MyBinaryTree<T extends Comparable> implements IMyTree<T> {
     @Override
     public void traverse(TraverseStrategy strategy) {
         if (TraverseStrategy.DFSIterative == strategy) {
-            traverseDSFIterative();
+            traverseDFSIterative();
         } else if (TraverseStrategy.DFSRecursive == strategy) {
-            traverseDSFRecursive();
+            traverseDFSRecursive();
         } else if (TraverseStrategy.BFSIterative == strategy) {
-            traverseBSFIterative();
+            traverseBFSIterative();
+        } else if (TraverseStrategy.PreOrder == strategy) {
+            traversePreOrder();
+        } else if (TraverseStrategy.InOrder == strategy) {
+            traverseInOrder();
+        } else if (TraverseStrategy.PostOrder == strategy) {
+            traversePostOrder();
         }
     }
 
-    private void traverseDSFRecursive() {
+    protected void traversePostOrder() {
+        throw new NotImplementedException();
+    }
+
+    protected void traverseInOrder() {
+        throw new NotImplementedException();
+    }
+
+    protected void traversePreOrder() {
+        throw new NotImplementedException();
+    }
+
+    protected void traverseDFSRecursive() {
         print(this);
-        if (isLeaf()) {
-            return;
-        }
         if (left != null) {
-            left.traverseDSFRecursive();
+            left.traverseDFSRecursive();
         }
         if (right != null) {
-            right.traverseDSFRecursive();
+            right.traverseDFSRecursive();
         }
     }
 
-    private void traverseBSFIterative() {
+    protected void traverseBFSIterative() {
         Queue<MyBinaryTree<T>> queue = new LinkedList<>();
         queue.add(this);
         MyBinaryTree<T> head = null;
@@ -122,7 +137,7 @@ public class MyBinaryTree<T extends Comparable> implements IMyTree<T> {
         }
     }
 
-    private void traverseDSFIterative() {
+    protected void traverseDFSIterative() {
         Stack<MyBinaryTree<T>> stack = new Stack<>();
         stack.push(this);
         while (!stack.isEmpty()) {
@@ -264,7 +279,7 @@ public class MyBinaryTree<T extends Comparable> implements IMyTree<T> {
         this.right = right;
     }
 
-    private static void print(MyBinaryTree node) {
+    public static void print(MyBinaryTree node) {
         System.out.println(node.value);
     }
 
