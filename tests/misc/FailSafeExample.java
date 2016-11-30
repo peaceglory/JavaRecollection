@@ -1,4 +1,4 @@
-package misctests;
+package tests.misc;
 
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.Iterator;
