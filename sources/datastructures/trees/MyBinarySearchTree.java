@@ -13,20 +13,20 @@ public class MyBinarySearchTree<T extends Comparable> extends MyBinaryTree<T> {
 
     @Override
     public T minimum() {
-        MyBinaryTree current = this;
+        MyBinaryTree<T> current = this;
         while (current.left != null) {
             current = current.left;
         }
-        return (T) current.value;
+        return current.value;
     }
 
     @Override
     public T maximum() {
-        MyBinaryTree current = this;
+        MyBinaryTree<T> current = this;
         while (current.right != null) {
             current = current.right;
         }
-        return (T) current.value;
+        return current.value;
     }
 
     @Override
@@ -67,7 +67,7 @@ public class MyBinarySearchTree<T extends Comparable> extends MyBinaryTree<T> {
 
     @Override
     public boolean remove(T value) {
-        MyBinarySearchTree node = (MyBinarySearchTree) search(value);
+        MyBinarySearchTree<T> node = (MyBinarySearchTree) search(value);
         if (node == null) {
             return false;
         }
@@ -95,11 +95,11 @@ public class MyBinarySearchTree<T extends Comparable> extends MyBinaryTree<T> {
             node.left = null;
             node.right = null;
         } else { // Has two children
-            MyBinarySearchTree nextLarger = (MyBinarySearchTree) node.right.search(node.right.minimum());
-            T tmp = (T) node.value;
+            MyBinarySearchTree<T> nextLarger = (MyBinarySearchTree) node.right.search(node.right.minimum());
+            T tmp = node.value;
             node.value = nextLarger.value;
             nextLarger.value = tmp;
-            return nextLarger.remove((T) nextLarger.value);
+            return nextLarger.remove(nextLarger.value);
         }
 
         return true;
@@ -110,8 +110,8 @@ public class MyBinarySearchTree<T extends Comparable> extends MyBinaryTree<T> {
      */
     public T find(int k) {
         Stack<MyBinaryTree> stack = new Stack<>();
-        MyBinaryTree found = find(this, k, stack);
-        return found != null ? (T) found.value : null;
+        MyBinaryTree<T> found = find(this, k, stack);
+        return found != null ? found.value : null;
     }
 
     @Override
