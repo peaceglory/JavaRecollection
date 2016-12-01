@@ -1,5 +1,7 @@
 package sources.oop.animals;
 
+import java.lang.reflect.Method;
+
 /**
  * Created by mman on 07.11.16.
  */
@@ -29,5 +31,18 @@ public class Dog extends DomesticAnimal {
     @Override
     public int hashCode() {
         return this.getName().hashCode();
+    }
+
+    @Override
+    public Dog getChildren() {
+        return null;
+    }
+
+    public static void main(String[] args) {
+        for (Method m : Dog.class.getMethods()) {
+            if (m.getName().equals("getChildren")) {
+                System.out.println(m.toGenericString());
+            }
+        }
     }
 }

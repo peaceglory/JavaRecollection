@@ -5,4 +5,6 @@ package sources.oop.animals;
  */
 public interface Animal {
     boolean isAlive();
+
+    Animal getChildren();
 }

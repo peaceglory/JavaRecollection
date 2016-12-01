@@ -1,5 +1,6 @@
 package sources.datastructures.trees;
 
+import java.util.ArrayList;
 import java.util.Stack;
 
 /**
@@ -67,7 +68,7 @@ public class MyBinarySearchTree<T extends Comparable> extends MyBinaryTree<T> {
 
     @Override
     public boolean remove(T value) {
-        MyBinarySearchTree<T> node = (MyBinarySearchTree) search(value);
+        MyBinaryTree<T> node = (MyBinaryTree<T>) search(value);
         if (node == null) {
             return false;
         }
@@ -95,7 +96,7 @@ public class MyBinarySearchTree<T extends Comparable> extends MyBinaryTree<T> {
             node.left = null;
             node.right = null;
         } else { // Has two children
-            MyBinarySearchTree<T> nextLarger = (MyBinarySearchTree) node.right.search(node.right.minimum());
+            MyBinaryTree<T> nextLarger = (MyBinaryTree<T>) node.right.search(node.right.minimum());
             T tmp = node.value;
             node.value = nextLarger.value;
             nextLarger.value = tmp;
@@ -152,5 +153,16 @@ public class MyBinarySearchTree<T extends Comparable> extends MyBinaryTree<T> {
             return stack.peek();
         }
         return find(node.right, k, stack);
+    }
+
+    public static void main(String[] args) {
+//        for (Method m : MyBinarySearchTree.class.getMethods()) {
+//            if (m.getName().equals("insert")) {
+//                System.out.println(m.toGenericString());
+//            }
+//        }
+        ArrayList<String> ar = new ArrayList<>();
+        ar.add("hah");
+        System.out.println(ar.get(0));
     }
 }

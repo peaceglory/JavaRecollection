@@ -30,4 +30,9 @@ public class DomesticAnimal extends LandAnimal {
         DomesticAnimal d = (DomesticAnimal) obj;
         return this.getName().equals(d.getName());
     }
+
+    @Override
+    public DomesticAnimal getChildren() {
+        return null;
+    }
 }
