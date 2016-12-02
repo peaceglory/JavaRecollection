@@ -1,5 +1,10 @@
 package sources.reflection;
 
+import sources.datastructures.trees.MyBinaryTree;
+import sources.oop.animals.Animal;
+import sources.oop.animals.Dog;
+import tests.datastructures.trees.MyBinarySearchTreeTest;
+
 import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
@@ -80,5 +85,13 @@ public class ObjectAnalyzer {
         while (clazz != null);
 
         return str;
+    }
+
+    public static void main(String[] args) {
+        Animal dog = new Dog("Jony");
+        System.out.println(new ObjectAnalyzer().toString(dog));
+
+        MyBinaryTree<Integer> tree = MyBinarySearchTreeTest.createIntegerTree();
+        System.out.println(new ObjectAnalyzer().toString(tree));
     }
 }
