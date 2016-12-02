@@ -294,5 +294,8 @@ public class MyBinaryTree<T extends Comparable> implements IMyTree<T> {
         System.out.println(isNumeric("->"));
         System.out.println(isNumeric("0.34"));
         System.out.println(isNumeric("50.76534"));
+
+        AMyTree tr = new MyTree(10);
+        tr.root.isLeaf(); // See, protected fields can be accessed by other classes in the package.
     }
 }
