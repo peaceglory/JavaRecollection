@@ -7,13 +7,13 @@ public class Employee implements Worker {
     private String name = null;
     private double salary = 0.0;
 
-    public static void callStatic() {
-        System.out.println("Employee.callStatic");
-    }
-
     public Employee(String name, double salary) {
         this.name = name;
         this.salary = salary;
+    }
+
+    public static void callStatic() {
+        System.out.println("Employee.callStatic");
     }
 
     @Override
@@ -33,6 +33,10 @@ public class Employee implements Worker {
 
     public String getJobDescription() {
         throw new UnsupportedOperationException();
+    }
+
+    Employee aTestOfVisibilityForSubclasses() { // package-private visibility.
+        return null;
     }
 
 }
