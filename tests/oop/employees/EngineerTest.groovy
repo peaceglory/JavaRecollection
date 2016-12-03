@@ -3,7 +3,6 @@ package tests.oop.employees
 import sources.oop.employees.Employee
 import sources.oop.employees.Engineer
 import sources.oop.employees.Worker
-
 /**
  * Created by mman on 04.11.16.
  */
@@ -25,7 +24,7 @@ class EngineerTest extends GroovyTestCase {
         assert excCaught;
 
         eng.callStatic();
-        eng.callStatic();
+        Engineer.callStatic();
         Employee.callStatic();
     }
 }

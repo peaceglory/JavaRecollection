@@ -18,4 +18,9 @@ public class Engineer extends Employee implements JobDescription {
     public void setJobDescription(String jd) {
         this.jobDescription = jd;
     }
+
+    @Override
+    public Engineer aTestOfVisibilityForSubclasses() { // Wider visibility and more specific return type than the super method.
+        return (Engineer) super.aTestOfVisibilityForSubclasses();
+    }
 }
