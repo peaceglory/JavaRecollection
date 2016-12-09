@@ -17,7 +17,7 @@ public class SelectionSorter<T extends Comparable> implements Sorter<T> {
     public T[] sort(T[] arr, Comparator<? super T> comparator) {
         for (int i = 0; i < arr.length; i++) {
             int min = i;
-            for (int j = i+1; j < arr.length; j++) {
+            for (int j = i + 1; j < arr.length; j++) {
                 if (Objects.isNull(comparator)) {
                     if (arr[min].compareTo(arr[j]) > 0) {
                         min = j;
