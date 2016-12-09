@@ -26,7 +26,7 @@ public interface RandomFactory {
         try {
             bytes = Files.readAllBytes(filepath);
         } catch (IOException e) {
-            return new String[]{"This", "is", "emergency", "array"};
+            return new String[]{"This", "is", "emergency", "array --> ", e.getMessage()};
         }
         String content = new String(bytes, StandardCharsets.UTF_8);
         String[] strArray = content.split("[\\P{L}]+");
