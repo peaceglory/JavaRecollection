@@ -1,8 +1,13 @@
 package sources.algorithms;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Stream;
 
 /**
@@ -16,6 +21,22 @@ public interface RandomFactory {
     }
 
     static String[] createRandomStringArray(int size) {
-        throw new NotImplementedException();
+        Path filepath = Paths.get("/media/mman/Data/Big Files/big.txt");
+        byte[] bytes = null;
+        try {
+            bytes = Files.readAllBytes(filepath);
+        } catch (IOException e) {
+            return new String[]{"This", "is", "emergency", "array"};
+        }
+        String content = new String(bytes, StandardCharsets.UTF_8);
+        String[] strArray = content.split("[\\P{L}]+");
+        ThreadLocalRandom r = ThreadLocalRandom.current();
+        strArray = Arrays.copyOfRange(strArray,
+                                      r.nextInt(0, strArray.length/2),
+                                      r.nextInt(strArray.length/2, strArray.length));
+        if (size < strArray.length) {
+            strArray = Arrays.copyOfRange(strArray, 0, size);
+        }
+        return strArray;
     }
 }

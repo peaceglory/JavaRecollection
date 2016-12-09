@@ -13,7 +13,8 @@ public class SelectionSorter<T extends Comparable> implements Sorter<T> {
         return sort(arr, null);
     }
 
-    public T[] sort(T[] arr, Comparator<T> comparator) {
+    @Override
+    public T[] sort(T[] arr, Comparator<? super T> comparator) {
         for (int i = 0; i < arr.length; i++) {
             int min = i;
             for (int j = i+1; j < arr.length; j++) {
