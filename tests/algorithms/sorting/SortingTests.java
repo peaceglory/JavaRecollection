@@ -3,117 +3,93 @@ package tests.algorithms.sorting;
 import groovy.util.GroovyTestCase;
 import sources.algorithms.sorting.BubbleSorter;
 import sources.algorithms.sorting.InsertionSorter;
-import sources.algorithms.sorting.SelectionSorter;
 import sources.algorithms.sorting.Sorter;
+import sources.utils.StopWatch;
 import sources.utils.Utils;
+
+import java.util.Comparator;
 
 /**
  * Created by mman on 09.12.16.
  */
 public class SortingTests extends GroovyTestCase {
+    private static final int SIZE = 100000;
 
     public void testSelectionSort() {
-        Integer[] a = Utils.createRandomIntegerArray(10);
-        Utils.printArray(a);
+        testSortingIntegers(SIZE, new InsertionSorter<Integer>(), null);
 
-        Sorter<Integer> integerSorter = new SelectionSorter<>();
-        integerSorter.sort(a);
+//        testSortingStrings(SIZE, new InsertionSorter<String>(), null);
 
-        Utils.printArray(a);
-        System.out.println("---------------------------------------");
-
-        String[] s = Utils.createRandomStringArray(10);
-        Utils.printArray(s);
-
-        Sorter<String> stringSorter = new SelectionSorter<>();
-        stringSorter.sort(s);
-
-        Utils.printArray(s);
-        System.out.println("---------------------------------------");
-
-        s = Utils.createRandomStringArray(10);
-        Utils.printArray(s);
-
-        stringSorter.sort(s, (str1, str2) -> {
-            if (str1.length() < str2.length()) {
-                return -1;
-            }
-            if (str1.length() > str2.length()) {
-                return 1;
-            }
-            return 0;
-        });
-
-        Utils.printArray(s);
+//        testSortingStrings(SIZE, new InsertionSorter<String>(), (str1, str2) -> {
+//            if (str1.length() < str2.length()) {
+//                return -1;
+//            }
+//            if (str1.length() > str2.length()) {
+//                return 1;
+//            }
+//            return 0;
+//        });
     }
 
     public void testInsertionSort() {
-        Integer[] a = Utils.createRandomIntegerArray(10);
-        Utils.printArray(a);
+        testSortingIntegers(SIZE, new InsertionSorter<Integer>(), null);
 
-        Sorter<Integer> integerSorter = new InsertionSorter<>();
-        integerSorter.sort(a);
+//        testSortingStrings(SIZE, new InsertionSorter<String>(), null);
 
-        Utils.printArray(a);
-        System.out.println("---------------------------------------");
-
-        String[] s = Utils.createRandomStringArray(10);
-        Utils.printArray(s);
-
-        Sorter<String> stringSorter = new InsertionSorter<>();
-        stringSorter.sort(s);
-
-        Utils.printArray(s);
-        System.out.println("---------------------------------------");
-
-        s = Utils.createRandomStringArray(10);
-        Utils.printArray(s);
-
-        stringSorter.sort(s, (str1, str2) -> {
-            if (str1.length() < str2.length()) {
-                return -1;
-            }
-            if (str1.length() > str2.length()) {
-                return 1;
-            }
-            return 0;
-        });
-
-        Utils.printArray(s);
+//        testSortingStrings(SIZE, new InsertionSorter<String>(), (str1, str2) -> {
+//            if (str1.length() < str2.length()) {
+//                return -1;
+//            }
+//            if (str1.length() > str2.length()) {
+//                return 1;
+//            }
+//            return 0;
+//        });
     }
 
     public void testBubbleSort() {
-        Integer[] a = Utils.createRandomIntegerArray(10);
+        testSortingIntegers(SIZE, new BubbleSorter<Integer>(), null);
+
+//        testSortingStrings(SIZE, new BubbleSorter<String>(), null);
+
+//        testSortingStrings(SIZE, new BubbleSorter<String>(), (str1, str2) -> {
+//            if (str1.length() < str2.length()) {
+//                return -1;
+//            }
+//            if (str1.length() > str2.length()) {
+//                return 1;
+//            }
+//            return 0;
+//        });
+    }
+
+    private void testSortingIntegers(int size, Sorter sorter, Comparator<Integer> comparator) {
+        Integer[] a = Utils.createRandomIntegerArray(size);
         Utils.printArray(a);
 
-        Sorter<Integer> integerSorter = new BubbleSorter<>();
-        integerSorter.sort(a);
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
+        sorter.sort(a, comparator);
+        stopWatch.stop();
 
         Utils.printArray(a);
         System.out.println("---------------------------------------");
 
-        String[] s = Utils.createRandomStringArray(10);
-        Utils.printArray(s);
+        System.out.println(stopWatch.getResult());
+    }
 
-        Sorter<String> stringSorter = new BubbleSorter<>();
-        stringSorter.sort(s);
+    private void testSortingStrings(int size, Sorter sorter, Comparator<String> comparator) {
+        String[] a = Utils.createRandomStringArray(size);
+        Utils.printArray(a);
 
-        Utils.printArray(s);
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
+        sorter.sort(a, comparator);
+        stopWatch.stop();
+
+        Utils.printArray(a);
         System.out.println("---------------------------------------");
 
-        s = Utils.createRandomStringArray(10);
-        Utils.printArray(s);
-
-        stringSorter.sort(s, (str1, str2) -> {
-            if (str1.length() < str2.length()) {
-                return -1;
-            }
-            if (str1.length() > str2.length()) {
-                return 1;
-            }
-            return 0;
-        });
-
-        Utils.printArray(s);
+        System.out.println(stopWatch.getResult());
     }
 }
