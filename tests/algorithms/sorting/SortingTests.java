@@ -3,6 +3,7 @@ package tests.algorithms.sorting;
 import groovy.util.GroovyTestCase;
 import sources.algorithms.sorting.BubbleSorter;
 import sources.algorithms.sorting.InsertionSorter;
+import sources.algorithms.sorting.MergeSorter;
 import sources.algorithms.sorting.Sorter;
 import sources.utils.StopWatch;
 import sources.utils.Utils;
@@ -63,6 +64,22 @@ public class SortingTests extends GroovyTestCase {
 //        });
     }
 
+    public void testMergeSort() {
+        testSortingIntegers(SIZE, new MergeSorter<Integer>(), null);
+
+//        testSortingStrings(SIZE, new MergeSorter<String>(), null);
+
+//        testSortingStrings(SIZE, new MergeSorter<String>(), (str1, str2) -> {
+//            if (str1.length() < str2.length()) {
+//                return -1;
+//            }
+//            if (str1.length() > str2.length()) {
+//                return 1;
+//            }
+//            return 0;
+//        });
+    }
+
     private void testSortingIntegers(int size, Sorter sorter, Comparator<Integer> comparator) {
         Integer[] a = Utils.createRandomIntegerArray(size);
         Utils.printArray(a);
@@ -75,7 +92,7 @@ public class SortingTests extends GroovyTestCase {
         Utils.printArray(a);
         System.out.println("---------------------------------------");
 
-        System.out.println(stopWatch.getResult());
+        System.out.println(stopWatch.getResult() + "\n");
     }
 
     private void testSortingStrings(int size, Sorter sorter, Comparator<String> comparator) {
@@ -90,6 +107,6 @@ public class SortingTests extends GroovyTestCase {
         Utils.printArray(a);
         System.out.println("---------------------------------------");
 
-        System.out.println(stopWatch.getResult());
+        System.out.println(stopWatch.getResult() + "\n");
     }
 }

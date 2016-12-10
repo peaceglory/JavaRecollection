@@ -1,7 +1,8 @@
 package sources.algorithms.sorting;
 
+import sources.utils.Utils;
+
 import java.util.Comparator;
-import java.util.Objects;
 
 /**
  * Created by mman on 09.12.16.
@@ -18,14 +19,8 @@ public class InsertionSorter<T extends Comparable> implements Sorter<T> {
         for (int i = 1; i < arr.length; i++) {
             T hold = arr[i];
             int j = i;
-            if (Objects.isNull(comparator)) {
-                for (; j > 0 && hold.compareTo(arr[j - 1]) < 0; j--) {
-                    arr[j] = arr[j - 1];
-                }
-            } else {
-                for (; j > 0 && Objects.compare(hold, arr[j - 1], comparator) < 0; j--) {
-                    arr[j] = arr[j - 1];
-                }
+            for (; j > 0 && Utils.compare(hold, arr[j - 1], comparator) < 0; j--) {
+                arr[j] = arr[j - 1];
             }
             arr[j] = hold;
         }
