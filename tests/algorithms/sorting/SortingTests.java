@@ -1,13 +1,12 @@
 package tests.algorithms.sorting;
 
 import groovy.util.GroovyTestCase;
-import sources.algorithms.RandomFactory;
 import sources.algorithms.sorting.InsertionSorter;
 import sources.algorithms.sorting.SelectionSorter;
 import sources.algorithms.sorting.Sorter;
+import sources.utils.Utils;
 
-import java.lang.reflect.Array;
-import java.util.Objects;
+import static com.sun.org.apache.bcel.internal.classfile.Utility.printArray;
 
 /**
  * Created by mman on 09.12.16.
@@ -15,7 +14,7 @@ import java.util.Objects;
 public class SortingTests extends GroovyTestCase {
 
     public void testSelectionSort() {
-        Integer[] a = RandomFactory.createRandomIntegerArray(10);
+        Integer[] a = Utils.createRandomIntegerArray(10);
         printArray(a);
 
         Sorter<Integer> integerSorter = new SelectionSorter<>();
@@ -24,7 +23,7 @@ public class SortingTests extends GroovyTestCase {
         printArray(a);
         System.out.println("---------------------------------------");
 
-        String[] s = RandomFactory.createRandomStringArray(10);
+        String[] s = Utils.createRandomStringArray(10);
         printArray(s);
 
         Sorter<String> stringSorter = new SelectionSorter<>();
@@ -33,7 +32,7 @@ public class SortingTests extends GroovyTestCase {
         printArray(s);
         System.out.println("---------------------------------------");
 
-        s = RandomFactory.createRandomStringArray(10);
+        s = Utils.createRandomStringArray(10);
         printArray(s);
 
         stringSorter.sort(s, (str1, str2) -> {
@@ -50,7 +49,7 @@ public class SortingTests extends GroovyTestCase {
     }
 
     public void testInsertionSort() {
-        Integer[] a = RandomFactory.createRandomIntegerArray(10);
+        Integer[] a = Utils.createRandomIntegerArray(10);
         printArray(a);
 
         InsertionSorter<Integer> integerSorter = new InsertionSorter<>();
@@ -59,7 +58,7 @@ public class SortingTests extends GroovyTestCase {
         printArray(a);
         System.out.println("---------------------------------------");
 
-        String[] s = RandomFactory.createRandomStringArray(10);
+        String[] s = Utils.createRandomStringArray(10);
         printArray(s);
 
         Sorter<String> stringSorter = new InsertionSorter<>();
@@ -68,7 +67,7 @@ public class SortingTests extends GroovyTestCase {
         printArray(s);
         System.out.println("---------------------------------------");
 
-        s = RandomFactory.createRandomStringArray(10);
+        s = Utils.createRandomStringArray(10);
         printArray(s);
 
         stringSorter.sort(s, (str1, str2) -> {
@@ -82,27 +81,5 @@ public class SortingTests extends GroovyTestCase {
         });
 
         printArray(s);
-    }
-
-    static void printArray(Object arr) {
-        if (Objects.nonNull(arr)) {
-            Class<?> clazz = arr.getClass();
-            if (clazz.isArray()) {
-                int l = Array.getLength(arr);
-                for (int i = 0; i < l; i++) {
-                    if (i == 0) {
-                        System.out.print("[");
-                    }
-                    System.out.print(Array.get(arr, i));
-
-                    if (i == l - 1) {
-                        System.out.println("]");
-                    } else {
-                        System.out.print(", ");
-                    }
-
-                }
-            }
-        }
     }
 }
