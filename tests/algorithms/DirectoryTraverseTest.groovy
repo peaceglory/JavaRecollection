@@ -1,7 +1,6 @@
 package tests.algorithms
 
-import sources.algorithms.DirectoryTraverse
-
+import sources.utils.Utils
 /**
  * Created by mman on 24.10.16.
  */
@@ -14,15 +13,13 @@ class DirectoryTraverseTest extends GroovyTestCase {
     }
 
     void testBreadthFirstSearch() {
-        DirectoryTraverse dt = new DirectoryTraverse();
         File userInput = getUserInput();
-        dt.breadthFirstSearch(userInput);
+        Utils.traverseDirectoryBFS(userInput);
     }
 
     void testDepthFirstSearch() {
-        DirectoryTraverse dt = new DirectoryTraverse();
         File userInput = getUserInput();
-        dt.depthFirstSearch(userInput);
+        Utils.traverseDirectoryDFS(userInput);
     }
 
     private static File getUserInput() {
