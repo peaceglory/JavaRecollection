@@ -1,10 +1,7 @@
 package tests.algorithms.sorting;
 
 import groovy.util.GroovyTestCase;
-import sources.algorithms.sorting.BubbleSorter;
-import sources.algorithms.sorting.InsertionSorter;
-import sources.algorithms.sorting.MergeSorter;
-import sources.algorithms.sorting.Sorter;
+import sources.algorithms.sorting.*;
 import sources.utils.StopWatch;
 import sources.utils.Utils;
 
@@ -14,7 +11,7 @@ import java.util.Comparator;
  * Created by mman on 09.12.16.
  */
 public class SortingTests extends GroovyTestCase {
-    private static final int SIZE = 100000;
+    private static final int SIZE = 4;
 
     public void testSelectionSort() {
         testSortingIntegers(SIZE, new InsertionSorter<Integer>(), null);
@@ -70,6 +67,22 @@ public class SortingTests extends GroovyTestCase {
 //        testSortingStrings(SIZE, new MergeSorter<String>(), null);
 
 //        testSortingStrings(SIZE, new MergeSorter<String>(), (str1, str2) -> {
+//            if (str1.length() < str2.length()) {
+//                return -1;
+//            }
+//            if (str1.length() > str2.length()) {
+//                return 1;
+//            }
+//            return 0;
+//        });
+    }
+
+    public void testQuickSort() {
+        testSortingIntegers(SIZE, new QuickSorter<Integer>(), null);
+
+//        testSortingStrings(SIZE, new QuickSorter<String>(), null);
+
+//        testSortingStrings(SIZE, new QuickSorter<String>(), (str1, str2) -> {
 //            if (str1.length() < str2.length()) {
 //                return -1;
 //            }
