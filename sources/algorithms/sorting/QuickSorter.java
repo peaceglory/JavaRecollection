@@ -27,7 +27,7 @@ public class QuickSorter<T extends Comparable> implements Sorter<T> {
         }
         int p = partition(arr, comparator, from, to);
         sort(arr, comparator, from, p);
-        sort(arr, comparator, from + 1, to);
+        sort(arr, comparator, p + 1, to);
         return arr;
     }
 
