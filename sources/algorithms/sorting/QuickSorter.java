@@ -32,7 +32,7 @@ public class QuickSorter<T extends Comparable> implements Sorter<T> {
     }
 
     private static <T extends Comparable> int partition(T[] arr, Comparator<? super T> comparator, int from, int to) {
-        T pivot = arr[from];
+        T pivot = arr[from]; // This is only OK if the input is random. Otherwise use random pivot or median - (from + to) / 2
         int i = from - 1;
         int j = to + 1;
 

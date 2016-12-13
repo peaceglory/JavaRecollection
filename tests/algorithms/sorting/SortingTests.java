@@ -80,6 +80,8 @@ public class SortingTests extends GroovyTestCase {
     public void testQuickSort() {
         testSortingIntegers(SIZE, new QuickSorter<Integer>(), null);
 
+//        testSortingIntegersInSortedArray(SIZE, new QuickSorter<Integer>(), null);
+
 //        testSortingStrings(SIZE, new QuickSorter<String>(), null);
 
 //        testSortingStrings(SIZE, new QuickSorter<String>(), (str1, str2) -> {
@@ -95,6 +97,22 @@ public class SortingTests extends GroovyTestCase {
 
     private void testSortingIntegers(int size, Sorter sorter, Comparator<Integer> comparator) {
         Integer[] a = Utils.createRandomIntegerArray(size);
+        Utils.printArray(a);
+
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
+        sorter.sort(a, comparator);
+        stopWatch.stop();
+
+        Utils.printArray(a);
+        System.out.println("---------------------------------------");
+
+        System.out.println(stopWatch.getResult() + "\n");
+    }
+
+    private void testSortingIntegersInSortedArray(int size, Sorter sorter, Comparator<Integer> comparator) {
+        Integer[] a = Utils.createRandomIntegerArray(size);
+        sorter.sort(a, comparator);
         Utils.printArray(a);
 
         StopWatch stopWatch = new StopWatch();
