@@ -5,18 +5,16 @@ package sources.algorithms.strings;
  */
 public class StringUtils {
 
-    public static int contains(String source, String target) {
-        for (int i = 0; i < source.length(); i++) {
+    public static int contains(String source, String pattern) {
+        int s = source.length();
+        int p = pattern.length();
+
+        for (int i = 0; i <= s - p; i++) {
             int j = 0;
-            int k = i;
-            while (j < target.length() && k < source.length()) {
-                if (source.charAt(k) == target.charAt(j)) {
-                    j++; k++;
-                } else {
-                    break;
-                }
+            while (j < p && source.charAt(i + j) == pattern.charAt(j)) {
+                j++;
             }
-            if (j == target.length()) {
+            if (j == p) {
                 return i;
             }
         }
