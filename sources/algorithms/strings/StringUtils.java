@@ -21,6 +21,27 @@ public class StringUtils {
         return -1;
     }
 
+    public static String reverseWords(String source) {
+        int length = source.length();
+        int start = length - 1;
+        int end = start;
+        StringBuilder sb = new StringBuilder(length);
+        while (end >= 0) {
+            while (start >= 0 && !Character.isSpaceChar(source.charAt(start))) {
+                start--;
+            }
+            for (int i = start + 1; i <= end; i++) {
+                sb.append(source.charAt(i));
+            }
+            start--;
+            end = start;
+            if (end >= 0) {
+                sb.append(' ');
+            }
+        }
+        return sb.toString();
+    }
+
     public static void main(String[] args) {
         String source = "Ba baa black sheep, have you any wool?";
         String target = " black sheep, ";

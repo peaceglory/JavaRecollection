@@ -8,7 +8,7 @@ import sources.utils.Utils
  * Created by mman on 14.12.16.
  */
 class StringTests extends GroovyTestCase {
-    private static final int SIZE = 16000000;
+    private static final int SIZE = 100;
 
     void testContains() {
         String source = Utils.createRandomString(SIZE);
@@ -21,5 +21,13 @@ class StringTests extends GroovyTestCase {
         timer.stop();
         println "--------------------------------------------------------"
         println "Found at: " + found + ". Took " + timer.getResult();
+    }
+
+    void testReverseWords() {
+        String source = Utils.createRandomString(SIZE);
+        source.replace('\n', ' ');
+        println source;
+        println "_____________________________________________"
+        println StringUtils.reverseWords(source);
     }
 }
