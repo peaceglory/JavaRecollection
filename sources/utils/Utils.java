@@ -55,23 +55,39 @@ public class Utils {
     }
 
     public static String[] createRandomStringArray(int size) {
+        String content = getBigString();
+        String[] strArray = content.split("[\\P{L}]+");
+        ThreadLocalRandom r = ThreadLocalRandom.current();
+        strArray = Arrays.copyOfRange(strArray,
+                                      r.nextInt(0, strArray.length/2),
+                                      r.nextInt(strArray.length/2, strArray.length));
+        if (size < strArray.length) {
+            strArray = Arrays.copyOfRange(strArray, 0, size);
+        }
+        return strArray;
+    }
+
+    public static String getBigString() {
         Path filepath = Paths.get("/media/mman/Data/Big Files/big.txt");
         byte[] bytes = null;
         try {
             bytes = Files.readAllBytes(filepath);
         } catch (IOException e) {
-            return new String[]{"This", "is", "emergency", "array --> ", e.getMessage()};
+            return "This is emergency string " + e.getMessage();
         }
         String content = new String(bytes, StandardCharsets.UTF_8);
-        String[] strArray = content.split("[\\P{L}]+");
-        ThreadLocalRandom r = ThreadLocalRandom.current();
-        strArray = Arrays.copyOfRange(strArray,
-                r.nextInt(0, strArray.length/2),
-                r.nextInt(strArray.length/2, strArray.length));
-        if (size < strArray.length) {
-            strArray = Arrays.copyOfRange(strArray, 0, size);
+        return content;
+    }
+
+    public static String createRandomString(int size) {
+        String content = getBigString();
+        ThreadLocalRandom generator = ThreadLocalRandom.current();
+        int length = content.length();
+        String randomStr = content.substring(generator.nextInt(0, length / 2), generator.nextInt(length / 2, length));
+        if (size < randomStr.length()) {
+            randomStr = randomStr.substring(0, size);
         }
-        return strArray;
+        return randomStr;
     }
 
     public static void traverseDirectoryBFS(File dir) {
