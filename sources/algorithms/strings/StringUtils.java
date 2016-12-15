@@ -92,10 +92,39 @@ public class StringUtils {
         return true;
     }
 
+    public static int countWords(String source) {
+        if (source.isEmpty()) {
+            return 0;
+        }
+        // Trim white spaces on both end if any.
+        int index = 0;
+        while (index < source.length() && Character.isWhitespace(source.charAt(index++)));
+        int curr = index - 1;
+
+        index = source.length() - 1;
+        while (index >= 0 && Character.isWhitespace(source.charAt(index--)));
+        int end = index + 1;
+
+        int wordCount = 0;
+        boolean inWord = false;
+        while (curr <= end) {
+            if (Character.isWhitespace(source.charAt(curr))) {
+                inWord = false;
+                wordCount++;
+                while (curr <= end && !Character.isLetterOrDigit(source.charAt(curr++)));
+            } else {
+                inWord = true;
+                curr++;
+            }
+        }
+        return inWord ? ++wordCount : wordCount;
+    }
+
     public static void main(String[] args) {
-        String source = "Ba baa black sheep, have you any wool?";
+        String source = "    Ba baa black  sheep ,     have you any wool ?  ";
         String target = " black sheep, ";
         boolean found = contains(source, target) < 0 ? false : true;
         System.out.println(String.format("%s --> %s: %b", source, target, found));
+        System.out.printf("Words:%d", StringUtils.countWords(source));
     }
 }

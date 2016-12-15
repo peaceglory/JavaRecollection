@@ -8,7 +8,7 @@ import sources.utils.Utils
  * Created by mman on 14.12.16.
  */
 class StringTests extends GroovyTestCase {
-    private static final int SIZE = 100;
+    private static final int SIZE = 50;
 
     void testContains() {
         String source = Utils.createRandomString(SIZE);
@@ -43,5 +43,12 @@ class StringTests extends GroovyTestCase {
 
         source = "A dog A panic in a pagodaaaa.";
         assertEquals(false, StringUtils.isPalindrome(source));
+    }
+
+    void testCountWords() {
+        String source = Utils.createRandomString(SIZE);
+        println source;
+        println "__________________________________________";
+        println ("Words found: " + StringUtils.countWords(source));
     }
 }
