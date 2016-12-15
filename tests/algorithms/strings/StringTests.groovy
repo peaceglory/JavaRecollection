@@ -30,4 +30,18 @@ class StringTests extends GroovyTestCase {
         println "_____________________________________________"
         println StringUtils.reverseWords(source);
     }
+
+    void testIsPalindrome() {
+        String source = "A dog! A panic in a pagoda.";
+        assertEquals(true, StringUtils.isPalindrome(source));
+
+        source = "A dog A panic in a pagoda.";
+        assertEquals(true, StringUtils.isPalindrome(source));
+
+        source = "A dog!! A panic in a pagoda.";
+        assertEquals(true, StringUtils.isPalindrome(source));
+
+        source = "A dog A panic in a pagodaaaa.";
+        assertEquals(false, StringUtils.isPalindrome(source));
+    }
 }

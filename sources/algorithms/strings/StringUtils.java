@@ -72,6 +72,26 @@ public class StringUtils {
         return sb.toString();
     }
 
+    public static boolean isPalindrome(String source) {
+        int start = 0;
+        int end = source.length() - 1;
+
+        while (start < end) {
+            while (!Character.isLetterOrDigit(source.charAt(start))) {
+                start++;
+            }
+            while (!Character.isLetterOrDigit(source.charAt(end))) {
+                end--;
+            }
+            if (Character.toUpperCase(source.charAt(start)) != Character.toUpperCase(source.charAt(end))) {
+                return false;
+            }
+            start++;
+            end--;
+        }
+        return true;
+    }
+
     public static void main(String[] args) {
         String source = "Ba baa black sheep, have you any wool?";
         String target = " black sheep, ";
