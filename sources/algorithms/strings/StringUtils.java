@@ -48,7 +48,7 @@ public class StringUtils {
      *          end <- start
      *          If end >= 0
      *              sb.append(SPACE_CHAR)
-     *              
+     *
      *      return sb.toString()
      */
     public static String reverseWords(String source) {
