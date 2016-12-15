@@ -5,6 +5,19 @@ package sources.algorithms.strings;
  */
 public class StringUtils {
 
+    /**
+     *  Contains(source, pattern)
+     *      s <- source.length
+     *      p <- pattern.length
+     *      For currS <- 0 to (s - p]
+     *          currP <- 0
+     *          While currP < p AND source[currS + currP] = pattern[currP]
+     *              currP <- currP + 1
+     *          If currP = p
+     *              return currS
+     *          currS <- currS + 1
+     *      return (-1)
+     */
     public static int contains(String source, String pattern) {
         int s = source.length();
         int p = pattern.length();
@@ -21,6 +34,23 @@ public class StringUtils {
         return -1;
     }
 
+    /**
+     *  ReverseWords(source)
+     *      start <- source.length - 1
+     *      end <- start
+     *
+     *      While end >= 0
+     *          While start >= 0 AND source[start] != SPACE_CHAR
+     *              start <- start - 1
+     *          For i <- start + 1 to (end]
+     *              sb.append(source[i])
+     *          start <- start - 1
+     *          end <- start
+     *          If end >= 0
+     *              sb.append(SPACE_CHAR)
+     *              
+     *      return sb.toString()
+     */
     public static String reverseWords(String source) {
         int length = source.length();
         int start = length - 1;
