@@ -1,9 +1,28 @@
 package sources.algorithms.strings;
 
+import org.testng.log4testng.Logger;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.*;
+
 /**
  * Created by mman on 14.12.16.
  */
 public class StringUtils {
+    private static Set<String> forbiddenWords = null;
+
+    static {
+        Path path = Paths.get("/media/mman/Data/Big Files/1-1000.txt");
+        try {
+            List<String> wordList = Files.readAllLines(path);
+            forbiddenWords = new HashSet<>(wordList);
+        } catch (IOException e) {
+            Logger.getLogger(StringUtils.class).error("Can't read file: " + path.getFileName() + "\n" + e.getMessage());
+        }
+    }
 
     /**
      *  Contains(source, pattern)
@@ -120,11 +139,69 @@ public class StringUtils {
         return inWord ? ++wordCount : wordCount;
     }
 
+    public static String mostFrequentWord(String source) {
+        int index = 0;
+        // Position index after any possible whitespaces.
+        while (index < source.length() && Character.isWhitespace(source.charAt(index))) {
+            index++;
+        }
+        // Check if whole string is a whitespace.
+        if (index == source.length()) {
+            return "";
+        }
+
+        Map<String, Integer> wordsByNumber = new HashMap<>();
+        while (index < source.length()) {
+            int start = index;
+            // Progress to end of word.
+            while (index < source.length() && Character.isLetterOrDigit(source.charAt(index))) {
+                index++;
+            }
+            char[] word = new char[index - start];
+            for (int i = 0; start < index; i++, start++) {
+                word[i] = source.charAt(start);
+            }
+
+            String str = new String(word);
+            str = str.toLowerCase();
+            if (allowed(str)) {
+                Integer val = wordsByNumber.get(str);
+                val = (val == null ? 1 : ++val);
+                wordsByNumber.put(str, val);
+            }
+            // Progress to beginning of next word if any.
+            while (index < source.length() && !Character.isLetterOrDigit(source.charAt(index))) {
+                index++;
+            }
+        }
+
+        // Determine the winner
+        int max = 1;
+        String winner = "";
+
+        for (Map.Entry<String, Integer> e : wordsByNumber.entrySet()) {
+            int val = e.getValue();
+            if (val > max) {
+                max = val;
+                winner = e.getKey();
+            }
+        }
+
+        return winner;
+    }
+
+    private static boolean allowed(String word) {
+        return !forbiddenWords.contains(word);
+    }
+
     public static void main(String[] args) {
-        String source = "    Ba baa black  sheep ,     have you any wool ?  ";
+        String source = "    Ba baa black  sheep ,     have you any BlAck wool ?    ";
         String target = " black sheep, ";
         boolean found = contains(source, target) < 0 ? false : true;
         System.out.println(String.format("%s --> %s: %b", source, target, found));
-        System.out.printf("Words:%d", StringUtils.countWords(source));
+        System.out.println(String.format("Words:%d", StringUtils.countWords(source)));
+        System.out.println(String.format("The most frequent: %s", StringUtils.mostFrequentWord(source)));
+
+
     }
 }
