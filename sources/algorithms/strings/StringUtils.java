@@ -190,6 +190,22 @@ public class StringUtils {
         return winner;
     }
 
+    public static int firstMatch(String source, String pattern) {
+        int i = 0;
+        do {
+            while (i < source.length() && !Character.isLetterOrDigit(source.charAt(i))) {
+                i++;
+            }
+            for (int j = 0; j < pattern.length() - 1; j++) {
+                if (source.charAt(i) == pattern.charAt(j)) {
+                    return i;
+                }
+            }
+        } while (++i < source.length());
+
+        return (-1);
+    }
+
     private static boolean allowed(String word) {
         return !forbiddenWords.contains(word);
     }
@@ -201,7 +217,6 @@ public class StringUtils {
         System.out.println(String.format("%s --> %s: %b", source, target, found));
         System.out.println(String.format("Words:%d", StringUtils.countWords(source)));
         System.out.println(String.format("The most frequent: %s", StringUtils.mostFrequentWord(source)));
-
-
+        System.out.println(String.format("First match on: %d", StringUtils.firstMatch(source, "wrig")));
     }
 }

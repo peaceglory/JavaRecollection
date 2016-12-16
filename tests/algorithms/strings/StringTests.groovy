@@ -58,4 +58,11 @@ class StringTests extends GroovyTestCase {
         println "____________________________________________";
         println "Most frequent word: " + StringUtils.mostFrequentWord(source);
     }
+
+    void testFirstMatch() {
+        String source = Utils.createRandomString(SIZE);
+        println source;
+        println "____________________________________________";
+        println "First match on: " + StringUtils.firstMatch(source, "WWW");
+    }
 }
