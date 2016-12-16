@@ -26,7 +26,7 @@ public class Searcher {
         int to = arr.length - 1;
 
         while (from <= to) {
-            int mid = (from + to) / 2;
+            int mid = (from + to) / 2; // Or the overflow safe variants: from + ((to - from) / 2) OR (from + to) >>> 1
             if (key.compareTo(arr[mid]) > 0) {
                 from = mid + 1;
             } else if (key.compareTo(arr[mid]) < 0) {
