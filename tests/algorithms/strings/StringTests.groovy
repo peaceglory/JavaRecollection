@@ -65,4 +65,11 @@ class StringTests extends GroovyTestCase {
         println "____________________________________________";
         println "First match on: " + StringUtils.firstMatch(source, "WWW");
     }
+
+    void testPermutations() {
+        String input = "123456789";
+        println input;
+        println "-----------------------------------------------"
+        StringUtils.permutations(input);
+    }
 }

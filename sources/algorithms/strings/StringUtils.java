@@ -206,6 +206,20 @@ public class StringUtils {
         return (-1);
     }
 
+    public static void permutations(String input) {
+        permutations("", input);
+    }
+
+    private static void permutations(String prefix, String input) {
+        if (input.isEmpty()) {
+            System.out.println(prefix);
+            return;
+        }
+        for (int i = 0; i < input.length(); i++) {
+            permutations(prefix + input.charAt(i), input.substring(0, i) + input.substring(i + 1, input.length()));
+        }
+    }
+
     private static boolean allowed(String word) {
         return !forbiddenWords.contains(word);
     }
