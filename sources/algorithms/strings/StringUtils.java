@@ -210,6 +210,25 @@ public class StringUtils {
         permutations("", input);
     }
 
+    public static boolean anagrams(String str1, String str2) {
+        int[] arr = new int[26];
+
+        for (int i = 0; i < str1.length(); i++) {
+            arr[Character.toLowerCase(str1.charAt(i)) - 'a']++;
+        }
+
+        for (int j = 0; j < str2.length(); j++) {
+            arr[Character.toLowerCase(str2.charAt(j)) - 'a']--;
+        }
+
+        int k = 0;
+        while (k < arr.length && arr[k] == 0) {
+            k++;
+        }
+
+        return k == arr.length;
+    }
+
     private static void permutations(String prefix, String input) {
         if (input.isEmpty()) {
             System.out.println(prefix);
