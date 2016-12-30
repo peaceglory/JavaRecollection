@@ -11,7 +11,7 @@ public class SortListAdapter implements Sorter {
     @Override
     public int[] sort(int[] numbers) {
         //convert the array to a List
-        List<Integer> numberList = new ArrayList<Integer>();
+        List<Integer> numberList = new ArrayList<>();
 
         //call the adapter
         NumberSorter sorter = new NumberSorter();

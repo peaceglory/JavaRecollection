@@ -229,6 +229,21 @@ public class StringUtils {
         return k == arr.length;
     }
 
+    public static String reverseIterative(String str) {
+        StringBuilder sb = new StringBuilder(str.length());
+        for (int i = str.length() - 1; i >= 0; i--) {
+            sb.append(str.charAt(i));
+        }
+        return sb.toString();
+    }
+
+    public static String reverseRecursive(String str) {
+        if (str.length() < 2) {
+            return str;
+        }
+        return reverseRecursive(str.substring(1)) + str.charAt(0);
+    }
+
     private static void permutations(String prefix, String input) {
         if (input.isEmpty()) {
             System.out.println(prefix);
@@ -251,5 +266,7 @@ public class StringUtils {
         System.out.println(String.format("Words:%d", StringUtils.countWords(source)));
         System.out.println(String.format("The most frequent: %s", StringUtils.mostFrequentWord(source)));
         System.out.println(String.format("First match on: %d", StringUtils.firstMatch(source, "wrig")));
+        System.out.println("Reverse iterative:\n" + reverseIterative(source));
+        System.out.println("Reverse recursive:\n" + reverseRecursive(source));
     }
 }
