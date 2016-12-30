@@ -23,14 +23,15 @@ public class Factoriel {
             return 1;
         }
         long result = 1;
-        for (int i = 1; i <= n; i++) {
-            result *= i;
+        while (n > 0) {
+            result *= n;
+            n--;
         }
         return result;
     }
 
     public static void main(String[] args) {
-        int n = 10;
+        int n = 4;
         System.out.printf("Fact(%d) = %d%n", n, factorialIter(n));
     }
 }
