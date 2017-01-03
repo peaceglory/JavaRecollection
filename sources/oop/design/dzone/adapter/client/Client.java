@@ -1,6 +1,6 @@
 package sources.oop.design.dzone.adapter.client;
 
-import sources.oop.design.dzone.adapter.SortListAdapter;
+import sources.oop.design.dzone.adapter.target.SortListAdapter;
 import sources.oop.design.dzone.adapter.target.Sorter;
 
 /**

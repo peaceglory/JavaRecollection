@@ -1,7 +1,6 @@
-package sources.oop.design.dzone.adapter;
+package sources.oop.design.dzone.adapter.target;
 
 import sources.oop.design.dzone.adapter.adaptee.NumberSorter;
-import sources.oop.design.dzone.adapter.target.Sorter;
 
 import java.util.ArrayList;
 import java.util.List;
