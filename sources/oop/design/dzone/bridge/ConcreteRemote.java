@@ -4,6 +4,10 @@ package sources.oop.design.dzone.bridge;
 public class ConcreteRemote extends RemoteControl {
     private int currentChannel;
 
+    public ConcreteRemote(TV implementor) {
+        super(implementor);
+    }
+
     public void nextChannel() {
         currentChannel++;
         setChannel(currentChannel);

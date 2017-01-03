@@ -4,6 +4,10 @@ package sources.oop.design.dzone.bridge;
 public abstract class RemoteControl {
     private TV implementor;
 
+    public RemoteControl(TV implementor) {
+        this.implementor = implementor;
+    }
+
     public void on() {
         implementor.on();
     }

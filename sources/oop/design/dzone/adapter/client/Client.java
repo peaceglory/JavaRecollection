@@ -4,7 +4,29 @@ import sources.oop.design.dzone.adapter.target.SortListAdapter;
 import sources.oop.design.dzone.adapter.target.Sorter;
 
 /**
- * Created by mman on 20.12.16.
+ * <p>
+ * <b>Intent:</b><br />
+ * Provide client with the needed (expected) interface while at the same time makes use of the existing interface.
+ * </p>
+ *
+ * <p>
+ * <b>Ups:</b><br />
+ * Makes two different interfaces compatible with each other.
+ * </p>
+ *
+ * <p>
+ * <b>Downs:</b><br />
+ * Arguably adds a level of complexity.
+ * </p>
+ *
+ * <p>
+ * <b>Examples:</b>
+ * <ul>
+ * <li>Third party software vendors.</li>
+ * <li>Legacy code.</li>
+ * <li>Sorting algorithm vendor.</li>
+ * </ul>
+ * </p>
  */
 public class Client {
 
