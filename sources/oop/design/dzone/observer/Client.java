@@ -24,9 +24,6 @@ import java.util.Observer;
  * </li>
  * <li>Potential memory leaks if observers are not correctly detached.</li>
  * </ul>
- *
- *
- *
  * </p>
  *
  * <p>
