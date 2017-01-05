@@ -1,8 +1,8 @@
 package sources.oop.design.com.javacodegeeks.patterns.proxypattern.protectionproxy;
 
-import java.rmi.Naming;
+import sources.oop.design.com.javacodegeeks.patterns.proxypattern.remoteproxy.ReportGenerator;
 
-import com.javacodegeeks.patterns.proxypattern.remoteproxy.ReportGenerator;
+import java.rmi.Naming;
 
 public class ReportGeneratorProtectionProxy implements ReportGeneratorProxy{
 
