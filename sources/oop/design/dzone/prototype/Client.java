@@ -8,7 +8,8 @@ package sources.oop.design.dzone.prototype;
  *
  * <p>
  * <b>Ups:</b><br />
- * One time initialization of complex or similar objects.
+ * 1. One time initialization of complex or similar objects.<br />
+ * 2. Clients don't need to know how to create the object, they just clone it.
  * </p>
  *
  * <p>
