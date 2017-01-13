@@ -18,7 +18,8 @@ public class AccessControlProvider {
         AccessControl ac = null;
         ac = map.get(controlLevel);
         if (ac != null) {
-            return ac.clone();
+            AccessControl acc = ac.clone();
+            return acc;
         }
         return null;
     }
