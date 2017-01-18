@@ -3,12 +3,13 @@ package sources.oop.design.dzone.decorator;
 /**
  * <p>
  * <b>Intent:</b><br />
- * Extends functionality of an object dynamically using composition instead of inheritance.
+ * Enriches the functionality of existing methods at runtime when subclassing is impossible or not desirable.
  * </p>
  *
  * <p>
  * <b>Ups:</b><br />
- * Adds functionality runtime when subclassing is impossible or not desirable.
+ * 1. Extends functionality of an object dynamically using composition instead of inheritance.<br />
+ * 2. Each instance of the class can be enriched (decorated) differently.
  * </p>
  *
  * <p>
