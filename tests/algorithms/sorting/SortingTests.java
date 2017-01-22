@@ -14,11 +14,11 @@ public class SortingTests extends GroovyTestCase {
     private static final int SIZE = 100000;
 
     public void testSelectionSort() {
-        testSortingIntegers(SIZE, new InsertionSorter<Integer>(), null);
+        testSortingIntegers(SIZE, new SelectionSorter<Integer>(), null);
 
-//        testSortingStrings(SIZE, new InsertionSorter<String>(), null);
+//        testSortingStrings(SIZE, new SelectionSorter<String>(), null);
 
-//        testSortingStrings(SIZE, new InsertionSorter<String>(), (str1, str2) -> {
+//        testSortingStrings(SIZE, new SelectionSorter<String>(), (str1, str2) -> {
 //            if (str1.length() < str2.length()) {
 //                return -1;
 //            }

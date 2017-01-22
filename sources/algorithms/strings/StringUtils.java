@@ -206,6 +206,54 @@ public class StringUtils {
         return (-1);
     }
 
+    public static void permutations(String input) {
+        permutations("", input);
+    }
+
+    public static boolean anagrams(String str1, String str2) {
+        int[] arr = new int[26];
+
+        for (int i = 0; i < str1.length(); i++) {
+            arr[Character.toLowerCase(str1.charAt(i)) - 'a']++;
+        }
+
+        for (int j = 0; j < str2.length(); j++) {
+            arr[Character.toLowerCase(str2.charAt(j)) - 'a']--;
+        }
+
+        int k = 0;
+        while (k < arr.length && arr[k] == 0) {
+            k++;
+        }
+
+        return k == arr.length;
+    }
+
+    public static String reverseIterative(String str) {
+        StringBuilder sb = new StringBuilder(str.length());
+        for (int i = str.length() - 1; i >= 0; i--) {
+            sb.append(str.charAt(i));
+        }
+        return sb.toString();
+    }
+
+    public static String reverseRecursive(String str) {
+        if (str.length() < 2) {
+            return str;
+        }
+        return reverseRecursive(str.substring(1)) + str.charAt(0);
+    }
+
+    private static void permutations(String prefix, String input) {
+        if (input.isEmpty()) {
+            System.out.println(prefix);
+            return;
+        }
+        for (int i = 0; i < input.length(); i++) {
+            permutations(prefix + input.charAt(i), input.substring(0, i) + input.substring(i + 1, input.length()));
+        }
+    }
+
     private static boolean allowed(String word) {
         return !forbiddenWords.contains(word);
     }
@@ -218,5 +266,7 @@ public class StringUtils {
         System.out.println(String.format("Words:%d", StringUtils.countWords(source)));
         System.out.println(String.format("The most frequent: %s", StringUtils.mostFrequentWord(source)));
         System.out.println(String.format("First match on: %d", StringUtils.firstMatch(source, "wrig")));
+        System.out.println("Reverse iterative:\n" + reverseIterative(source));
+        System.out.println("Reverse recursive:\n" + reverseRecursive(source));
     }
 }

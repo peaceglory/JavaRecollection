@@ -3,7 +3,6 @@ package tests.algorithms.strings
 import sources.algorithms.strings.StringUtils
 import sources.utils.StopWatch
 import sources.utils.Utils
-
 /**
  * Created by mman on 14.12.16.
  */
@@ -64,5 +63,32 @@ class StringTests extends GroovyTestCase {
         println source;
         println "____________________________________________";
         println "First match on: " + StringUtils.firstMatch(source, "WWW");
+    }
+
+    void testPermutations() {
+        String input = "123456789";
+        println input;
+        println "-----------------------------------------------"
+        StringUtils.permutations(input);
+    }
+
+    void testAnagrams() {
+        String str1 = "stop";
+        String str2 = "post";
+        println str1 + " --> " + str2;
+        String output = StringUtils.anagrams(str1, str2) ? "ANAGRAMS" : "NOT ANAGRAMS";
+        println output;
+
+        str1 = "abcdefghijklmnopqrstuvwxyz";
+        str2 = "poqweiruytalskjdhgfmnxzcbv";
+        println str1 + " --> " + str2;
+        output = StringUtils.anagrams(str1, str2) ? "ANAGRAMS" : "NOT ANAGRAMS";
+        println output;
+
+        str1 = "abcdefgHijklMnopqrstuvwxyz";
+        str2 = "poqwEiruytalsCkjdhgfmnxzbv";
+        println str1 + " --> " + str2;
+        output = StringUtils.anagrams(str1, str2) ? "ANAGRAMS" : "NOT ANAGRAMS";
+        println output;
     }
 }
