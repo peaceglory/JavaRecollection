@@ -61,14 +61,14 @@ public class StringUtils {
      *      While end >= 0
      *          While start >= 0 AND source[start] != SPACE_CHAR
      *              start <- start - 1
-     *          For i <- start + 1 to (end]
-     *              sb.append(source[i])
+     *          For i <- start + 1 to source.length - 1
+     *              stringBuffer.append(source[i])
      *          start <- start - 1
      *          end <- start
      *          If end >= 0
-     *              sb.append(SPACE_CHAR)
+     *              stringBuffer.append(SPACE_CHAR)
      *
-     *      return sb.toString()
+     *      return stringBuffer.toString()
      */
     public static String reverseWords(String source) {
         int length = source.length();
@@ -206,8 +206,19 @@ public class StringUtils {
         return (-1);
     }
 
-    public static void permutations(String input) {
-        permutations("", input);
+    public static void permutations(String str) {
+        permutations(str, "");
+    }
+
+    private static void permutations(String str, String prefix) {
+        if (str.isEmpty()) {
+            System.out.println(prefix);
+            return;
+        }
+        for (int i = 0; i < str.length(); i++) {
+            String rem = str.substring(0, i) + str.substring(i + 1);
+            permutations(rem, prefix + str.charAt(i));
+        }
     }
 
     public static boolean anagrams(String str1, String str2) {
@@ -244,14 +255,43 @@ public class StringUtils {
         return reverseRecursive(str.substring(1)) + str.charAt(0);
     }
 
-    private static void permutations(String prefix, String input) {
-        if (input.isEmpty()) {
-            System.out.println(prefix);
-            return;
+    /**
+     * The following code prints all strings of length k where the characters are in sorted order. It
+     * does this by generating all strings of length k and then checking if each is sorted. What is its
+     * runtime?
+     */
+    public static void printSortedStrings(int remaining) {
+        printSortedStrings(remaining, "");
+    }
+
+    private  static void printSortedStrings(int remaining, String prefix) {
+        int numChars = 26;
+
+        if (remaining == 0) {
+            if (islnOrder(prefix)) {
+                System.out.println(prefix);
+            }
+        } else {
+            for (int i = 0; i < numChars ; i++) {
+                char c = ithLetter(i);
+                printSortedStrings(remaining - 1, prefix + c);
+            }
         }
-        for (int i = 0; i < input.length(); i++) {
-            permutations(prefix + input.charAt(i), input.substring(0, i) + input.substring(i + 1, input.length()));
+    }
+
+    private static boolean islnOrder(String s) {
+        for (int i = 1; i < s.length(); i++) {
+            int prev = ithLetter(s.charAt(i - 1));
+            int curr = ithLetter(s.charAt(i));
+            if (prev > curr) {
+                return false;
+            }
         }
+        return true;
+    }
+
+    private static char ithLetter(int i) {
+        return (char) (((int) 'a') + i);
     }
 
     private static boolean allowed(String word) {
@@ -268,5 +308,7 @@ public class StringUtils {
         System.out.println(String.format("First match on: %d", StringUtils.firstMatch(source, "wrig")));
         System.out.println("Reverse iterative:\n" + reverseIterative(source));
         System.out.println("Reverse recursive:\n" + reverseRecursive(source));
+
+        printSortedStrings(2);
     }
 }

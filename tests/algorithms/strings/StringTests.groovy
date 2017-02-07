@@ -66,7 +66,7 @@ class StringTests extends GroovyTestCase {
     }
 
     void testPermutations() {
-        String input = "123456789";
+        String input = "ABC";
         println input;
         println "-----------------------------------------------"
         StringUtils.permutations(input);
