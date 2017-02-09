@@ -1,4 +1,4 @@
-package sources.datastructures.trees;
+package sources.datastructures.custom.trees;
 
 /**
  * Created by mman on 23.11.16.

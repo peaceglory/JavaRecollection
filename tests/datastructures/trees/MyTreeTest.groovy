@@ -1,9 +1,9 @@
 package tests.datastructures.trees
 
-import sources.datastructures.trees.AMyTree
-import sources.datastructures.trees.IMyTree
-import sources.datastructures.trees.MyTree
-import sources.datastructures.trees.TraverseStrategy
+import sources.datastructures.custom.trees.AMyTree
+import sources.datastructures.custom.trees.IMyTree
+import sources.datastructures.custom.trees.MyTree
+import sources.datastructures.custom.trees.TraverseStrategy
 
 /**
  * Created by mman on 18.11.16.

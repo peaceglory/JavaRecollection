@@ -1,6 +1,6 @@
 package tests.datastructures.lists
 
-import sources.datastructures.lists.CustomDoubleLinkedList
+import sources.datastructures.custom.lists.CustomDoubleLinkedList
 /**
  * Created by mman on 23.10.16.
  */

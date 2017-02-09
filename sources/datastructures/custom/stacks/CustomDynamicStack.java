@@ -1,4 +1,4 @@
-package sources.datastructures.stacks;
+package sources.datastructures.custom.stacks;
 
 /**
  * Created by mman on 24.10.16.

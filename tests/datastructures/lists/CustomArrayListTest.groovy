@@ -1,6 +1,6 @@
 package tests.datastructures.lists
 
-import sources.datastructures.lists.CustomArrayList
+import sources.datastructures.custom.lists.CustomArrayList
 
 /**
  * Created by mman on 20.10.16.

@@ -1,6 +1,6 @@
 package tests.datastructures.lists
 
-import sources.datastructures.lists.CustomLinkedList
+import sources.datastructures.custom.lists.CustomLinkedList
 
 /**
  * Created by mman on 22.10.16.

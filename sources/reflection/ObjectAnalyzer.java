@@ -1,6 +1,6 @@
 package sources.reflection;
 
-import sources.datastructures.trees.MyBinaryTree;
+import sources.datastructures.custom.trees.MyBinaryTree;
 import sources.oop.animals.Animal;
 import sources.oop.animals.Dog;
 import tests.datastructures.trees.MyBinarySearchTreeTest;

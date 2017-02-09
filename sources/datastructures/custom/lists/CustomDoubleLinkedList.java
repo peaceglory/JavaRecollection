@@ -1,9 +1,9 @@
-package sources.datastructures.lists;
+package sources.datastructures.custom.lists;
 
 /**
  * Created by mman on 22.10.16.
  */
-public class CustomLinkedList {
+public class CustomDoubleLinkedList {
     private int size = 0;
     private Node head = null;
     private Node tail = null;
@@ -11,13 +11,14 @@ public class CustomLinkedList {
     private static class Node {
         private Object value = null;
         private Node next = null;
+        private Node prev = null;
 
         private Node(Object value) {
             this.value = value;
         }
     }
 
-    public CustomLinkedList() {
+    public CustomDoubleLinkedList() {
     }
 
     public void add(Object o) {
@@ -26,6 +27,7 @@ public class CustomLinkedList {
             head = tail = newNode;
         } else {
             tail.next = newNode;
+            newNode.prev = tail;
             tail = newNode;
         }
         size++;
@@ -45,20 +47,22 @@ public class CustomLinkedList {
         }
 
         Node current = head;
-        Node previous = null;
         for (int count = 0; count != index; current = current.next) {
-            previous = current;
             count++;
         }
-        if (previous == null) { // Remove head
+        if (current.prev == null) { // Remove head
             head = current.next;
+            head.prev = null;
         } else { // Remove regular
-            previous.next = current.next;
+            current.prev.next = current.next;
+            if (current.next != null) {
+                current.next.prev = current.prev;
+            }
         }
         current.next = null;
 
         if (current == tail) { // Remove Tail
-            tail = previous;
+            tail = current.prev;
         }
 
         return current.value;
@@ -66,9 +70,7 @@ public class CustomLinkedList {
 
     public boolean remove(Object value) {
         Node current = head;
-        Node previous = null;
         while (current != null && !current.value.equals(value)) {
-            previous = current;
             current = current.next;
         }
 
@@ -78,13 +80,16 @@ public class CustomLinkedList {
 
         size--;
 
-        if (previous == null) { // Remove Head
+        if (current.prev == null) { // Remove Head
             head = current.next;
         } else {
             if (current == tail) { // Remove Tail
-                tail = previous;
+                tail = current.prev;
             }
-            previous.next = current.next;
+            current.prev.next = current.next;
+            if (current.next != null) {
+                current.next.prev = current.prev;
+            }
         }
         current.next = null;
 
@@ -104,42 +109,6 @@ public class CustomLinkedList {
 
     public int size() {
         return this.size;
-    }
-
-    public void reverse() {
-//        reverseRecursive(null, head);
-        reverseIterative();
-    }
-
-    private void reverseRecursive(Node prev, Node current) {
-        if (current.next == null) {
-            current.next = prev;
-            head = current;
-            return;
-        }
-        reverseRecursive(current, current.next);
-        if (prev == null) {
-            tail = current;
-        }
-        current.next = prev;
-    }
-
-    private void reverseIterative() {
-        Node prev = null;
-        Node current = head;
-        Node next = null;
-
-        tail = head;
-        do {
-            next = current.next;
-            current.next = prev;
-            if (next == null) {
-                head = current;
-                break;
-            }
-            prev = current;
-            current = next;
-        } while (true);
     }
 
     private boolean isIndexValid(int index) {

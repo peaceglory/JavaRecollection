@@ -1,7 +1,7 @@
 package tests.datastructures.trees
 
-import sources.datastructures.trees.MyBinaryTree
-import sources.datastructures.trees.TraverseStrategy
+import sources.datastructures.custom.trees.MyBinaryTree
+import sources.datastructures.custom.trees.TraverseStrategy
 
 /**
  * Created by mman on 22.11.16.
