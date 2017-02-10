@@ -1,4 +1,4 @@
-package tests.datastructures.maps;
+package tests.datastructures.maps.hashmap;
 
 import java.util.HashMap;
 import java.util.Map;

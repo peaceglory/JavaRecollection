@@ -1,4 +1,4 @@
-package tests.datastructures.maps
+package tests.datastructures.maps.hashmap
 
 import sources.oop.employees.Employee
 import sources.oop.employees.Engineer
