@@ -1,9 +1,6 @@
 package sources.datastructures.custom.maps;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by mman on 09.02.17.
@@ -130,6 +127,45 @@ public class BasicHashMap<K, V> implements BasicMap<K, V> {
             this.next = next;
         }
 
+    }
+
+    /* TODO: Needs testing */
+    class BasicHashMapIterator implements Iterator<HashEntry> {
+        private HashEntry currEntry;
+        private int currBucket;
+
+        BasicHashMapIterator() {
+            currEntry = null;
+            currBucket = -1;
+        }
+
+        @Override
+        public boolean hasNext() {
+            if (currEntry != null && currEntry.hasNext()) {
+                return true;
+            }
+            for (int b = currBucket + 1; b < buckets.length; b++) {
+                if (buckets[b] != null) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        @Override
+        public HashEntry next() {
+            if (currEntry != null && currEntry.hasNext()) {
+                currEntry = currEntry.getNext();
+                return currEntry;
+            }
+            for (currBucket = currBucket + 1; currBucket < buckets.length; currBucket++) {
+                if (buckets[currBucket] != null) {
+                    currEntry = buckets[currBucket];
+                    return currEntry;
+                }
+            }
+            throw new NoSuchElementException("No next element found");
+        }
     }
 
     private boolean needsResize() {
