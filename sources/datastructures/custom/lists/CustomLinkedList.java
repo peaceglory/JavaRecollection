@@ -106,9 +106,12 @@ public class CustomLinkedList {
         return this.size;
     }
 
-    public void reverse() {
-//        reverseRecursive(null, head);
-        reverseIterative();
+    public void reverse(boolean iterative) {
+        if (iterative) {
+            reverseIterative();
+        } else {
+            reverseRecursive(null, head);
+        }
     }
 
     private void reverseRecursive(Node prev, Node current) {
@@ -118,28 +121,25 @@ public class CustomLinkedList {
             return;
         }
         reverseRecursive(current, current.next);
+        current.next = prev;
         if (prev == null) {
             tail = current;
         }
-        current.next = prev;
     }
 
     private void reverseIterative() {
         Node prev = null;
-        Node current = head;
+        Node curr = head;
         Node next = null;
 
         tail = head;
         do {
-            next = current.next;
-            current.next = prev;
-            if (next == null) {
-                head = current;
-                break;
-            }
-            prev = current;
-            current = next;
-        } while (true);
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        } while (next != null);
+        head = prev;
     }
 
     private boolean isIndexValid(int index) {

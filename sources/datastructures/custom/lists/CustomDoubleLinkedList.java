@@ -111,6 +111,47 @@ public class CustomDoubleLinkedList {
         return this.size;
     }
 
+    public void reverse(boolean iterative) {
+        if (iterative) {
+            reverseIter();
+        } else {
+            reverseRecursive(head);
+        }
+    }
+
+    private void reverseRecursive(Node curr) {
+        if (curr.next == null) {
+            head = curr;
+            curr.next = curr.prev;
+            curr.prev = null;
+            return;
+        }
+        reverseRecursive(curr.next);
+
+        Node prev = curr.next;
+        curr.next = curr.prev;
+        curr.prev = prev;
+
+        if (curr.next == null) {
+            tail = curr;
+        }
+    }
+
+    private void reverseIter() {
+        Node curr = tail = head;
+        Node next = null;
+        do {
+            next = curr.next;
+            curr.next = curr.prev;
+            curr.prev = next;
+            if (next == null) {
+                head = curr;
+                break;
+            }
+            curr = next;
+        } while (true);
+    }
+
     private boolean isIndexValid(int index) {
         return index >= 0 && index < size;
     }
