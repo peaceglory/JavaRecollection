@@ -17,9 +17,9 @@ public class Prime {
         return true;
     }
 
-    public static void listPrimesUntil(int n) {
+    public static void listPrimerSequence(int sequenceLength) {
         int primesFound = 0, current = 0;
-        while (primesFound < n) {
+        while (primesFound < sequenceLength) {
             if (isPrime(current)) {
                 System.out.println(current);
                 primesFound++;
