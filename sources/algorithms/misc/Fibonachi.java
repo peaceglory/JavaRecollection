@@ -4,7 +4,6 @@ package sources.algorithms.misc;
  * 0 1 1 2 3 5 8 13 21 34 55...
  */
 public class Fibonachi {
-    private static long[] cache = null;
 
     public static long fibonachi(int n) {
         if (n < 1) {
@@ -20,20 +19,24 @@ public class Fibonachi {
     }
 
     public static long fibonachiImproved(int n) {
-        if (cache == null) {
-            cache = new long[n + 1]; // because sequence starts with 0;
-            cache[1] = 0;
-            cache[2] = 1;
-        }
+        long[] cache = new long[n + 1];
+        return fibonachi(n, cache);
+    }
+
+    private static long fibonachi(int n, long[] cache) {
         if (n < 1) {
             return -1l;
         }
-        if (n < 3) {
+        if (n == 1) {
+            return 0;
+        }
+        if (n == 2) {
+            return 1;
+        }
+        if (cache[n] > 0) {
             return cache[n];
         }
-        if (cache[n] == 0) {
-            cache[n] = fibonachiImproved(n - 1) + fibonachiImproved(n - 2);
-        }
+        cache[n] = fibonachi(n - 1, cache) + fibonachi(n - 2, cache);
         return cache[n];
     }
 
@@ -59,7 +62,7 @@ public class Fibonachi {
     }
 
     public static void main(String[] args) {
-        int n = 99;
-        System.out.printf("Fib %d: %d%n", n, fibonachiLoop(n));
+        int n = 8;
+        System.out.printf("Fib %d: %d%n", n, fibonachiImproved(n));
     }
 }
