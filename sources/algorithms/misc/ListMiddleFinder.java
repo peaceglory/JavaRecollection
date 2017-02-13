@@ -8,13 +8,13 @@ import java.util.List;
 public class ListMiddleFinder {
 
     public static <T> T findMiddleInOnePass(List<T> list) {
-        int midPointer = 0;
-        for (int i = 0; i < list.size() - 1; ) {
-            i++;
-            if (i % 2 == 0) {
-                midPointer++;
+        int lazy = 0;
+        for (int eager = 0; eager < list.size() - 1; ) {
+            eager++;
+            if (eager % 2 == 0) {
+                lazy++;
             }
         }
-        return list.get(midPointer);
+        return list.get(lazy);
     }
 }
