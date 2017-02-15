@@ -23,6 +23,6 @@ public class PrimeTest extends GroovyTestCase {
 
     public void testListPrimesUntil() {
         int primesNeeded = 10;
-        Prime.listPrimesUntil(primesNeeded);
+        Prime.listPrimerSequence(primesNeeded);
     }
 }
