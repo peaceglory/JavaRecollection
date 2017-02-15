@@ -11,7 +11,7 @@ import java.util.Comparator;
  * Created by mman on 09.12.16.
  */
 public class SortingTests extends GroovyTestCase {
-    private static final int SIZE = 100000;
+    private static final int SIZE = 10;
 
     public void testSelectionSort() {
         testSortingIntegers(SIZE, new SelectionSorter<Integer>(), null);
