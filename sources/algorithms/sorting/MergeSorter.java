@@ -20,8 +20,8 @@ public class MergeSorter<T extends Comparable> implements Sorter<T> {
         if (arr.length <= 1) {
             return arr;
         }
-        T[] arr1 = Arrays.copyOfRange(arr, 0, arr.length / 2);
-        T[] arr2 = Arrays.copyOfRange(arr, arr.length / 2, arr.length);
+        T[] arr1 = Arrays.copyOfRange(arr, 0, arr.length >> 1); // number >> 1 = number / 2
+        T[] arr2 = Arrays.copyOfRange(arr, arr.length >> 1, arr.length);
         sort(arr1, comparator);
         sort(arr2, comparator);
         merge(arr, arr1, arr2, comparator);

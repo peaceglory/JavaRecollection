@@ -33,22 +33,22 @@ public class QuickSorter<T extends Comparable> implements Sorter<T> {
 
     private static <T extends Comparable> int partition(T[] arr, Comparator<? super T> comparator, int from, int to) {
         T pivot = arr[from]; // This is only OK if the input is random. Otherwise use random pivot or median - (from + to) / 2
-        int i = from - 1;
-        int j = to + 1;
+        int findBigger = from - 1; // This will increase until it finds an element that is bigger than pivot
+        int findSmaller = to + 1; // This will decrease until it finds an element that is smaller than pivot
 
         while (true) {
             do {
-                i++;
-            } while (Utils.compare(arr[i], pivot, comparator) < 0);
+                findBigger++;
+            } while (Utils.compare(arr[findBigger], pivot, comparator) < 0);
 
             do {
-                j--;
-            } while (Utils.compare(arr[j], pivot, comparator) > 0);
+                findSmaller--;
+            } while (Utils.compare(arr[findSmaller], pivot, comparator) > 0);
 
-            if (i < j) {
-                Sorter.swap(arr, i, j);
+            if (findBigger < findSmaller) {
+                Sorter.swap(arr, findBigger, findSmaller);
             } else {
-                return j;
+                return findSmaller;
             }
         }
     }
