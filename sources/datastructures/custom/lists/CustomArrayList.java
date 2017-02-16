@@ -1,5 +1,7 @@
 package sources.datastructures.custom.lists;
 
+import java.util.Arrays;
+
 /**
  * Created by mman on 20.10.16.
  */
@@ -97,6 +99,26 @@ public class CustomArrayList {
             array[i] = array[(size-1) - i];
             array[(size-1) - i] = tmp;
         }
+    }
+
+    public void reverseRecursive() {
+        reverseRecursive(array);
+    }
+
+    private void reverseRecursive(Object[] arr) {
+        if (arr.length < 2) {
+            return;
+        }
+        // FIXME: arr.length is all slots - values + nulls. In order to work nulls should not be taken into account
+        Object[] subarr = Arrays.copyOfRange(arr, 1, arr.length);
+
+        reverseRecursive(subarr);
+
+        arr[arr.length - 1] = arr[0];
+        for (int i = 0; i < subarr.length; i++) {
+            arr[i] = subarr[i];
+        }
+
     }
 
     private boolean hasCapacity() {

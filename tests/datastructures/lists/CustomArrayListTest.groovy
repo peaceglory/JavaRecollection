@@ -118,7 +118,7 @@ class CustomArrayListTest extends groovy.util.GroovyTestCase {
 
     void testReverse() {
         CustomArrayList list = new CustomArrayList();
-        for (long i = 0; i <= 10; i++) {
+        for (long i = 1; i <= 15; i++) {
             list.add(new Long(i));
         }
 //        for (int j = 0; j < list.size(); j++) {
@@ -127,6 +127,9 @@ class CustomArrayListTest extends groovy.util.GroovyTestCase {
 //                System.out.println();
 //            }
 //        }
+
+        printArray(list);
+
 
         long then = System.currentTimeMillis();
         list.reverse();
@@ -140,12 +143,28 @@ class CustomArrayListTest extends groovy.util.GroovyTestCase {
 //                System.out.println();
 //            }
 //        }
+
+        printArray(list);
         println "Reverse took: " + (now-then)/1000 + " sec.";
+    }
+
+    void testReverseRecursive() {
+        CustomArrayList list = new CustomArrayList();
+        for (long i = 0; i < 11; i++) {
+            list.add(new Long(i));
+        }
+
+        printArray(list);
+
+        list.reverseRecursive();
+
+        printArray(list);
     }
 
     private void printArray(CustomArrayList list) {
         for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i));
+            System.out.print(list.get(i) + " ");
         }
+        System.out.println();
     }
 }

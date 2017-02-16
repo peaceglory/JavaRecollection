@@ -37,13 +37,13 @@ public class StringUtils {
      *          currS <- currS + 1
      *      return (-1)
      */
-    public static int contains(String source, String pattern) {
-        int s = source.length();
+    public static int contains(String str, String pattern) {
+        int s = str.length();
         int p = pattern.length();
 
         for (int i = 0; i <= s - p; i++) {
             int j = 0;
-            while (j < p && source.charAt(i + j) == pattern.charAt(j)) {
+            while (j < p && str.charAt(i + j) == pattern.charAt(j)) {
                 j++;
             }
             if (j == p) {
