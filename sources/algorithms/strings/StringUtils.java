@@ -28,26 +28,26 @@ public class StringUtils {
      *  Contains(source, pattern)
      *      s <- source.length
      *      p <- pattern.length
-     *      For currS <- 0 to (s - p]
-     *          currP <- 0
-     *          While currP < p AND source[currS + currP] = pattern[currP]
-     *              currP <- currP + 1
-     *          If currP = p
-     *              return currS
-     *          currS <- currS + 1
+     *      For strIndex <- 0 to (s - p]
+     *          pattIndex <- 0
+     *          While pattIndex < p AND source[strIndex + pattIndex] = pattern[pattIndex]
+     *              pattIndex <- pattIndex + 1
+     *          If pattIndex = p
+     *              return strIndex
+     *          strIndex <- strIndex + 1
      *      return (-1)
      */
     public static int contains(String str, String pattern) {
         int s = str.length();
         int p = pattern.length();
 
-        for (int i = 0; i <= s - p; i++) {
-            int j = 0;
-            while (j < p && str.charAt(i + j) == pattern.charAt(j)) {
-                j++;
+        for (int strIndex = 0; strIndex <= s - p; strIndex++) {
+            int pattIndex = 0;
+            while (pattIndex < p && str.charAt(strIndex + pattIndex) == pattern.charAt(pattIndex)) {
+                pattIndex++;
             }
-            if (j == p) {
-                return i;
+            if (pattIndex == p) {
+                return strIndex;
             }
         }
         return -1;
