@@ -10,13 +10,13 @@ class StringTests extends GroovyTestCase {
     private static final int SIZE = 1000;
 
     void testContains() {
-        String source = Utils.createRandomString(SIZE);
-        println source;
-        String target = "sharpshooter";
+        String str = Utils.createRandomString(SIZE);
+        println str;
+        String pattern = "sharpshooter";
 
         StopWatch timer = new StopWatch();
         timer.start();
-        int found = StringUtils.contains(source, target);
+        int found = StringUtils.contains(str, pattern);
         timer.stop();
         println "--------------------------------------------------------"
         println "Found at: " + found + ". Took " + timer.getResult();
