@@ -91,4 +91,12 @@ class StringTests extends GroovyTestCase {
         output = StringUtils.anagrams(str1, str2) ? "ANAGRAMS" : "NOT ANAGRAMS";
         println output;
     }
+
+    void testReverseIterative() {
+        String str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        println(str);
+        String revsd = StringUtils.reverseIterative(str);
+        println(revsd);
+        assertEquals("ZYXWVUTSRQPONMLKJIHGFEDCBA", revsd);
+    }
 }

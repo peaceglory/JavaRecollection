@@ -61,7 +61,7 @@ public class StringUtils {
      *      While end >= 0
      *          While start >= 0 AND source[start] != SPACE_CHAR
      *              start <- start - 1
-     *          For i <- start + 1 to source.length - 1
+     *          For i <- start + 1 to end
      *              stringBuffer.append(source[i])
      *          start <- start - 1
      *          end <- start
@@ -91,18 +91,19 @@ public class StringUtils {
         return sb.toString();
     }
 
-    public static boolean isPalindrome(String source) {
+    // FIXME: This method blows up when str is an empty string with length>2. It needs checks in the inner whiles.
+    public static boolean isPalindrome(String str) {
         int start = 0;
-        int end = source.length() - 1;
+        int end = str.length() - 1;
 
         while (start < end) {
-            while (!Character.isLetterOrDigit(source.charAt(start))) {
+            while (!Character.isLetterOrDigit(str.charAt(start))) {
                 start++;
             }
-            while (!Character.isLetterOrDigit(source.charAt(end))) {
+            while (!Character.isLetterOrDigit(str.charAt(end))) {
                 end--;
             }
-            if (Character.toUpperCase(source.charAt(start)) != Character.toUpperCase(source.charAt(end))) {
+            if (Character.toUpperCase(str.charAt(start)) != Character.toUpperCase(str.charAt(end))) {
                 return false;
             }
             start++;
@@ -111,29 +112,35 @@ public class StringUtils {
         return true;
     }
 
-    public static int countWords(String source) {
-        if (source.isEmpty()) {
+    public static int countWords(String str) {
+        if (str.isEmpty()) {
             return 0;
         }
         // Trim white spaces on both end if any.
         int index = 0;
-        while (index < source.length() && Character.isWhitespace(source.charAt(index++)));
-        int curr = index - 1;
+        while (index < str.length() && Character.isWhitespace(str.charAt(index))) {
+            index++;
+        }
+        int begin = index - 1;
 
-        index = source.length() - 1;
-        while (index >= 0 && Character.isWhitespace(source.charAt(index--)));
+        index = str.length() - 1;
+        while (index >= 0 && Character.isWhitespace(str.charAt(index))) {
+            index--;
+        }
         int end = index + 1;
 
         int wordCount = 0;
         boolean inWord = false;
-        while (curr <= end) {
-            if (Character.isWhitespace(source.charAt(curr))) {
+        while (begin <= end) {
+            if (Character.isWhitespace(str.charAt(begin))) {
                 inWord = false;
                 wordCount++;
-                while (curr <= end && !Character.isLetterOrDigit(source.charAt(curr++)));
+                while (begin <= end && !Character.isLetterOrDigit(str.charAt(begin))) {
+                    begin++;
+                }
             } else {
                 inWord = true;
-                curr++;
+                begin++;
             }
         }
         return inWord ? ++wordCount : wordCount;
@@ -190,16 +197,21 @@ public class StringUtils {
         return winner;
     }
 
+    // FIXME: What exactly is this supposed to do?
     public static int firstMatch(String source, String pattern) {
         int i = 0;
         do {
             while (i < source.length() && !Character.isLetterOrDigit(source.charAt(i))) {
                 i++;
             }
-            for (int j = 0; j < pattern.length() - 1; j++) {
-                if (source.charAt(i) == pattern.charAt(j)) {
-                    return i;
+            int j = 0;
+            for ( ; i < source.length() && j < pattern.length(); i++, j++) {
+                if (source.charAt(i) != pattern.charAt(j)) {
+                    break;
                 }
+            }
+            if (j == pattern.length()) {
+                return i;
             }
         } while (++i < source.length());
 
@@ -241,11 +253,23 @@ public class StringUtils {
     }
 
     public static String reverseIterative(String str) {
-        StringBuilder sb = new StringBuilder(str.length());
-        for (int i = str.length() - 1; i >= 0; i--) {
-            sb.append(str.charAt(i));
+        // With string builder
+//        StringBuilder sb = new StringBuilder(str.length());
+//        for (int i = str.length() - 1; i >= 0; i--) {
+//            sb.append(str.charAt(i));
+//        }
+//        return sb.toString();
+
+        // With tmp
+        char[] chars = str.toCharArray();
+        char tmp = ' ';
+        for (int iStr = 0; iStr < (chars.length >> 1); iStr++) {
+            tmp = chars[iStr];
+            int otherEnd = chars.length - 1 - iStr;
+            chars[iStr] = chars[otherEnd];
+            chars[otherEnd] = tmp;
         }
-        return sb.toString();
+        return new String(chars);
     }
 
     public static String reverseRecursive(String str) {
@@ -305,7 +329,7 @@ public class StringUtils {
         System.out.println(String.format("%s --> %s: %b", source, target, found));
         System.out.println(String.format("Words:%d", StringUtils.countWords(source)));
         System.out.println(String.format("The most frequent: %s", StringUtils.mostFrequentWord(source)));
-        System.out.println(String.format("First match on: %d", StringUtils.firstMatch(source, "wrig")));
+        System.out.println(String.format("First match on: %d", StringUtils.firstMatch(source, "black")));
         System.out.println("Reverse iterative:\n" + reverseIterative(source));
         System.out.println("Reverse recursive:\n" + reverseRecursive(source));
 
