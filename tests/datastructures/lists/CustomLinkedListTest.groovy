@@ -96,4 +96,24 @@ class CustomLinkedListTest extends GroovyTestCase {
             System.out.println(list.get(i));
         }
     }
+
+    void testRemoveDuplicates() {
+        CustomLinkedList list = new CustomLinkedList();
+        list.add("A")
+        list.add("B")
+        list.add("A")
+        list.add("A")
+        list.add("C")
+
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println(list.get(i));
+        }
+        println "_________________________________"
+
+        list.removeDuplicates(false);
+
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println(list.get(i));
+        }
+    }
 }

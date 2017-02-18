@@ -1,5 +1,8 @@
 package sources.datastructures.custom.lists;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Created by mman on 22.10.16.
  */
@@ -140,6 +143,39 @@ public class CustomLinkedList {
             curr = next;
         } while (next != null);
         head = prev;
+    }
+
+    public void removeDuplicates(boolean saveTime) {
+        if (saveTime) { // O(N) time, O(N) space
+            Set<Object> set = new HashSet<>(size);
+            Node prev = null;
+            for (Node curr = head; curr != null; ) {
+                if (!set.add(curr.value)) {
+                    prev.next = curr.next;
+                    curr.next = null;
+                    curr = prev.next;
+                    size--;
+                    continue;
+                }
+                prev = curr;
+                curr = curr.next;
+            }
+        } else { // O(N^2) time, O(1) space
+            for (Node first = head; first.next.next != null; ) {
+                Node second = first;
+                while (second.next != null) {
+                    if (first.value.equals(second.next.value)) {
+                        Node tmp = second.next.next;
+                        second.next.next = null;
+                        second.next = tmp;
+                        size--;
+                        continue;
+                    }
+                    second = second.next;
+                }
+                first = first.next;
+            }
+        }
     }
 
     private boolean isIndexValid(int index) {
