@@ -73,7 +73,7 @@ public class MyBinarySearchTree<T extends Comparable> extends MyBinaryTree<T> {
             return false;
         }
 
-        if (node.isLeaf()) {
+        if (node.isLeaf()) { // Has no children
             if (node.parent == null) {
                 return true; // Nothing to remove - it's a root leaf.
             }

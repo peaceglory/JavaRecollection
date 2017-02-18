@@ -33,13 +33,18 @@ public class MyBinaryTree<T extends Comparable> implements IMyTree<T> {
             return value;
         }
         T min = value;
-        T candidate = left.minimum();
-        if (min.compareTo(candidate) > 0) {
-            min = candidate;
+        T candidate = null;
+        if (left != null) {
+            candidate = left.minimum();
+            if (min.compareTo(candidate) > 0) {
+                min = candidate;
+            }
         }
-        candidate = right.minimum();
-        if (min.compareTo(candidate) > 0) {
-            min = candidate;
+        if (right != null) {
+            candidate = right.minimum();
+            if (min.compareTo(candidate) > 0) {
+                min = candidate;
+            }
         }
         return min;
     }
@@ -50,13 +55,19 @@ public class MyBinaryTree<T extends Comparable> implements IMyTree<T> {
             return value;
         }
         T max = value;
-        T candidate = left.maximum();
-        if (max.compareTo(candidate) < 0) {
-            max = candidate;
+        T candidate = null;
+
+        if (left != null) {
+            candidate = left.maximum();
+            if (max.compareTo(candidate) < 0) {
+                max = candidate;
+            }
         }
-        candidate = right.maximum();
-        if (max.compareTo(candidate) < 0) {
-            max = candidate;
+        if (right != null) {
+            candidate = right.maximum();
+            if (max.compareTo(candidate) < 0) {
+                max = candidate;
+            }
         }
         return max;
     }
@@ -73,7 +84,7 @@ public class MyBinaryTree<T extends Comparable> implements IMyTree<T> {
                 return candidate;
             }
         }
-        if (this.right != null) {
+        if (right != null) {
             candidate = right.search(value);
             if (candidate != null) {
                 return candidate;
