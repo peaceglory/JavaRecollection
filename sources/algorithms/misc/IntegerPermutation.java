@@ -8,6 +8,14 @@ import java.util.*;
  */
 public class IntegerPermutation {
 
+    /**
+     * We note that this will run in O(N!), as on the 1st call N sub calls will be made,
+     * each of which will make N-1 sub calls, etc etc.
+     * Moreover, every element will end up being in every position,
+     * and so long as only swaps are made no element will ever be duplicated.
+     *
+     * http://stackoverflow.com/questions/30387185/print-out-all-permutations-of-an-array
+     */
     public static void permutations(int n) {
         int[] a = numberToArray(n);
         permutations(a, 0);
