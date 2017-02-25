@@ -9,10 +9,10 @@ import java.util.Scanner;
 /**
  * Created by mman on 25.02.17.
  */
-public abstract class ADependencyGraph implements IDependencyGraph {
+public abstract class AbstractDependencyGraph implements DependencyGraph {
     private final List<String> input;
 
-    public ADependencyGraph(String input) {
+    public AbstractDependencyGraph(String input) {
         this.input = format(input);
     }
 

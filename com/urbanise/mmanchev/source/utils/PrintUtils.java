@@ -1,12 +1,15 @@
 package com.urbanise.mmanchev.source.utils;
 
+import java.io.File;
+
 /**
  * Created by mman on 25.02.17.
  */
 public class PrintUtils {
     public static final String NL = System.lineSeparator();
+    public static final String FS = File.separator;
 
-    public static void printLn(String message) {
+    public static void printLine(String message) {
         System.out.println(message);
     }
 
