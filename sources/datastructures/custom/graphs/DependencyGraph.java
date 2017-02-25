@@ -1,11 +1,13 @@
 package sources.datastructures.custom.graphs;
 
+import com.urbanise.mmanchev.source.helpers.MemoryQueue;
+
 import java.util.*;
 
 /**
  * Created by mman on 22.02.17.
  */
-public class Graph {
+public class DependencyGraph {
     private Map<String, List<String>> adjMap = new HashMap<>();
     private String[] tmpInput = { // Needs to come from console input or a file.
             "A B C",
@@ -16,7 +18,7 @@ public class Graph {
             "F H"
     };
 
-    public Graph() {
+    public DependencyGraph() {
         fillAdjMap();
     }
 
@@ -45,10 +47,12 @@ public class Graph {
     private void fillAdjMap() {
         String[] feedLine;
         List<String> adjList;
+
         for (String s : tmpInput) {
             feedLine = s.split(" ");
             adjList = new LinkedList<>();
             adjMap.put(feedLine[0], adjList); // For the testing check for empty array or nulls
+
             for (int i = 1; i < feedLine.length; i++) {
                 adjMap.get(feedLine[0]).add(feedLine[i]);
             }
@@ -56,7 +60,7 @@ public class Graph {
     }
 
     public static void main(String[] args) {
-        Graph g = new Graph();
+        DependencyGraph g = new DependencyGraph();
         g.showFullDependencies();
         System.out.println();
     }
