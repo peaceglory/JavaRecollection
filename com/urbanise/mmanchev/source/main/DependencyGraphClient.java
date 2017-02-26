@@ -18,7 +18,7 @@ public class DependencyGraphClient {
         DataInputProvider input = null;
         try {
             input = DataProviderFactory.getDataProvider(args);
-        } catch (DataSourceNotFound e) {
+        } catch (Exception e) {
             PrintUtils.printLine(e.getMessage());
             System.exit(-1);
         }

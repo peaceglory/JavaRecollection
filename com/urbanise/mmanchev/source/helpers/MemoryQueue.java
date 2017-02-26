@@ -28,7 +28,6 @@ public class MemoryQueue<T> {
 
     public T remove() {
         T removed = queue.remove();
-//        memory.remove(removed); // TODO test if this is actually needed.
         return removed;
     }
 

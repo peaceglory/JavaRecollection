@@ -8,6 +8,7 @@ import com.urbanise.mmanchev.source.helpers.DataProviderFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
@@ -191,7 +192,7 @@ public class DependencyGraphTest {
         assertExpected(expected, result);
     }
 
-    private String init(String dataFile) throws DataSourceNotFound {
+    private String init(String dataFile) throws DataSourceNotFound, IOException {
         DataInputProvider input = DataProviderFactory.getDataProvider(dataFile);
         DependencyGraph dependencyGraph = new SimpleDependencyGraph(input.provide());
         return dependencyGraph.build();

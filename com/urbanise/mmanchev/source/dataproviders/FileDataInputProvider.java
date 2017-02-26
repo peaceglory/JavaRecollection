@@ -15,19 +15,15 @@ import java.util.List;
 public class FileDataInputProvider implements DataInputProvider {
     private List<String> data;
 
-    public FileDataInputProvider(String fileName) throws DataSourceNotFound {
+    public FileDataInputProvider(String fileName) throws DataSourceNotFound, IOException {
         Path filePath = Paths.get(fileName).toAbsolutePath();
         if (!Files.exists(filePath)) {
             throw new DataSourceNotFound("NO such file: " + fileName);
         }
-        try {
-            data = Files.readAllLines(filePath);
-            PrintUtils.printLine("Reading data from: " + fileName);
-            data.forEach(PrintUtils::printLine);
-            PrintUtils.newLine();
-        } catch (IOException e) {
-            e.printStackTrace(); // TODO Do something better
-        }
+        data = Files.readAllLines(filePath);
+        PrintUtils.printLine("Reading data from: " + fileName);
+        data.forEach(PrintUtils::printLine);
+        PrintUtils.newLine();
     }
 
     @Override
