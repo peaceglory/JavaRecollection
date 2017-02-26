@@ -5,7 +5,6 @@ import com.urbanise.mmanchev.source.dataproviders.DataInputProvider;
 import com.urbanise.mmanchev.source.dataproviders.FileDataInputProvider;
 import com.urbanise.mmanchev.source.exceptions.DataSourceNotFound;
 
-import java.io.FileNotFoundException;
 
 /**
  * Created by mman on 25.02.17.
