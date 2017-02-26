@@ -21,6 +21,9 @@ public class SimpleDependencyGraph extends AbstractDependencyGraph {
         List<String> adjList;
 
         for (String s : getInput()) {
+            if (s.equals(PrintUtils.NL)) {
+                continue;
+            }
             feedLine = s.split(" ");
             adjList = new LinkedList<>();
             adjacencyMap.put(feedLine[0], adjList); // For the testing check for empty array or nulls
@@ -45,10 +48,13 @@ public class SimpleDependencyGraph extends AbstractDependencyGraph {
 
             while (!queue.isEmpty()) {
                 String s = queue.remove();
-                sb.append(s + " ");
+                sb.append(s);
                 List<String> dependencies = adjacencyMap.get(s);
                 if (dependencies != null) {
                     dependencies.forEach(queue::offer);
+                }
+                if (!queue.isEmpty()) {
+                    sb.append(" ");
                 }
             }
 
@@ -56,7 +62,8 @@ public class SimpleDependencyGraph extends AbstractDependencyGraph {
             sb.append(PrintUtils.NL);
         }
 
-        return sb.toString();
+
+        return sb.toString().trim();
     }
 
     public static void main(String[] args) {

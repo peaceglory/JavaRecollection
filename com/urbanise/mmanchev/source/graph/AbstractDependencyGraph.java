@@ -21,11 +21,14 @@ public abstract class AbstractDependencyGraph implements DependencyGraph {
     }
 
     private List<String> format(String input) {
-        try (Scanner s = new Scanner(input)) {
+        try (Scanner scan = new Scanner(input)) {
             List<String> result = new LinkedList<>();
 
-            while (s.hasNextLine()) {
-                result.add(s.nextLine());
+            while (scan.hasNextLine()) {
+                result.add(scan.nextLine());
+                if (!scan.hasNextLine()) {
+                    break;
+                }
                 result.add(PrintUtils.NL);
             }
             return result;

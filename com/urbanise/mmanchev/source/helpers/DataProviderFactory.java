@@ -11,7 +11,7 @@ import com.urbanise.mmanchev.source.exceptions.DataSourceNotFound;
  */
 public class DataProviderFactory {
 
-    public static DataInputProvider getDataProvider(String[] commandLineArgs) throws DataSourceNotFound { // TODO add -h --help handler
+    public static DataInputProvider getDataProvider(String... commandLineArgs) throws DataSourceNotFound { // TODO add -h --help handler
         if (commandLineArgs == null || commandLineArgs.length == 0) {
             return new ConsoleDataInputProvider();
         }
