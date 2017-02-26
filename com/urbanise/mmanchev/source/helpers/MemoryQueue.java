@@ -27,8 +27,7 @@ public class MemoryQueue<T> {
     }
 
     public T remove() {
-        T removed = queue.remove();
-        return removed;
+        return queue.remove();
     }
 
     public boolean isEmpty() {

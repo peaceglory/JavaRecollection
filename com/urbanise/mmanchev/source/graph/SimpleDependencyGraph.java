@@ -26,7 +26,7 @@ public class SimpleDependencyGraph extends AbstractDependencyGraph {
             }
             feedLine = s.split(" ");
             adjList = new LinkedList<>();
-            adjacencyMap.put(feedLine[0], adjList); // For the testing check for empty array or nulls
+            adjacencyMap.put(feedLine[0], adjList);
 
             for (int i = 1; i < feedLine.length; i++) {
                 adjacencyMap.get(feedLine[0]).add(feedLine[i]);
