@@ -113,6 +113,84 @@ public class DependencyGraphTest {
         assertExpected(expected, result);
     }
 
+    @Test
+    public void testNoEdges() {
+        Path path = Paths.get(testCasesPath + NO_EDGES).toAbsolutePath();
+        Exception error = null;
+        List<String> result = null;
+
+        try {
+            result = parse(init(path.toString()));
+        } catch (Exception e) {
+            error = e;
+        }
+
+        Assert.assertNull(error);
+
+        Set<String> expected = new HashSet<>();
+        expected.add("A");
+        expected.add("B");
+        expected.add("C");
+        expected.add("D");
+        expected.add("E");
+        expected.add("F");
+        expected.add("G");
+
+        assertExpected(expected, result);
+    }
+
+    @Test
+    public void testOneEdge() {
+        Path path = Paths.get(testCasesPath + ONE_EDGE).toAbsolutePath();
+        Exception error = null;
+        List<String> result = null;
+
+        try {
+            result = parse(init(path.toString()));
+        } catch (Exception e) {
+            error = e;
+        }
+
+        Assert.assertNull(error);
+
+        Set<String> expected = new HashSet<>();
+        expected.add("A");
+        expected.add("B");
+        expected.add("C D");
+        expected.add("E");
+        expected.add("F");
+
+        assertExpected(expected, result);
+    }
+
+    @Test
+    public void testOneLoner() {
+        Path path = Paths.get(testCasesPath + ONE_LONER).toAbsolutePath();
+        Exception error = null;
+        List<String> result = null;
+
+        try {
+            result = parse(init(path.toString()));
+        } catch (Exception e) {
+            error = e;
+        }
+
+        Assert.assertNull(error);
+
+        Set<String> expected = new HashSet<>();
+        expected.add("A C E G I H");
+        expected.add("B D F H");
+        expected.add("C E G I H");
+        expected.add("D F H");
+        expected.add("E G I H");
+        expected.add("F H");
+        expected.add("G I H");
+        expected.add("H");
+        expected.add("I H");
+
+        assertExpected(expected, result);
+    }
+
     private String init(String dataFile) throws DataSourceNotFound {
         DataInputProvider input = DataProviderFactory.getDataProvider(dataFile);
         DependencyGraph dependencyGraph = new SimpleDependencyGraph(input.provide());
