@@ -18,7 +18,7 @@ public class SimpleDependencyGraph extends AbstractDependencyGraph {
     private Map<String, List<String>> adjacencyMap = new HashMap<>();
 
     /**
-     * Constructs a <name>SimpleDependencyGraph</name> object and handles the formating of the input to the superclass.
+     * Constructs a <name>SimpleDependencyGraph</name> object and handles the formatting of the input to the superclass.
      * @param input
      */
     public SimpleDependencyGraph(String input) {
