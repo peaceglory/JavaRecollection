@@ -1,13 +1,17 @@
 package tests.algorithms.misc;
 
-import groovy.util.GroovyTestCase;
+import org.testng.annotations.Test;
 import sources.algorithms.misc.Prime;
+
+import static org.testng.AssertJUnit.assertFalse;
+import static org.testng.AssertJUnit.assertTrue;
 
 /**
  * Created by mman on 30.12.16.
  */
-public class PrimeTest extends GroovyTestCase {
+public class PrimeTest {
 
+    @Test
     public void testIsPrime() {
         int[] primes = { 3, 5, 7, 11, 13, 17, 197, 199, 179 };
         int[] notPrimes = { 4, 6, 9, 15, 21 };

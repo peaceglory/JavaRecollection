@@ -1,6 +1,6 @@
 package tests.algorithms.sorting;
 
-import groovy.util.GroovyTestCase;
+import org.testng.annotations.Test;
 import sources.algorithms.sorting.*;
 import sources.utils.StopWatch;
 import sources.utils.Utils;
@@ -10,9 +10,10 @@ import java.util.Comparator;
 /**
  * Created by mman on 09.12.16.
  */
-public class SortingTests extends GroovyTestCase {
+public class SortingTests  {
     private static final int SIZE = 10;
 
+    @Test
     public void testSelectionSort() {
         testSortingIntegers(SIZE, new SelectionSorter<Integer>(), null);
 
@@ -29,6 +30,7 @@ public class SortingTests extends GroovyTestCase {
 //        });
     }
 
+    @Test
     public void testInsertionSort() {
         testSortingIntegers(SIZE, new InsertionSorter<Integer>(), null);
 
@@ -45,6 +47,7 @@ public class SortingTests extends GroovyTestCase {
 //        });
     }
 
+    @Test
     public void testBubbleSort() {
         testSortingIntegers(SIZE, new BubbleSorter<Integer>(), null);
 
@@ -61,6 +64,7 @@ public class SortingTests extends GroovyTestCase {
 //        });
     }
 
+    @Test
     public void testMergeSort() {
         testSortingIntegers(SIZE, new MergeSorter<Integer>(), null);
 
@@ -77,6 +81,7 @@ public class SortingTests extends GroovyTestCase {
 //        });
     }
 
+    @Test
     public void testQuickSort() {
         testSortingIntegers(SIZE, new QuickSorter<Integer>(), null);
 

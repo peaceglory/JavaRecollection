@@ -1,6 +1,6 @@
 package tests.algorithms.misc;
 
-import groovy.util.GroovyTestCase;
+import org.testng.annotations.Test;
 import sources.algorithms.misc.ListMiddleFinder;
 
 import java.util.ArrayList;
@@ -10,8 +10,9 @@ import java.util.List;
 /**
  * Created by mman on 30.12.16.
  */
-public class ListMiddleFinderTest extends GroovyTestCase {
+public class ListMiddleFinderTest {
 
+    @Test
     public void testFindMiddleInOnePassForArrayList() {
         List<String> list = new ArrayList<>();
         list.add("A");
@@ -25,6 +26,7 @@ public class ListMiddleFinderTest extends GroovyTestCase {
         System.out.printf("Middle: %s", ListMiddleFinder.findMiddleInOnePass(list));
     }
 
+    @Test
     public void testFindMiddleInOnePassForLinkedList() {
         List<String> list = new LinkedList<>();
         list.add("A");

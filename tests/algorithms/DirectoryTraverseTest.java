@@ -1,10 +1,15 @@
-package tests.algorithms
+package tests.algorithms;
 
-import sources.utils.Utils
+import org.testng.annotations.Test;
+import sources.utils.Utils;
+
+import java.io.File;
+import java.util.Scanner;
+
 /**
  * Created by mman on 24.10.16.
  */
-class DirectoryTraverseTest extends GroovyTestCase {
+public class DirectoryTraverseTest {
 
     public static void main(String[] args) {
         DirectoryTraverseTest test = new DirectoryTraverseTest();
@@ -12,12 +17,14 @@ class DirectoryTraverseTest extends GroovyTestCase {
         test.testDepthFirstSearch();
     }
 
-    void testBreadthFirstSearch() {
+    @Test
+    public void testBreadthFirstSearch() {
         File userInput = getUserInput();
         Utils.traverseDirectoryBFS(userInput);
     }
 
-    void testDepthFirstSearch() {
+    @Test
+    public void testDepthFirstSearch() {
         File userInput = getUserInput();
         Utils.traverseDirectoryDFS(userInput);
     }
@@ -28,4 +35,5 @@ class DirectoryTraverseTest extends GroovyTestCase {
         String input = sc.nextLine();
         return new File(input);
     }
+
 }

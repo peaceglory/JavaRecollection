@@ -8,9 +8,9 @@ import sources.datastructures.custom.trees.TraverseStrategy
 /**
  * Created by mman on 18.11.16.
  */
-class MyTreeTest extends GroovyTestCase {
+public class MyTreeTest  {
 
-    void testBFSIterativeTraversor() {
+    public void testBFSIterativeTraversor() {
         IMyTree<String> stringTree = createStringTree();
         stringTree.traverse(TraverseStrategy.BFSIterative);
     }
