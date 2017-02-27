@@ -7,7 +7,9 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * Created by mman on 25.02.17.
+ * Abstract class responsible for formating and holding the dependency data.
+ *
+ * @author mmanchev, 25.02.17
  */
 public abstract class AbstractDependencyGraph implements DependencyGraph {
     private final List<String> input;

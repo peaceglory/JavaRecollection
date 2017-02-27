@@ -9,7 +9,10 @@ import com.urbanise.mmanchev.source.visualizators.SimpleVisualizator;
 import com.urbanise.mmanchev.source.visualizators.Visualizator;
 
 /**
- * Created by mman on 25.02.17.
+ * This class is the main entry point of the application.
+ * It represents a client using the DependencyGraph functionality.
+ *
+ * @author mmanchev, 25.02.17
  */
 public class DependencyGraphClient {
 

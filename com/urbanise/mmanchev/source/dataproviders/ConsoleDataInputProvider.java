@@ -5,10 +5,17 @@ import com.urbanise.mmanchev.source.utils.PrintUtils;
 import java.util.Scanner;
 
 /**
- * Created by mman on 25.02.17.
+ * This class interacts with user console from where useful data is collected in the defined format and provided
+ * to interested clients.
+ *
+ * @author mmanchev, 25.02.17
  */
 public class ConsoleDataInputProvider implements DataInputProvider {
 
+    /**
+     * Interactively reads input from user console.
+     * @return string representing useful data for interested clients.
+     */
     @Override
     public String provide() {
         StringBuilder sb = new StringBuilder();
@@ -29,10 +36,5 @@ public class ConsoleDataInputProvider implements DataInputProvider {
         }
 
         return sb.toString();
-    }
-
-    public static void main(String[] args) {
-        DataInputProvider in = new ConsoleDataInputProvider();
-        System.out.println(in.provide());
     }
 }

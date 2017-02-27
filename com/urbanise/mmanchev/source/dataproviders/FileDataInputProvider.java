@@ -10,26 +10,41 @@ import java.nio.file.Paths;
 import java.util.List;
 
 /**
- * Created by mman on 25.02.17.
+ * This class gathers useful data from a given file, formats it and provides it to interested clients when needed.
+ *
+ * @author mmanchev, 25.02.17
  */
 public class FileDataInputProvider implements DataInputProvider {
-    private List<String> data;
+    private final String data;
 
+    /**
+     * Constructs a FileDataInputProvider with a file from which the data is read.
+     *
+     * @param fileName the name of the file from which data is read.
+     * @throws DataSourceNotFound if the data source (in this case the file) cannot be found.
+     * @throws IOException any error during file read.
+     */
     public FileDataInputProvider(String fileName) throws DataSourceNotFound, IOException {
         Path filePath = Paths.get(fileName).toAbsolutePath();
         if (!Files.exists(filePath)) {
             throw new DataSourceNotFound("NO such file: " + fileName);
         }
-        data = Files.readAllLines(filePath);
+        List<String> allLines = Files.readAllLines(filePath);
         PrintUtils.printLine("Reading data from: " + fileName);
-        data.forEach(PrintUtils::printLine);
+        allLines.forEach(PrintUtils::printLine);
         PrintUtils.newLine();
+
+        this.data = format(allLines);
     }
 
     @Override
     public String provide() {
+        return data;
+    }
+
+    private String format(List<String> input) {
         StringBuilder sb = new StringBuilder();
-        data.forEach(line -> {
+        input.forEach(line -> {
             sb.append(line);
             sb.append(PrintUtils.NL);
         });

@@ -7,7 +7,10 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * Created by mman on 25.02.17.
+ * Simple implementation of Visualizator interface.
+ * This class visualizes data in the standart output.
+ *
+ * @author mmanchev, 25.02.17
  */
 public class SimpleVisualizator implements Visualizator {
     private final List<String> data;

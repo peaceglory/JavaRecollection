@@ -6,11 +6,21 @@ import com.urbanise.mmanchev.source.utils.PrintUtils;
 import java.util.*;
 
 /**
- * Created by mman on 25.02.17.
+ * A concrete dependency graph implementation.
+ * This class uses adjacency map to represent vertex dependencies.
+ *
+ * @author mmanchev, 25.02.17
  */
 public class SimpleDependencyGraph extends AbstractDependencyGraph {
+    /**
+     * Maps the name of a vertex to a list of adjacent vertexes.
+     */
     private Map<String, List<String>> adjacencyMap = new HashMap<>();
 
+    /**
+     * Constructs a <name>SimpleDependencyGraph</name> object and handles the formating of the input to the superclass.
+     * @param input
+     */
     public SimpleDependencyGraph(String input) {
         super(input);
     }
@@ -62,11 +72,6 @@ public class SimpleDependencyGraph extends AbstractDependencyGraph {
             sb.append(PrintUtils.NL);
         }
 
-
         return sb.toString().trim();
-    }
-
-    public static void main(String[] args) {
-        Scanner s = new Scanner("");
     }
 }

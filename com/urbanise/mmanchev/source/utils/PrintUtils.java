@@ -3,7 +3,7 @@ package com.urbanise.mmanchev.source.utils;
 import java.io.File;
 
 /**
- * Created by mman on 25.02.17.
+ * @author mmanchev, 25.02.17
  */
 public class PrintUtils {
     public static final String NL = System.lineSeparator();
