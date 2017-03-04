@@ -1,6 +1,6 @@
 package sources.algorithms.sorting;
 
-import sources.utils.Utils;
+import sources.utils.ObjectUtils;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -34,7 +34,7 @@ public class MergeSorter<T extends Comparable> implements Sorter<T> {
         int iSecond = 0;
 
         while (iFirst < arr1.length && iSecond < arr2.length) {
-            if (Utils.compare(arr1[iFirst], arr2[iSecond], comparator) < 0) {
+            if (ObjectUtils.compare(arr1[iFirst], arr2[iSecond], comparator) < 0) {
                 arr[i++] = arr1[iFirst++];
             } else {
                 arr[i++] = arr2[iSecond++];

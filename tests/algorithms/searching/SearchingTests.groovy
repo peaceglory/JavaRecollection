@@ -4,7 +4,7 @@ import sources.algorithms.searching.Searcher
 import sources.algorithms.sorting.QuickSorter
 import sources.algorithms.sorting.Sorter
 import sources.utils.StopWatch
-import sources.utils.Utils
+import sources.utils.ObjectUtils
 
 /**
  * Created by mman on 13.12.16.
@@ -13,8 +13,8 @@ class SearchingTests extends GroovyTestCase {
     private static final int SIZE = 1000000;
 
     void testLinearSearch() {
-        Integer[] a = Utils.createRandomIntegerArray(SIZE);
-        Utils.printArray(a);
+        Integer[] a = ObjectUtils.createRandomIntegerArray(SIZE);
+        ObjectUtils.printArray(a);
         int key = 108;
         StopWatch timer = new StopWatch();
         timer.start();
@@ -24,11 +24,11 @@ class SearchingTests extends GroovyTestCase {
     }
 
     void testBinarySearchIter() {
-        Integer[] a = Utils.createRandomIntegerArray(SIZE);
+        Integer[] a = ObjectUtils.createRandomIntegerArray(SIZE);
 
         Sorter<Integer> sorter = new QuickSorter<>();
         sorter.sort(a);
-        Utils.printArray(a);
+        ObjectUtils.printArray(a);
 
         StopWatch timer = new StopWatch();
         int key = 108; // Set value in debug mode if input is random.
@@ -40,11 +40,11 @@ class SearchingTests extends GroovyTestCase {
     }
 
     void testBinarySearchRecur() {
-        Integer[] a = Utils.createRandomIntegerArray(SIZE);
+        Integer[] a = ObjectUtils.createRandomIntegerArray(SIZE);
 
         Sorter<Integer> sorter = new QuickSorter<>();
         sorter.sort(a);
-        Utils.printArray(a);
+        ObjectUtils.printArray(a);
 
         StopWatch timer = new StopWatch();
         int key = 108; // Set value in debug mode if input is random.

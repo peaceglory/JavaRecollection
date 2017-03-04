@@ -2,8 +2,8 @@ package tests.algorithms.sorting;
 
 import org.testng.annotations.Test;
 import sources.algorithms.sorting.*;
+import sources.utils.ArrayUtils;
 import sources.utils.StopWatch;
-import sources.utils.Utils;
 
 import java.util.Comparator;
 
@@ -101,46 +101,46 @@ public class SortingTests  {
     }
 
     private void testSortingIntegers(int size, Sorter sorter, Comparator<Integer> comparator) {
-        Integer[] a = Utils.createRandomIntegerArray(size);
-        Utils.printArray(a);
+        Integer[] a = ArrayUtils.createRandomIntegerArray(size);
+        ArrayUtils.printArray(a);
 
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
         sorter.sort(a, comparator);
         stopWatch.stop();
 
-        Utils.printArray(a);
+        ArrayUtils.printArray(a);
         System.out.println("---------------------------------------");
 
         System.out.println(stopWatch.getResult() + "\n");
     }
 
     private void testSortingIntegersInSortedArray(int size, Sorter sorter, Comparator<Integer> comparator) {
-        Integer[] a = Utils.createRandomIntegerArray(size);
+        Integer[] a = ArrayUtils.createRandomIntegerArray(size);
         sorter.sort(a, comparator);
-        Utils.printArray(a);
+        ArrayUtils.printArray(a);
 
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
         sorter.sort(a, comparator);
         stopWatch.stop();
 
-        Utils.printArray(a);
+        ArrayUtils.printArray(a);
         System.out.println("---------------------------------------");
 
         System.out.println(stopWatch.getResult() + "\n");
     }
 
     private void testSortingStrings(int size, Sorter sorter, Comparator<String> comparator) {
-        String[] a = Utils.createRandomStringArray(size);
-        Utils.printArray(a);
+        String[] a = ArrayUtils.createRandomStringArray(size);
+        ArrayUtils.printArray(a);
 
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
         sorter.sort(a, comparator);
         stopWatch.stop();
 
-        Utils.printArray(a);
+        ArrayUtils.printArray(a);
         System.out.println("---------------------------------------");
 
         System.out.println(stopWatch.getResult() + "\n");

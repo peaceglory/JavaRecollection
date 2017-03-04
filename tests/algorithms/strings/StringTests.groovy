@@ -2,7 +2,7 @@ package tests.algorithms.strings
 
 import sources.algorithms.strings.StringUtils
 import sources.utils.StopWatch
-import sources.utils.Utils
+import sources.utils.ObjectUtils
 /**
  * Created by mman on 14.12.16.
  */
@@ -10,7 +10,7 @@ class StringTests extends GroovyTestCase {
     private static final int SIZE = 1000;
 
     void testContains() {
-        String str = Utils.createRandomString(SIZE);
+        String str = ObjectUtils.createRandomString(SIZE);
         println str;
         String pattern = "sharpshooter";
 
@@ -23,7 +23,7 @@ class StringTests extends GroovyTestCase {
     }
 
     void testReverseWords() {
-        String source = Utils.createRandomString(SIZE);
+        String source = ObjectUtils.createRandomString(SIZE);
         source.replace('\n', ' ');
         println source;
         println "_____________________________________________"
@@ -45,21 +45,21 @@ class StringTests extends GroovyTestCase {
     }
 
     void testCountWords() {
-        String source = Utils.createRandomString(SIZE);
+        String source = ObjectUtils.createRandomString(SIZE);
         println source;
         println "__________________________________________";
         println ("Words found: " + StringUtils.countWords(source));
     }
 
     void testMostFrequent() {
-        String source = Utils.createRandomString(SIZE);
+        String source = ObjectUtils.createRandomString(SIZE);
         println source;
         println "____________________________________________";
         println "Most frequent word: " + StringUtils.mostFrequentWord(source);
     }
 
     void testFirstMatch() {
-        String source = Utils.createRandomString(SIZE);
+        String source = ObjectUtils.createRandomString(SIZE);
         println source;
         println "____________________________________________";
         println "First match on: " + StringUtils.firstMatch(source, "WWW");

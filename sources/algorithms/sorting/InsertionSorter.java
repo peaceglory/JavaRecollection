@@ -1,6 +1,6 @@
 package sources.algorithms.sorting;
 
-import sources.utils.Utils;
+import sources.utils.ObjectUtils;
 
 import java.util.Comparator;
 
@@ -19,7 +19,7 @@ public class InsertionSorter<T extends Comparable> implements Sorter<T> {
         for (int i = 1; i < arr.length; i++) {
             T hold = arr[i];
             int j = i;
-            for (; j > 0 && Utils.compare(hold, arr[j - 1], comparator) < 0; j--) {
+            for (; j > 0 && ObjectUtils.compare(hold, arr[j - 1], comparator) < 0; j--) {
                 arr[j] = arr[j - 1];
             }
             arr[j] = hold;

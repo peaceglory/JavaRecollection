@@ -1,6 +1,6 @@
 package sources.algorithms.sorting;
 
-import sources.utils.Utils;
+import sources.utils.ObjectUtils;
 
 import java.util.Comparator;
 import java.util.concurrent.ThreadLocalRandom;
@@ -39,11 +39,11 @@ public class QuickSorter<T extends Comparable> implements Sorter<T> {
         while (true) {
             do {
                 findBigger++;
-            } while (Utils.compare(arr[findBigger], pivot, comparator) < 0);
+            } while (ObjectUtils.compare(arr[findBigger], pivot, comparator) < 0);
 
             do {
                 findSmaller--;
-            } while (Utils.compare(arr[findSmaller], pivot, comparator) > 0);
+            } while (ObjectUtils.compare(arr[findSmaller], pivot, comparator) > 0);
 
             if (findBigger < findSmaller) {
                 Sorter.swap(arr, findBigger, findSmaller);

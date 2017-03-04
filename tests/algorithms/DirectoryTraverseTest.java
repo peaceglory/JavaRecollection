@@ -1,7 +1,7 @@
 package tests.algorithms;
 
 import org.testng.annotations.Test;
-import sources.utils.Utils;
+import sources.utils.FileUtils;
 
 import java.io.File;
 import java.util.Scanner;
@@ -20,13 +20,13 @@ public class DirectoryTraverseTest {
     @Test
     public void testBreadthFirstSearch() {
         File userInput = getUserInput();
-        Utils.traverseDirectoryBFS(userInput);
+        FileUtils.traverseDirectoryBFS(userInput);
     }
 
     @Test
     public void testDepthFirstSearch() {
         File userInput = getUserInput();
-        Utils.traverseDirectoryDFS(userInput);
+        FileUtils.traverseDirectoryDFS(userInput);
     }
 
     private static File getUserInput() {
