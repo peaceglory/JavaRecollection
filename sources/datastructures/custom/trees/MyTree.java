@@ -52,4 +52,9 @@ public class MyTree<T extends Comparable> extends AMyTree<T> {
     public boolean hasParent() {
         return root.hasParent();
     }
+
+    @Override
+    public boolean isBalanced() {
+        throw new NotImplementedException();
+    }
 }

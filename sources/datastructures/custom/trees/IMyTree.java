@@ -30,4 +30,6 @@ public interface IMyTree<T> {
     int totalPathLength();
 
     int height();
+
+    boolean isBalanced();
 }

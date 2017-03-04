@@ -22,9 +22,13 @@ public class MyBinaryTree<T extends Comparable> implements IMyTree<T> {
     public MyBinaryTree(T value, MyBinaryTree<T> left, MyBinaryTree<T> right) {
         this(value);
         this.left = left;
-        this.left.parent = this;
+        if (this.left != null) {
+            this.left.parent = this;
+        }
         this.right = right;
-        this.right.parent = this;
+        if (this.right != null) {
+            this.right.parent = this;
+        }
     }
 
     @Override
@@ -205,6 +209,33 @@ public class MyBinaryTree<T extends Comparable> implements IMyTree<T> {
             return 1;
         }
         return 1 + Math.max(left.height(), right.height());
+    }
+
+    @Override
+    public boolean isBalanced() {
+        return isBalanced(this) > -1;
+    }
+
+    private int isBalanced(MyBinaryTree<T> node) {
+        if (node == null) {
+            return 0;
+        }
+
+        int leftHeight = isBalanced(node.left);
+        if (leftHeight < 0) {
+            return -1;
+        }
+
+        int rightHeight = isBalanced(node.right);
+        if (rightHeight < 0) {
+            return -1;
+        }
+
+        if (Math.abs(leftHeight - rightHeight) > 1) {
+            return -1;
+        }
+
+        return 1 + Math.max(leftHeight, rightHeight);
     }
 
     @Override
