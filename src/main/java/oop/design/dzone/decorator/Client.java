@@ -9,7 +9,8 @@ package oop.design.dzone.decorator;
  * <p>
  * <b>Ups:</b><br />
  * 1. Extends functionality of an object dynamically using composition instead of inheritance.<br />
- * 2. Each instance of the class can be enriched (decorated) differently.
+ * 2. Because of 1. inheritance explosion is avoided.
+ * 3. Each instance of the class can be enriched (decorated) differently.
  * </p>
  *
  * <p>
