@@ -6,6 +6,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InOrder;
+import org.mockito.invocation.InvocationOnMock;
+import org.mockito.stubbing.Answer;
 
 import static org.mockito.Mockito.*;
 
@@ -62,5 +64,26 @@ public class MathApplicationTesterAlternative {
         //following will make sure that add is first called then subtract is called.
         inOrder.verify(calcService).add(20.0, 10.0);
         inOrder.verify(calcService).subtract(20.0, 10.0);
+    }
+
+    @Test
+    public void testAddWithCallbacks() {
+        when(calcService.add(20.0,10.0)).thenAnswer(new Answer<Double>() {
+
+            @Override
+            public Double answer(InvocationOnMock invocation) throws Throwable {
+                //get the arguments passed to mock
+                Object[] args = invocation.getArguments();
+
+                //get the mock
+                Object mock = invocation.getMock();
+
+                //return the result
+                return 30.0;
+            }
+        });
+
+        //test the add functionality
+        Assert.assertEquals(mathApplication.add(20.0, 10.0),30.0,0);
     }
 }
