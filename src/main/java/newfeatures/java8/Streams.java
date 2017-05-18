@@ -13,7 +13,7 @@ import java.util.stream.Stream;
  */
 public class Streams {
 
-    void testMethod() {
+    void testMethod2() {
 
     }
 
