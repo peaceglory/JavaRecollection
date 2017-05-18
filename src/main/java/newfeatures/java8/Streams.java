@@ -13,10 +13,6 @@ import java.util.stream.Stream;
  */
 public class Streams {
 
-    void testMethod2() {
-
-    }
-
     public static void main(String[] args) throws IOException {
         filterLongWords();
 
