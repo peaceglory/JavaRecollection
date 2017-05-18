@@ -13,6 +13,10 @@ import java.util.stream.Stream;
  */
 public class Streams {
 
+    public void tapMethod() {
+        
+    }
+
     public static void main(String[] args) throws IOException {
         filterLongWords();
 
