@@ -13,14 +13,6 @@ import java.util.stream.Stream;
  */
 public class Streams {
 
-    void haha() {
-        
-    }
-
-    public void oshteEdinTapMetod() {
-        
-    }
-
     public static void main(String[] args) throws IOException {
         filterLongWords();
 
