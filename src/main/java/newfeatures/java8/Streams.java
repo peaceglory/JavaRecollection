@@ -17,6 +17,10 @@ public class Streams {
         
     }
 
+    public void oshteEdinTapMetod() {
+        
+    }
+
     public static void main(String[] args) throws IOException {
         filterLongWords();
 
