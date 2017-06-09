@@ -2,7 +2,9 @@ package mockito.reportgenerator;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.*;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.Calendar;
 
@@ -12,6 +14,7 @@ import static org.junit.Assert.assertEquals;
 /**
  * Created by developer on 6/9/17.
  */
+//@RunWith(MockitoJUnitRunner.class)
 public class ReportGeneratorServiceTest {
     @InjectMocks
     private ReportGeneratorService reportGeneratorService;
@@ -24,7 +27,7 @@ public class ReportGeneratorServiceTest {
 
     @Before
     public void setUp() {
-        MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.initMocks(this); // alternative to @RunWith(MockitoJUnitRunner.class)
     }
 
     @Test
