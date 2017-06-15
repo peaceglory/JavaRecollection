@@ -20,6 +20,7 @@
         <junit.ver>4.12</junit.ver>
         <mockito.ver>2.7.22</mockito.ver>
         <testng.ver>6.11</testng.ver>
+        <surefire.ver>2.20</surefire.ver>
     </properties>
 
     <build>
@@ -31,6 +32,15 @@
                 <configuration>
                     <source>${java.ver}</source>
                     <target>${java.ver}</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${surefire.ver}</version>
+                <configuration>
+                    <testFailureIgnore>false</testFailureIgnore>
                 </configuration>
             </plugin>
         </plugins>
