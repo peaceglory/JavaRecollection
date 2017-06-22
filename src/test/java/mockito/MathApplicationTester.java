@@ -32,7 +32,8 @@ public class MathApplicationTester {
         when(calcService.add(10.0, 20.0)).thenReturn(30.00);
 
         //test the add functionality
-        Assert.assertEquals(mathApplication.add(10.0, 20.0), 30.0, 0);
+        double result = mathApplication.add(10.0, 20.0);
+        Assert.assertEquals(result, 30.0, 0);
 
         verify(calcService, times(1)).add(10.0, 20.0);
     }
