@@ -1,4 +1,4 @@
-package algorithms.misc;
+package dailychallenge;
 
 import com.google.common.collect.ImmutableList;
 import org.junit.jupiter.api.AfterEach;
@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class IntegerAdderTest {
     private IntegerAdder classUnderTest;
