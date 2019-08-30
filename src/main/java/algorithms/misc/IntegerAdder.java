@@ -30,7 +30,6 @@ public class IntegerAdder {
             return add(list2, list1);
         }
 
-
         return outcome;
     }
 }
