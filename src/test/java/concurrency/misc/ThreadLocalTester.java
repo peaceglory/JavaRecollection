@@ -1,7 +1,9 @@
 package concurrency.misc;
 
-import org.junit.Assert;
-import org.junit.Test;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Created by mman on 19.05.17.
@@ -42,7 +44,7 @@ public class ThreadLocalTester {
 
         t2.start();
         t2.join();
-        Assert.assertEquals(2, finalResult[0]);
+        assertEquals(2, finalResult[0]);
     }
 
     @Test
@@ -55,10 +57,10 @@ public class ThreadLocalTester {
 
         t1.start();
         t1.join();
-        Assert.assertEquals(1, tlt.getNotThreadLocal());
+        assertEquals(1, tlt.getNotThreadLocal());
 
         t2.start();
         t2.join();
-        Assert.assertEquals(1, tlt.getNotThreadLocal());
+        assertEquals(1, tlt.getNotThreadLocal());
     }
 }

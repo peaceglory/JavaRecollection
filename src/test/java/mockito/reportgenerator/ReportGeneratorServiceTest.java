@@ -1,15 +1,14 @@
 package mockito.reportgenerator;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.*;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.Calendar;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
-import static org.junit.Assert.assertEquals;
 
 /**
  * Created by developer on 6/9/17.
@@ -25,7 +24,7 @@ public class ReportGeneratorServiceTest {
     @Captor
     private ArgumentCaptor<ReportEntity> reportCaptor;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         MockitoAnnotations.initMocks(this); // alternative to @RunWith(MockitoJUnitRunner.class)
     }

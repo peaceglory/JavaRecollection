@@ -3,13 +3,13 @@ package mockito;
 import mockito.stock.Portfolio;
 import mockito.stock.Stock;
 import mockito.stock.StockService;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -20,7 +20,7 @@ public class PortfolioTester {
     private Portfolio portfolio;
     private StockService stockService;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         //Create a portfolio object which is to be tested
         portfolio = new Portfolio();
@@ -50,6 +50,6 @@ public class PortfolioTester {
         when(stockService.getPrice(microsoftStock)).thenReturn(1000.00);
 
         double marketValue = portfolio.getMarketValue();
-        Assert.assertTrue(marketValue == 100500.0);
+        assertTrue(marketValue == 100500.0);
     }
 }

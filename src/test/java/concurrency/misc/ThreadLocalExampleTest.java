@@ -1,6 +1,7 @@
 package concurrency.misc;
 
-import org.junit.Test;
+
+import org.junit.jupiter.api.Test;
 
 /**
  * Created by mman on 19.05.17.

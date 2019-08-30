@@ -1,13 +1,14 @@
 package collections;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Created by mman on 19.05.17.
@@ -15,7 +16,7 @@ import java.util.ListIterator;
 public class LinkedListTester {
     private List<String> testList;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         testList = new LinkedList<>();
         testList.add("One");
@@ -34,10 +35,10 @@ public class LinkedListTester {
         liter.add("Before Four");
         liter.add("Before Four2");
 
-        Assert.assertEquals("[One, Two, Three, Before Four, Before Four2, Four, Five]", testList.toString());
+        assertEquals("[One, Two, Three, Before Four, Before Four2, Four, Five]", testList.toString());
     }
 
-    @After
+    @AfterEach
     public void cleanUp() {
         testList.clear();
         testList = null;
