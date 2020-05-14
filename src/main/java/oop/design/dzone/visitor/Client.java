@@ -2,8 +2,13 @@ package oop.design.dzone.visitor;
 
 /**
  * <p>
+ * <b>Type: Behavioral</b>
+ * </p>
+ * 
+ * <p>
  * <b>Intent:</b><br />
  * Adds new operations to the public interface of a hierarchy when subclassing is impossible or not desirable.
+ * https://sourcemaking.com/design_patterns/visitor
  * </p>
  *
  * <p>

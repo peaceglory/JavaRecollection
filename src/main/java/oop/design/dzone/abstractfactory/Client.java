@@ -2,6 +2,10 @@ package oop.design.dzone.abstractfactory;
 
 /**
  * <p>
+ * <b>Type: Creational</b>
+ * </p>
+ *
+ * <p>
  * <b>Intent:</b><br />
  * Enables clients to create families of related objects without the need to know which classes need to be instantiated.
  * </p>

@@ -2,8 +2,12 @@ package oop.design.dzone.state;
 
 /**
  * <p>
+ * <b>Type: Behavioral</b>
+ * </p>
+ * <p>
  * <b>Intent:</b><br />
  * Distribute state dependent behaviour of an object across classes which represent different states of the object.
+ * An object's behavior depends on its state.
  * </p>
  *
  * <p>

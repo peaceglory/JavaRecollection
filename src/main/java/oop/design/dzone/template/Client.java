@@ -2,6 +2,10 @@ package oop.design.dzone.template;
 
 /**
  * <p>
+ * <b>Type: Behavioral</b>
+ * </p>
+ *
+ * <p>
  * <b>Intent:</b><br />
  * Defines the steps of an algorithm in an operation leaving to subclasses (clients) the specific implementation of some or all of the steps.
  * </p>

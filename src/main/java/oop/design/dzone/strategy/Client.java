@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 /**
  * <p>
+ * <b>Type: Behavioral</b>
+ * </p>
+ * <p>
  * <b>Intent:</b><br />
  * Encapsulate alternative approaches to a problem into separate classes each of which implement the same operation (interface).
  * </p>

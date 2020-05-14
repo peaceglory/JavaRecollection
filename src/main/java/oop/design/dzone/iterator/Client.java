@@ -2,6 +2,10 @@ package oop.design.dzone.iterator;
 
 /**
  * <p>
+ * <b>Type: Behavioral</b>
+ * </p>
+ *
+ * <p>
  * <b>Intent:</b><br />
  * Allows sequential access to the elements of an aggregate object without providing access to the underlying data structure.
  * </p>

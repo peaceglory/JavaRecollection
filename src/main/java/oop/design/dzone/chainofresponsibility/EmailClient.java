@@ -2,6 +2,10 @@ package oop.design.dzone.chainofresponsibility;
 
 /**
  * <p>
+ * <b>Type: Behavioral</b>
+ * </p>
+ *
+ * <p>
  * <b>Intent:</b><br />
  * Reduces coupling of client with request handler by creating a chain of responsible objects which can try to handle
  * the request one by one.

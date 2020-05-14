@@ -2,6 +2,10 @@ package oop.design.dzone.composite;
 
 /**
  * <p>
+ * <b>Type: Behavioral</b>
+ * </p>
+ *
+ * <p>
  * <b>Intent:</b><br />
  * Realizes the part-whole relationship.
  * </p>

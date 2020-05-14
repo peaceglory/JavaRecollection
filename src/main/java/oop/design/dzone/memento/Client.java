@@ -2,6 +2,10 @@ package oop.design.dzone.memento;
 
 /**
  * <p>
+ * <b>Type: Behavioral</b>
+ * </p>
+ *
+ * <p>
  * <b>Intent:</b><br />
  * Externalize and save the internal state of an object without breaking the encapsulation.
  * </p>

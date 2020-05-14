@@ -2,6 +2,10 @@ package oop.design.dzone.command;
 
 /**
  * <p>
+ * <b>Type: Behavioral</b>
+ * </p>
+ *
+ * <p>
  * <b>Intent:</b><br />
  * Encapsulates a client's request into an object allowing it to be handled when the time is appropriate.
  * </p>

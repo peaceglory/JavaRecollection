@@ -5,6 +5,9 @@ import java.net.URL;
 
 /**
  * <p>
+ * <b>Type: Structural</b>
+ * </p>
+ * <p>
  * <b>Intent:</b><br />
  * Handles responsibility of managing access to an object to another object.
  * </p>

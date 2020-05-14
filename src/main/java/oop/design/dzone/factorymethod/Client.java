@@ -3,6 +3,10 @@ package oop.design.dzone.factorymethod;
 
 /**
  * <p>
+ * <b>Type: Creational</b>
+ * </p>
+ *
+ * <p>
  * <b>Intent:</b><br />
  * Relives clients of a service from knowing which class they need to instantiate.
  * </p>

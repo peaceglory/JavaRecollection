@@ -4,6 +4,10 @@ import java.awt.*;
 
 /**
  * <p>
+ * <b>Type: Structural</b>
+ * </p>
+ *
+ * <p>
  * <b>Intent:</b><br />
  * Makes for reusing objects by distributing responsibility between them and their clients.
  * The responsibility of the flyweight object is to keep reusable (intrinsic) state while the responsibility of client

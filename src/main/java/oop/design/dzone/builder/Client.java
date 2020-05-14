@@ -2,6 +2,10 @@ package oop.design.dzone.builder;
 
 /**
  * <p>
+ * <b>Type: Creational</b>
+ * </p>
+ *
+ * <p>
  * <b>Intent:</b><br />
  * Moves the construction logic of an object outside the class that is to be instantiated.
  * </p>

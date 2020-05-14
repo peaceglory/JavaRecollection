@@ -2,6 +2,10 @@ package oop.design.dzone.bridge;
 
 /**
  * <p>
+ * <b>Type: Structural</b>
+ * </p>
+ *
+ * <p>
  * <b>Intent:</b><br />
  * Separates abstraction and implementation into different hierarchies.
  * When a problem has two aspects which can evolve in their own hierarchies bridge is appropriate.

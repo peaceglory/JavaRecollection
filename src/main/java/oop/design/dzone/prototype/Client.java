@@ -2,6 +2,9 @@ package oop.design.dzone.prototype;
 
 /**
  * <p>
+ * <b>Type: Creational</b>
+ * </p>
+ * <p>
  * <b>Intent:</b><br />
  * Enables one-time initialization of complex objects which clients then clone and use.
  * </p>

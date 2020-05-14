@@ -5,6 +5,10 @@ import oop.design.dzone.adapter.target.Sorter;
 
 /**
  * <p>
+ * <b>Type: Structural</b>
+ * </p>
+ *
+ * <p>
  * <b>Intent:</b><br />
  * Provide client with the needed (expected) interface while at the same time makes use of the existing interface.
  * </p>

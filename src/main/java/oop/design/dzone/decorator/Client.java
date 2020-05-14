@@ -2,6 +2,10 @@ package oop.design.dzone.decorator;
 
 /**
  * <p>
+ * <b>Type: Structural</b>
+ * </p>
+ *
+ * <p>
  * <b>Intent:</b><br />
  * Enriches the functionality of existing methods at runtime when subclassing is impossible or not desirable.
  * </p>

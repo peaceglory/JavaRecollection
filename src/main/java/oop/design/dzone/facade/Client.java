@@ -4,6 +4,10 @@ import java.util.Date;
 
 /**
  * <p>
+ * <b>Type: Structural</b>
+ * </p>
+ *
+ * <p>
  * <b>Intent:</b><br />
  * Provides client with interface which is easy to use and hides the complexity of a subsystem (a third party).
  * </p>

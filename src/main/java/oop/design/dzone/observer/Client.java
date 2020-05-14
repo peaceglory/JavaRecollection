@@ -5,8 +5,13 @@ import java.util.Observer;
 
 /**
  * <p>
+ * <b>Type: Behavioral</b>
+ * </p>
+ *
+ * <p>
  * <b>Intent:</b><br />
- * Distributes responsibilities of objects in a publisher-subscriber fashion.
+ * Define a one-to-many dependency between objects so that when one object changes state,
+ * all its dependents are notified and updated automatically. Realizes publisher-subscriber model.
  * </p>
  *
  * <p>

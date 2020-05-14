@@ -3,6 +3,10 @@ package oop.design.dzone.mediator;
 
 /**
  * <p>
+ * <b>Type: Behavioral</b>
+ * </p>
+ *
+ * <p>
  * <b>Intent:</b><br />
  * Centralizes responsibility for how related objects interact with each other.
  * <p/>
