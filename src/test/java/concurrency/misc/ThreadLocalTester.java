@@ -8,10 +8,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 /**
  * Created by mman on 19.05.17.
  */
-public class ThreadLocalTester {
+class ThreadLocalTester {
 
     @Test
-    public void threadLocal_UniqueValueForEachThread() throws InterruptedException {
+    void threadLocal_UniqueValueForEachThread() throws InterruptedException {
         final ThreadLocalTest tlt = new ThreadLocalTest();
 
 
@@ -48,7 +48,7 @@ public class ThreadLocalTester {
     }
 
     @Test
-    public void notThreadLocal_SharedValueForAllThreads() throws InterruptedException {
+    void notThreadLocal_SharedValueForAllThreads() throws InterruptedException {
         final ThreadLocalTest tlt = new ThreadLocalTest();
 
         Thread t1 = new Thread(() -> tlt.setNotThreadLocal(1));

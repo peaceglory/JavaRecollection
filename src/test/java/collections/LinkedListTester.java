@@ -13,11 +13,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 /**
  * Created by mman on 19.05.17.
  */
-public class LinkedListTester {
+class LinkedListTester {
     private List<String> testList;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         testList = new LinkedList<>();
         testList.add("One");
         testList.add("Two");
@@ -26,8 +26,14 @@ public class LinkedListTester {
         testList.add("Five");
     }
 
+    @AfterEach
+    void tearDown() {
+        testList.clear();
+        testList = null;
+    }
+
     @Test
-    public void testLinkedListIterator() {
+    void testLinkedListIterator() {
         ListIterator<String> liter = testList.listIterator();
         for (int i = 0; i < 3; i++) {
             liter.next();
@@ -36,11 +42,5 @@ public class LinkedListTester {
         liter.add("Before Four2");
 
         assertEquals("[One, Two, Three, Before Four, Before Four2, Four, Five]", testList.toString());
-    }
-
-    @AfterEach
-    public void cleanUp() {
-        testList.clear();
-        testList = null;
     }
 }

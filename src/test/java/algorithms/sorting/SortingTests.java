@@ -1,20 +1,20 @@
 package algorithms.sorting;
 
-import org.testng.annotations.Test;
-import algorithms.sorting.*;
 import utils.ArrayUtils;
 import utils.StopWatch;
 
 import java.util.Comparator;
 
+import org.junit.jupiter.api.Test;
+
 /**
  * Created by mman on 09.12.16.
  */
-public class SortingTests  {
+class SortingTests  {
     private static final int SIZE = 10;
 
     @Test
-    public void testSelectionSort() {
+    void testSelectionSort() {
         testSortingIntegers(SIZE, new SelectionSorter<Integer>(), null);
 
 //        testSortingStrings(SIZE, new SelectionSorter<String>(), null);
@@ -31,7 +31,7 @@ public class SortingTests  {
     }
 
     @Test
-    public void testInsertionSort() {
+    void testInsertionSort() {
         testSortingIntegers(SIZE, new InsertionSorter<Integer>(), null);
 
 //        testSortingStrings(SIZE, new InsertionSorter<String>(), null);
@@ -48,7 +48,7 @@ public class SortingTests  {
     }
 
     @Test
-    public void testBubbleSort() {
+    void testBubbleSort() {
         testSortingIntegers(SIZE, new BubbleSorter<Integer>(), null);
 
 //        testSortingStrings(SIZE, new BubbleSorter<String>(), null);
@@ -65,7 +65,7 @@ public class SortingTests  {
     }
 
     @Test
-    public void testMergeSort() {
+    void testMergeSort() {
         testSortingIntegers(SIZE, new MergeSorter<Integer>(), null);
 
 //        testSortingStrings(SIZE, new MergeSorter<String>(), null);
@@ -82,7 +82,7 @@ public class SortingTests  {
     }
 
     @Test
-    public void testQuickSort() {
+    void testQuickSort() {
         testSortingIntegers(SIZE, new QuickSorter<Integer>(), null);
 
 //        testSortingIntegersInSortedArray(SIZE, new QuickSorter<Integer>(), null);

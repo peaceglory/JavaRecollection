@@ -1,19 +1,18 @@
 package algorithms.misc;
 
-import org.testng.annotations.Test;
-import algorithms.misc.ListMiddleFinder;
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.junit.jupiter.api.Test;
+
 /**
  * Created by mman on 30.12.16.
  */
-public class ListMiddleFinderTest {
+class ListMiddleFinderTest {
 
     @Test
-    public void testFindMiddleInOnePassForArrayList() {
+    void testFindMiddleInOnePassForArrayList() {
         List<String> list = new ArrayList<>();
         list.add("A");
         list.add("B");
@@ -27,7 +26,7 @@ public class ListMiddleFinderTest {
     }
 
     @Test
-    public void testFindMiddleInOnePassForLinkedList() {
+    void testFindMiddleInOnePassForLinkedList() {
         List<String> list = new LinkedList<>();
         list.add("A");
         list.add("B");

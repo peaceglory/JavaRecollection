@@ -33,11 +33,7 @@ public class SimilarityFinder {
             String[] sentence = initSentences[sentenceNumber].split(" ");
             for (String word : sentence) {
                 word = word.toLowerCase();
-                Set<Integer> occurenceSet = wordsBySentences.get(word);
-                if (occurenceSet == null) {
-                    occurenceSet = new HashSet<>();
-                    wordsBySentences.put(word, occurenceSet);
-                }
+                Set<Integer> occurenceSet = wordsBySentences.computeIfAbsent(word, k -> new HashSet<>());
                 occurenceSet.add(sentenceNumber);
             }
         }

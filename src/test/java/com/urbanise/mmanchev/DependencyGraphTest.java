@@ -5,18 +5,20 @@ import com.urbanise.mmanchev.source.exceptions.DataSourceNotFound;
 import com.urbanise.mmanchev.source.graph.DependencyGraph;
 import com.urbanise.mmanchev.source.graph.SimpleDependencyGraph;
 import com.urbanise.mmanchev.source.helpers.DataProviderFactory;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.testng.Assert;
+
 /**
  * Created by mman on 26.02.17.
  */
-public class DependencyGraphTest {
+class DependencyGraphTest {
     private static final String testCasesPath = "conf/com/urbanise/tests/";
 
     private static final String CIRCLE = "circle.txt";
@@ -28,7 +30,7 @@ public class DependencyGraphTest {
     private static final String ONE_LONER = "one_loner.txt";
 
     @Test
-    public void testCircular() {
+    void testCircular() {
         Path path = Paths.get(testCasesPath + CIRCLE).toAbsolutePath();
         Exception error = null;
         List<String> result = null;
@@ -39,7 +41,7 @@ public class DependencyGraphTest {
             error = e;
         }
 
-        Assert.assertNull(error);
+        Assertions.assertNull(error);
 
         Set<String> expected = new HashSet<>();
         expected.add("A B");
@@ -49,7 +51,7 @@ public class DependencyGraphTest {
     }
 
     @Test
-    public void testEmpty() {
+    void testEmpty() {
         Path path = Paths.get(testCasesPath + EMPTY).toAbsolutePath();
         Exception error = null;
         List<String> result = null;
@@ -60,13 +62,13 @@ public class DependencyGraphTest {
             error = e;
         }
 
-        Assert.assertNull(error);
+        Assertions.assertNull(error);
 
         Assert.assertTrue(result.isEmpty());
     }
 
     @Test
-    public void testMain() {
+    void testMain() {
         Path path = Paths.get(testCasesPath + MAIN).toAbsolutePath();
         Exception error = null;
         List<String> result = null;
@@ -91,7 +93,7 @@ public class DependencyGraphTest {
     }
 
     @Test
-    public void testMoreDependencies() {
+    void testMoreDependencies() {
         Path path = Paths.get(testCasesPath + MORE_DEPS).toAbsolutePath();
         Exception error = null;
         List<String> result = null;
@@ -115,7 +117,7 @@ public class DependencyGraphTest {
     }
 
     @Test
-    public void testNoEdges() {
+    void testNoEdges() {
         Path path = Paths.get(testCasesPath + NO_EDGES).toAbsolutePath();
         Exception error = null;
         List<String> result = null;
@@ -141,7 +143,7 @@ public class DependencyGraphTest {
     }
 
     @Test
-    public void testOneEdge() {
+    void testOneEdge() {
         Path path = Paths.get(testCasesPath + ONE_EDGE).toAbsolutePath();
         Exception error = null;
         List<String> result = null;
@@ -165,7 +167,7 @@ public class DependencyGraphTest {
     }
 
     @Test
-    public void testOneLoner() {
+    void testOneLoner() {
         Path path = Paths.get(testCasesPath + ONE_LONER).toAbsolutePath();
         Exception error = null;
         List<String> result = null;

@@ -1,22 +1,23 @@
 package algorithms.misc;
 
-import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
 import algorithms.misc.SimilarityFinder;
 
 /**
  * Created by mman on 20.03.17.
  */
-public class SimilarityFinderTest {
+class SimilarityFinderTest {
 
     @Test
-    public void testFindSimilar() {
+    void testFindSimilar() {
         String[] initSentences = getInitSentences(false);
 
         SimilarityFinder sf = new SimilarityFinder(initSentences);
         String[] similar = sf.findSimilar("A time like this is not that sunny visit with a picnic basket.");
 
-        Assert.assertTrue(similar.length == 2);
+        Assertions.assertEquals(similar.length, 2);
     }
 
     private String[] getInitSentences(boolean bigText) {

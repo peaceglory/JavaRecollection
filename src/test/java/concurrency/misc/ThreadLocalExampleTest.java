@@ -6,10 +6,10 @@ import org.junit.jupiter.api.Test;
 /**
  * Created by mman on 19.05.17.
  */
-public class ThreadLocalExampleTest {
+class ThreadLocalExampleTest {
 
     @Test
-    public void testThreadLocal() {
+    void testThreadLocal() {
         ThreadLocalExample.MyRunnable sharedRunnableInstance = new ThreadLocalExample.MyRunnable();
 
         Thread thread1 = new Thread(sharedRunnableInstance);
