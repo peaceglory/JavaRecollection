@@ -1,6 +1,32 @@
 package oop.design.patterns.codegeeks.behavioral.command;
 
-
+/**
+ * <p>
+ * <b>Type: Behavioral</b>
+ * </p>
+ *
+ * <p>
+ * <b>Intent:</b><br />
+ * Encapsulates a client's request into an object allowing it to be handled when the time is appropriate.
+ * </p>
+ *
+ * <p>
+ * <b>Ups:</b><br />
+ * 1. Allows for callback functionality.<br />
+ * 2. Allows for history of requests. <br />
+ * 3. Decouples task invoker from the concrete object that knows what to do.
+ * </p>
+ *
+ * <p>
+ * <b>Downs:</b><br />
+ * Every command needs a separate class.
+ * </p>
+ *
+ * <p>
+ * <b>Examples:</b><br />
+ * Job queue, Remote control.
+ * </p>
+ */
 public class TestCommandPattern {
     public static void main(String[] args) {
         init();

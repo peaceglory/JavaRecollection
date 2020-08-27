@@ -9,7 +9,7 @@ import java.net.URL;
  * </p>
  * <p>
  * <b>Intent:</b><br />
- * Handles responsibility of managing access to an object to another object.
+ * Proxy objects handle responsibility of managing access to another object.
  * </p>
  *
  * <p>

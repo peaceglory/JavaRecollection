@@ -15,6 +15,7 @@ package oop.design.patterns.dzone.structural.decorator;
  * 1. Extends functionality of an object dynamically using composition instead of inheritance.<br />
  * 2. Because of 1. inheritance explosion is avoided.
  * 3. Each instance of the class can be enriched (decorated) differently.
+ * 4. Its build on the design principle “Classes should be open for extension, but closed for modification.”
  * </p>
  *
  * <p>
