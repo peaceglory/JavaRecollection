@@ -39,6 +39,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CustomerPagedList'
+      security: [] # no security for this operation
     post:
       summary: Create a customer
       description: Create a new customer
@@ -215,7 +216,19 @@ paths:
         404:
           description: Beer with provided ID not found
 
+security:
+  - BasicAuth: []
+  - JwtAuthToken: []
+
 components: #reusable components:
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+    JwtAuthToken:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
   parameters:
     PageNumber:
       name: pageNumber
