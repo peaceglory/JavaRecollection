@@ -7,6 +7,8 @@ import java.util.Scanner;
 
 import org.junit.jupiter.api.Test;
 
+
+
 /**
  * Created by mman on 24.10.16.
  */
