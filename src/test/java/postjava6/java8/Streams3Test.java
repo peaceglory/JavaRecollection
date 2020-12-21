@@ -11,6 +11,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import postjava6.java8.streams.Streams3;
+
 class Streams3Test {
     private Streams3 classUnderTest;
 

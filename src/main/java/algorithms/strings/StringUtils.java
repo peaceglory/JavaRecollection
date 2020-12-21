@@ -1,5 +1,10 @@
 package algorithms.strings;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.Test;
 import org.testng.log4testng.Logger;
 
 import java.io.IOException;
@@ -7,6 +12,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Created by mman on 14.12.16.
@@ -21,6 +27,7 @@ public class StringUtils {
             forbiddenWords = new HashSet<>(wordList);
         } catch (IOException e) {
             Logger.getLogger(StringUtils.class).error("Can't read file: " + path.getFileName() + "\n" + e.getMessage());
+            forbiddenWords = new HashSet<>();
         }
     }
 
@@ -288,6 +295,49 @@ public class StringUtils {
         printSortedStrings(remaining, "");
     }
 
+    /**
+     * Given a string with multiple characters, some of which are duplicate.
+     * Find out the first non-repeated character in the string!
+     * Example input: "Here I am on my own, having a good brunch"
+     * Expected output: 'y'
+     * @return
+     */
+    public static Optional<Character> findFirstNonRepeatedChar(String input) {
+        final Map<Character, Long> counted = input.chars()
+                .mapToObj(c -> (char) c)
+                .filter(Character::isAlphabetic)
+                .map(Character::toLowerCase)
+                .collect(Collectors.groupingBy(
+                        c -> c,
+                        LinkedHashMap::new,
+                        Collectors.counting()));
+
+        return counted.entrySet().stream()  // TODO Can we do the whole operation in one pass?
+                .filter(e -> e.getValue().compareTo(1L) == 0)
+                .map(Map.Entry::getKey)
+                .findFirst();
+    }
+
+    @Test
+    void test_findFirstNonRepeatedChar1() {
+        final Optional<Character> output = findFirstNonRepeatedChar("Here I am on my own, having a good brunch");
+        assertTrue(output.isPresent());
+        assertEquals('y', output.get().charValue());
+    }
+
+    @Test
+    void test_findFirstNonRepeatedChar2() {
+        final Optional<Character> output = findFirstNonRepeatedChar("AffA");
+        assertFalse(output.isPresent());
+    }
+
+    @Test
+    void test_findFirstNonRepeatedChar3() {
+        final Optional<Character> output = findFirstNonRepeatedChar("abc");
+        assertTrue(output.isPresent());
+        assertEquals('a', output.get().charValue());
+    }
+
     private  static void printSortedStrings(int remaining, String prefix) {
         int numChars = 26;
 
@@ -325,11 +375,11 @@ public class StringUtils {
     public static void main(String[] args) {
         String source = "    Ba baa black  sheep ,     have you any BlAck wool ?    ";
         String target = " black sheep, ";
-        boolean found = contains(source, target) < 0 ? false : true;
-        System.out.println(String.format("%s --> %s: %b", source, target, found));
-        System.out.println(String.format("Words:%d", StringUtils.countWords(source)));
-        System.out.println(String.format("The most frequent: %s", StringUtils.mostFrequentWord(source)));
-        System.out.println(String.format("First match on: %d", StringUtils.firstMatch(source, "black")));
+        boolean found = contains(source, target) >= 0;
+        System.out.printf("%s --> %s: %b%n", source, target, found);
+        System.out.printf("Words:%d%n", countWords(source));
+        System.out.printf("The most frequent: %s%n", mostFrequentWord(source));
+        System.out.printf("First match on: %d%n", firstMatch(source, "black"));
         System.out.println("Reverse iterative:\n" + reverseIterative(source));
         System.out.println("Reverse recursive:\n" + reverseRecursive(source));
 

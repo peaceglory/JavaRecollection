@@ -1,4 +1,4 @@
-package postjava6.java8;
+package postjava6.java8.streams;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
