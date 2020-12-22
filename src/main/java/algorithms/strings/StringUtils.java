@@ -300,7 +300,6 @@ public class StringUtils {
      * Find out the first non-repeated character in the string!
      * Example input: "Here I am on my own, having a good brunch"
      * Expected output: 'y'
-     * @return
      */
     public static Optional<Character> findFirstNonRepeatedChar(String input) {
         final Map<Character, Long> counted = input.chars()
