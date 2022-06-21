@@ -15,7 +15,7 @@
 
         <java.ver>1.8</java.ver>
         <mvn.compiler.ver>3.6.1</mvn.compiler.ver>
-        <mysql.connector.ver>6.0.6</mysql.connector.ver>
+        <mysql.connector.ver>8.0.28</mysql.connector.ver>
         <apache.commons>3.5</apache.commons>
         <junit.ver>4.12</junit.ver>
         <mockito.ver>2.7.22</mockito.ver>
