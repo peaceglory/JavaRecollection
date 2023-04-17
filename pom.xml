@@ -19,7 +19,7 @@
         <apache.commons>3.5</apache.commons>
         <junit.ver>4.12</junit.ver>
         <mockito.ver>2.7.22</mockito.ver>
-        <testng.ver>6.11</testng.ver>
+        <testng.ver>7.7.0</testng.ver>
         <surefire.ver>2.20</surefire.ver>
     </properties>
 
